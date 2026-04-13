@@ -3,441 +3,512 @@
 <html class="light" lang="tr"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Home Dashboard - The Curated Encounter</title>
+<title>The Curated Encounter | İstanbul'u Keşfet</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "tertiary-container": "#895f60",
-                    "surface-variant": "#e5e2e1",
-                    "tertiary-fixed": "#ffdad9",
-                    "on-primary-container": "#ffe5e6",
-                    "tertiary-fixed-dim": "#edbaba",
-                    "inverse-on-surface": "#f3f0ef",
-                    "error-container": "#ffdad6",
-                    "inverse-primary": "#ffb2b7",
-                    "surface-container": "#f0eded",
-                    "on-error-container": "#93000a",
-                    "surface-container-high": "#eae7e7",
-                    "background": "#fcf9f8",
-                    "outline": "#837373",
-                    "primary-container": "#ab4b55",
-                    "on-secondary": "#ffffff",
-                    "surface-bright": "#fcf9f8",
-                    "on-primary-fixed-variant": "#7d2934",
-                    "on-background": "#1b1c1c",
-                    "on-error": "#ffffff",
-                    "on-tertiary-container": "#ffe5e4",
-                    "primary-fixed": "#ffdadb",
-                    "on-tertiary-fixed-variant": "#613d3d",
-                    "on-tertiary": "#ffffff",
-                    "outline-variant": "#d5c2c1",
-                    "primary": "#8c343f",
-                    "on-secondary-fixed": "#2c160e",
-                    "primary-fixed-dim": "#ffb2b7",
-                    "surface": "#fcf9f8",
-                    "surface-dim": "#dcd9d9",
-                    "surface-container-low": "#f6f3f2",
-                    "inverse-surface": "#303030",
-                    "on-secondary-fixed-variant": "#5d4037",
-                    "secondary": "#77574d",
-                    "on-secondary-container": "#795950",
-                    "on-primary": "#ffffff",
-                    "surface-tint": "#9c404a",
-                    "surface-container-lowest": "#ffffff",
-                    "secondary-fixed-dim": "#e7bdb1",
-                    "tertiary": "#6e4848",
-                    "on-tertiary-fixed": "#2f1314",
-                    "on-surface": "#1b1c1c",
-                    "secondary-container": "#fed3c7",
-                    "on-surface-variant": "#514443",
-                    "secondary-fixed": "#ffdbd0",
-                    "error": "#ba1a1a",
-                    "surface-container-highest": "#e5e2e1",
-                    "on-primary-fixed": "#40000d"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "1rem",
-                    "xl": "1.5rem",
-                    "full": "9999px"
-            },
-            "fontFamily": {
-                    "headline": ["Noto Serif", "serif"],
-                    "body": ["Inter", "sans-serif"],
-                    "label": ["Inter", "sans-serif"]
-            }
-          },
-        },
-      }
-    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      body { font-family: 'Inter', sans-serif; }
-      h1, h2, h3, h4, .font-serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .serif-brand {
+            font-family: 'Noto Serif', serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#f3f0ef",
+                      "tertiary-fixed": "#ffdad9",
+                      "on-secondary-fixed": "#2c160e",
+                      "on-primary-container": "#ffe5e6",
+                      "secondary-fixed": "#ffdbd0",
+                      "background": "#fcf9f8",
+                      "surface-variant": "#e5e2e1",
+                      "surface-container": "#f0eded",
+                      "outline": "#837373",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#ffb2b7",
+                      "secondary-fixed-dim": "#e7bdb1",
+                      "on-tertiary-fixed-variant": "#613d3d",
+                      "on-tertiary-fixed": "#2f1314",
+                      "primary-fixed": "#ffdadb",
+                      "primary-fixed-dim": "#ffb2b7",
+                      "tertiary-container": "#895f60",
+                      "surface-dim": "#dcd9d9",
+                      "outline-variant": "#d5c2c1",
+                      "surface-tint": "#9c404a",
+                      "on-surface": "#1b1c1c",
+                      "on-secondary-fixed-variant": "#5d4037",
+                      "inverse-surface": "#303030",
+                      "surface-container-high": "#eae7e7",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#514443",
+                      "primary": "#8c343f",
+                      "on-secondary-container": "#795950",
+                      "surface": "#fcf9f8",
+                      "primary-container": "#ab4b55",
+                      "on-background": "#1b1c1c",
+                      "on-tertiary-container": "#ffe5e4",
+                      "surface-container-low": "#f6f3f2",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary": "#77574d",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#7d2934",
+                      "tertiary": "#6e4848",
+                      "tertiary-fixed-dim": "#edbaba",
+                      "secondary-container": "#fed3c7",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface-bright": "#fcf9f8",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#40000d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              }
+            },
+          }
+        }
+      </script>
 </head>
-<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar -->
-<nav class="bg-[#fcf9f8]/80 dark:bg-[#1b1c1c]/80 backdrop-blur-md text-[#1b1c1c] dark:text-[#fcf9f8] docked full-width top-0 z-50 sticky no-border tonal-shift bg-surface-container-low shadow-sm dark:shadow-none">
-<div class="flex justify-between items-center w-full px-6 py-4 max-w-full mx-auto">
-<div class="flex items-center gap-8">
-<span class="text-2xl font-serif italic text-[#8c343f] dark:text-[#ab4b55]">The Curated Encounter</span>
-<div class="hidden md:flex gap-6 items-center">
-<a class="text-[#8c343f] font-bold border-b-2 border-[#8c343f]" href="#">Home</a>
-<a class="text-[#1b1c1c]/60 hover:text-[#8c343f] transition-colors" href="#">Explore</a>
-<a class="text-[#1b1c1c]/60 hover:text-[#8c343f] transition-colors" href="#">Districts</a>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-[#fcf9f8] dark:bg-stone-950 flex flex-col p-6 gap-y-2 z-40 hidden md:flex">
+<div class="mb-10 px-2">
+<h1 class="text-xl font-serif italic text-[#8c343f] dark:text-[#ab4b55]">The Curated Encounter</h1>
+<p class="text-xs font-sans uppercase tracking-widest text-stone-500 mt-1">Eder Ali Doğan</p>
 </div>
+<nav class="flex-1 space-y-1">
+<!-- Active State: Ana Sayfa -->
+<a class="bg-[#8c343f] text-white rounded-full shadow-lg scale-105 flex items-center gap-4 px-4 py-3 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-sans uppercase tracking-widest text-xs">Ana Sayfa</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#f6f3f2] dark:hover:bg-stone-800 rounded-full flex items-center gap-4 px-4 py-3 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-sans uppercase tracking-widest text-xs">Keşfet</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#f6f3f2] dark:hover:bg-stone-800 rounded-full flex items-center gap-4 px-4 py-3 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-sans uppercase tracking-widest text-xs">Semtler</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#f6f3f2] dark:hover:bg-stone-800 rounded-full flex items-center gap-4 px-4 py-3 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-sans uppercase tracking-widest text-xs">Kategoriler</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#f6f3f2] dark:hover:bg-stone-800 rounded-full flex items-center gap-4 px-4 py-3 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-sans uppercase tracking-widest text-xs">Hazır Planlar</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#f6f3f2] dark:hover:bg-stone-800 rounded-full flex items-center gap-4 px-4 py-3 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-sans uppercase tracking-widest text-xs">Kaydedilenler</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#f6f3f2] dark:hover:bg-stone-800 rounded-full flex items-center gap-4 px-4 py-3 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-sans uppercase tracking-widest text-xs">Premium</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#f6f3f2] dark:hover:bg-stone-800 rounded-full flex items-center gap-4 px-4 py-3 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person_2">person_2</span>
+<span class="font-sans uppercase tracking-widest text-xs">Profil</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all active:scale-95">
+                Plan Yap
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-72 min-h-screen">
+<!-- TopAppBar (Anchor Style) -->
+<header class="fixed top-0 right-0 left-0 md:left-72 z-30 bg-[#fcf9f8]/80 backdrop-blur-md h-20 flex justify-between items-center px-8 border-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined md:hidden" data-icon="menu">menu</span>
+<h2 class="text-lg italic font-['Noto_Serif'] text-[#8c343f] tracking-tight">Ana Sayfa</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/15">
+<span class="material-symbols-outlined text-stone-400 text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-medium" placeholder="Mekan veya semt ara..." type="text"/>
 </div>
 <div class="flex items-center gap-4">
-<div class="hidden lg:flex items-center bg-surface-container-highest/30 px-4 py-2 rounded-full border border-outline-variant/15">
-<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
-<input class="bg-transparent border-none focus:ring-0 text-sm w-48 placeholder:text-on-surface-variant/50" placeholder="Search venues..." type="text"/>
-</div>
-<button class="material-symbols-outlined text-on-surface hover:text-primary transition-transform active:scale-95 duration-200">notifications</button>
-<div class="flex items-center gap-2 border-l border-outline-variant/30 pl-4 ml-2">
-<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-container">
-<img alt="Eder Ali Doğan" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAexgtWkxacyBKvN_kEonK6iiYMYd4W5R1zj2puOnfx2kfq1Xtd0vx5iKKZoM3Sv8UScb4h20tS_oFFHcuyI7VPd6wRF_oNs1LCdXfcSY5WVYTilqLDY--FQxKu0VyQqULMmEq-tKhhEXhILBobQ6mOyiHWnAMNf-Bxm9InKyXvJjnBFlFN93zVRiKFGSEAi_-By7d88ZEt-4qE5fNEX9ibd2Bxff_0NpZo9pNL3OgKPWKeQcLSyXPBmhR6kPMzd-l3RiXAVQGjjXE"/>
-</div>
-<span class="text-xs font-bold hidden sm:inline">Eder Ali Doğan</span>
+<span class="material-symbols-outlined text-stone-600 hover:text-primary transition-colors cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-stone-600 hover:text-primary transition-colors cursor-pointer" data-icon="favorite">favorite</span>
+<img alt="Eder Ali Doğan" class="w-10 h-10 rounded-full object-cover border-2 border-primary/20" data-alt="Close-up portrait of a handsome man with kind eyes and stylish haircut in soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZKoLMEFfLR1x6nAiszIRlB8sCkHFy3zO-Rj4LMcpgod63SYPU6ID6vcfB_RXUx3Pxnfx0a4OfoQBIJclLYszTW1wlA02eJkgLQwEV0SHJe-UIiJ3B104Ul_WNSa4hHRMwhQl3OeKX8r9P2Ur8uOxDaIfaJk4UyLR7fOTxFBNdiuAhrWUyZEzY2uRHoLx0-0NPzte3mVkBvS02jJBnNkeWTjDZVVjvgz_ChGc07w-prTp2I7O-dwhWkF5qAbDL2C_UvqYm-wqyqRE"/>
 </div>
 </div>
+</header>
+<div class="pt-28 pb-12 px-8 max-w-7xl mx-auto space-y-16">
+<!-- Hero Section -->
+<section class="relative rounded-xl overflow-hidden min-h-[500px] flex items-center px-12">
+<div class="absolute inset-0 z-0">
+<img alt="İstanbul Bosphorus Sunset" class="w-full h-full object-cover" data-alt="Cinematic wide shot of the Istanbul Bosphorus at sunset with the silhouette of Maiden's Tower and warm orange and purple sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATNY0FRz8D3at2q8nIQ5T0PgTt_1d8YLmZnTrtiDfx-Q_kaSyEYrUVP3DLzNdaeeSNEcpGqnzIeVF2rta3lB3fbD8VVKDwW6c7zSLGuSLL2IamHIgeVmANS1qLGB-3MrD_EUsAS9ktwa6xtR6HDsr8AQlW3qMPFc_U9S6LMrxBZTJzXFICYLIkDHqQYslHX4JWQPEfU20cN5iVcDaxVLRLaBv4fxbrgYRg7igpUsL6530_C414Uhpu8s9OTgKHfmM4aiX-G_6-Kh0"/>
+<div class="absolute inset-0 bg-gradient-to-r from-stone-900/80 via-stone-900/40 to-transparent"></div>
 </div>
-</nav>
-<div class="flex min-h-screen">
-<!-- SideNavBar -->
-<aside class="hidden md:flex flex-col gap-2 p-4 h-screen w-64 fixed left-0 top-0 pt-20 bg-[#f6f3f2] dark:bg-[#252626] border-r border-[#1b1c1c]/5 z-40">
-<div class="flex items-center gap-3 px-4 py-6 mb-4">
-<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container shadow-sm">
-<img alt="Eder Ali Doğan" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAexgtWkxacyBKvN_kEonK6iiYMYd4W5R1zj2puOnfx2kfq1Xtd0vx5iKKZoM3Sv8UScb4h20tS_oFFHcuyI7VPd6wRF_oNs1LCdXfcSY5WVYTilqLDY--FQxKu0VyQqULMmEq-tKhhEXhILBobQ6mOyiHWnAMNf-Bxm9InKyXvJjnBFlFN93zVRiKFGSEAi_-By7d88ZEt-4qE5fNEX9ibd2Bxff_0NpZo9pNL3OgKPWKeQcLSyXPBmhR6kPMzd-l3RiXAVQGjjXE"/>
-</div>
-<div>
-<p class="font-headline text-sm font-bold text-on-surface leading-tight">Eder Ali Doğan</p>
-<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">Platinum Member</p>
-</div>
-</div>
-<nav class="flex flex-col gap-1 overflow-y-auto no-scrollbar">
-<a class="flex items-center gap-3 bg-white dark:bg-[#1b1c1c] text-[#8c343f] rounded-lg px-4 py-3 shadow-sm font-semibold" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-<span class="text-sm">Home</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface/70 px-4 py-3 hover:bg-white/50 hover:text-[#8c343f] transition-all rounded-lg" href="#">
-<span class="material-symbols-outlined">explore</span>
-<span class="text-sm">Explore</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface/70 px-4 py-3 hover:bg-white/50 hover:text-[#8c343f] transition-all rounded-lg" href="#">
-<span class="material-symbols-outlined">location_city</span>
-<span class="text-sm">Districts</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface/70 px-4 py-3 hover:bg-white/50 hover:text-[#8c343f] transition-all rounded-lg" href="#">
-<span class="material-symbols-outlined">category</span>
-<span class="text-sm">Categories</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface/70 px-4 py-3 hover:bg-white/50 hover:text-[#8c343f] transition-all rounded-lg" href="#">
-<span class="material-symbols-outlined">event_note</span>
-<span class="text-sm">Plans</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface/70 px-4 py-3 hover:bg-white/50 hover:text-[#8c343f] transition-all rounded-lg" href="#">
-<span class="material-symbols-outlined">bookmark</span>
-<span class="text-sm">Saved</span>
-</a>
-<div class="my-4 border-t border-outline-variant/30"></div>
-<a class="flex items-center gap-3 text-on-surface/70 px-4 py-3 hover:bg-white/50 hover:text-[#8c343f] transition-all rounded-lg" href="#">
-<span class="material-symbols-outlined">auto_awesome</span>
-<span class="text-sm font-bold text-primary">Premium</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface/70 px-4 py-3 hover:bg-white/50 hover:text-[#8c343f] transition-all rounded-lg" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="text-sm">Settings</span>
-</a>
-<div class="mt-8 p-4 rounded-xl bg-primary-fixed text-on-primary-fixed">
-<p class="text-xs font-bold mb-1">Premium Perks</p>
-<p class="text-[10px] leading-relaxed opacity-80 mb-3">Unlock hidden rooftops and priority booking.</p>
-<button class="w-full py-2 bg-primary text-on-primary text-[10px] font-bold rounded-lg uppercase tracking-widest">Upgrade Now</button>
-</div>
-</nav>
-</aside>
-<!-- Main Area -->
-<main class="flex-1 md:ml-64 p-6 lg:p-10">
-<!-- Hero Title & Greeting -->
-<section class="max-w-4xl mb-12">
-<p class="text-primary font-bold text-sm uppercase tracking-[0.2em] mb-3">Hoş geldin, Eder Ali Doğan</p>
-<h1 class="text-4xl md:text-6xl font-headline font-bold text-on-surface leading-tight mb-4">
-                    İstanbul’da sevgilinle <br/>
-<span class="italic text-primary">en doğru date’i</span> keşfet.
-                </h1>
-<p class="text-on-surface-variant text-lg max-w-xl">Curated lists, intimate atmosphere scores, and exclusive table bookings for the city's most romantic encounters.</p>
-</section>
-<!-- Quick Discovery Bar -->
-<section class="flex flex-wrap items-center gap-4 mb-16 bg-surface-container-low/50 p-2 rounded-full border border-outline-variant/10">
-<div class="flex items-center gap-2 bg-surface-container-lowest px-5 py-3 rounded-full hover:bg-surface-container-high transition-colors cursor-pointer border border-outline-variant/10">
-<span class="material-symbols-outlined text-primary text-sm">location_on</span>
-<span class="text-sm font-medium">District: All</span>
-</div>
-<div class="flex items-center gap-2 bg-surface-container-lowest px-5 py-3 rounded-full hover:bg-surface-container-high transition-colors cursor-pointer border border-outline-variant/10">
-<span class="material-symbols-outlined text-primary text-sm">restaurant</span>
-<span class="text-sm font-medium">Category: All</span>
-</div>
-<!-- Budget Slider Concept -->
-<div class="flex-1 min-w-[200px] flex items-center gap-4 px-6 py-2 bg-surface-container-lowest rounded-full border border-outline-variant/10">
-<span class="material-symbols-outlined text-primary text-sm">payments</span>
-<div class="flex-1 relative flex items-center h-2 bg-outline-variant/20 rounded-full">
-<div class="absolute w-1/2 h-full bg-primary rounded-full"></div>
-<div class="absolute left-1/2 -ml-2 w-4 h-4 bg-primary rounded-full shadow-md border-2 border-white"></div>
-</div>
-<span class="text-xs font-bold text-on-surface-variant">$$$</span>
-</div>
-<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
-                    Show results
-                </button>
-</section>
-<!-- Tonight for you -->
-<section class="mb-16">
-<div class="flex justify-between items-end mb-8">
-<div>
-<h2 class="text-3xl font-headline font-bold text-on-surface">Tonight for you</h2>
-<p class="text-on-surface-variant text-sm mt-1">Handpicked matches based on your mood and the clear Bosphorus breeze.</p>
-</div>
-<a class="text-primary font-bold text-sm flex items-center gap-1 group" href="#">
-                        View editorial <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Editorial Card 1 -->
-<div class="group relative aspect-[16/10] md:aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container-low shadow-md">
-<img alt="Romantic Dinner" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyDG1CzYIN3lzFH0XzE0Jl9C1KmJNcPeccU-GWs1zVPzvNEwJBQtn83OSFzR2l7VpJDYz6vru0637VQCFQEkQ1ZQC1pKSwBxjrzCMjO8rSEJTioam19nkEk-sK-l5byZvMFCdiUBaWX_67-62STIAaOIirCKz_H90mTNWabfG-VDJ7r3rQ7lnef6jVXgxgUwcqB0uRmo6kBTczmUlILB1uP2nXpP1HqAFZJDYrsyT8YAWwmMehsmpIP8v5xGoy_xzgn2-LEXrJ42Q"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-<div class="absolute bottom-0 p-8 w-full">
-<div class="flex gap-2 mb-3">
-<span class="bg-primary/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">Romantic High</span>
-<span class="bg-white/20 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">$$$</span>
-</div>
-<h3 class="text-white text-3xl font-headline font-bold mb-2">Sunset over Karaköy</h3>
-<p class="text-white/80 text-sm leading-relaxed max-w-sm">Modern Anatolian cuisine with an 180° Bosphorus view. Perfect for anniversary dates.</p>
+<div class="relative z-10 max-w-2xl text-white space-y-6">
+<h2 class="text-5xl md:text-6xl font-bold leading-tight">İstanbul’da sevgilinle en doğru date’i keşfet</h2>
+<p class="text-lg text-white/90 font-medium leading-relaxed max-w-lg">
+                        Semtini seç, nasıl bir plan istediğini belirle, bütçene göre en uygun mekanları ve hazır date planlarını gör.
+                    </p>
+<!-- Hero Filter Module -->
+<div class="mt-12 bg-white/10 backdrop-blur-xl p-4 rounded-xl border border-white/20 shadow-2xl flex flex-wrap lg:flex-nowrap gap-4 items-end">
+<div class="flex-1 min-w-[200px] space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-white/70 font-bold ml-2">Semt Seç</label>
+<div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between text-on-surface cursor-pointer">
+<span class="text-sm font-medium">Beşiktaş</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
 </div>
 </div>
-<!-- Editorial Card 2 -->
-<div class="group relative aspect-[16/10] md:aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container-low shadow-md">
-<img alt="Jazz Bar" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNzBLbjF2JdKHWggl5W4GT4ySk1a2EJ70kPBlZDDYOgG4QVW9N-jlz1scO2Gm3agSxiynwONImUV5MpK-NHw18G1eDs9hKsWPfAe6dgqLmsqIyrf4O4-YNqIv6Ub2KGfhw3qFfUf_CNF4Rp5ewYwYDPezhgri4VH0ew6Ot3nKX-5BKzs3SO9XROK5SQ0h__AdtyLTyZFf9uxLgj_C_EgBgH09eQcsYqWnJgvDTYCvRAmE3y1psJqhPZdJ5waA4PzPcoavRRPD70hc"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-<div class="absolute bottom-0 p-8 w-full">
-<div class="flex gap-2 mb-3">
-<span class="bg-primary/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">Intimate Vibe</span>
-<span class="bg-white/20 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">$$</span>
-</div>
-<h3 class="text-white text-3xl font-headline font-bold mb-2">After Hours in Galata</h3>
-<p class="text-white/80 text-sm leading-relaxed max-w-sm">A hidden jazz cellar featuring local quartets and artisan botanical cocktails.</p>
+<div class="flex-1 min-w-[200px] space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-white/70 font-bold ml-2">Kategori Seç</label>
+<div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between text-on-surface cursor-pointer">
+<span class="text-sm font-medium">Romantik Yemek</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
 </div>
 </div>
+<div class="flex-1 min-w-[200px] space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-white/70 font-bold ml-2">Bütçe Aralığı</label>
+<div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between text-on-surface">
+<span class="text-sm font-bold text-primary">₺₺ - ₺₺₺</span>
+<input class="accent-primary w-24" type="range"/>
 </div>
-</section>
-<!-- Popular in Beşiktaş -->
-<section class="mb-16">
-<div class="flex justify-between items-end mb-8">
-<div>
-<h2 class="text-3xl font-headline font-bold text-on-surface">Popular in Beşiktaş</h2>
-<p class="text-on-surface-variant text-sm mt-1">The local favorites right now in your neighborhood.</p>
 </div>
-<a class="text-primary font-bold text-sm flex items-center gap-1 group" href="#">
-                        See all Beşiktaş <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-<div class="flex gap-6 overflow-x-auto pb-6 no-scrollbar -mx-6 px-6">
-<!-- Venue Pill Card 1 -->
-<div class="flex-none w-72 bg-surface-container-lowest rounded-2xl p-4 shadow-sm border border-outline-variant/10 group cursor-pointer hover:shadow-md transition-shadow">
-<div class="relative w-full aspect-square rounded-xl overflow-hidden mb-4">
-<img alt="Cafe" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo9E0OVm7ZALbUgnOGYt84Jrjkbbgp1V09OT78fRoawzLyz90OmSGSMZQ5ABONDsXgvy5_ZuSBviMtYJipMTbyCsxXTKZv0S3qH7EhYMDK5upuJc2SneIM39KNmCpDbLdnfLj1KkDKU4Reh3_hKvgaHzwvAFj5sNZNPrcWmVIb0yveg8mXgR_7Iozn7ct9aE4Gd3WlSmg_ZeiynqeVSJSUJlqQXFTdCUan7WCnQIm8m_2MpgmqHVInXZbuitqESNjEEe6l82enhbQ"/>
-<button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-primary shadow-sm hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<button class="bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-primary-container transition-all h-[48px] flex items-center gap-2">
+                            Mekanları Keşfet
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
 </button>
 </div>
-<div class="flex justify-between items-start mb-1">
-<h4 class="font-headline font-bold text-lg">Minoa Village</h4>
-<div class="flex items-center gap-1">
-<span class="text-xs font-bold text-primary">9.4</span>
-<span class="material-symbols-outlined text-[10px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant mb-4">Bookstore &amp; Cafe • Akaretler</p>
-<div class="flex justify-between items-center pt-4 border-t border-outline-variant/15">
-<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">$$ • Moderate</span>
-<button class="text-xs font-bold text-primary uppercase hover:underline decoration-2 underline-offset-4">Reserve</button>
-</div>
-</div>
-<!-- Venue Pill Card 2 -->
-<div class="flex-none w-72 bg-surface-container-lowest rounded-2xl p-4 shadow-sm border border-outline-variant/10 group cursor-pointer hover:shadow-md transition-shadow">
-<div class="relative w-full aspect-square rounded-xl overflow-hidden mb-4">
-<img alt="Restaurant" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-ZrAj4OdYjnBMZSke29eIUENmCDhQVYHnayy_gwvBpJIPODQBDfyfNgY_rChEW3zNJaH0FgDQwDfrVypxOM0CG0RIezMCM6PLqQjVLnpyJnOjWJ7qtaWYIY3BrnCDlhoT3cocFi_HtxlCPWbxOxUJ6cxZ51qXUCzwwa_nYqwNA_12QF857feBrmQYKS7Dugafzkdw6b0Ba4YikB4cUoWoJ8cxJl0MbLEcXqX4fjfushe89qmyRoI99CgRMbSaksJXUhz9sGYxb2M"/>
-<button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-on-surface-variant shadow-sm hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-lg">favorite</span>
-</button>
-</div>
-<div class="flex justify-between items-start mb-1">
-<h4 class="font-headline font-bold text-lg">Aman da Bravo</h4>
-<div class="flex items-center gap-1">
-<span class="text-xs font-bold text-primary">9.1</span>
-<span class="material-symbols-outlined text-[10px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant mb-4">Modern Bistro • Bebeköy</p>
-<div class="flex justify-between items-center pt-4 border-t border-outline-variant/15">
-<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">$$$$ • Premium</span>
-<button class="text-xs font-bold text-primary uppercase hover:underline decoration-2 underline-offset-4">Reserve</button>
-</div>
-</div>
-<!-- Venue Pill Card 3 -->
-<div class="flex-none w-72 bg-surface-container-lowest rounded-2xl p-4 shadow-sm border border-outline-variant/10 group cursor-pointer hover:shadow-md transition-shadow">
-<div class="relative w-full aspect-square rounded-xl overflow-hidden mb-4">
-<img alt="Cocktail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWvHschxFF9ChFBCf_9eLbiTwTHigObf7Jgq-PpMUB6ZhWP4lThh6LzM3RV0ZZ55CGaPZP50vtB6VTo1LxJZNlOpBRpuuSZJyGYB-0qRgsWyus1BzLuJl5gHu5sBEWGYo08Nrh1kcGAUYJklYM6t2GDTOz7VV2BTJsftd3fBI1OHhFuoM2FZeRv5rkjZ8KsXSFGEfvPSN3uDZ4m07D4FfB5obTzcRuM08uScROon0pUJTXBrNiEdf-vfGKkgDMExT2yJ1LKgXYzOE"/>
-<button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-on-surface-variant shadow-sm hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-lg">favorite</span>
-</button>
-</div>
-<div class="flex justify-between items-start mb-1">
-<h4 class="font-headline font-bold text-lg">Lucca Style</h4>
-<div class="flex items-center gap-1">
-<span class="text-xs font-bold text-primary">8.8</span>
-<span class="material-symbols-outlined text-[10px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant mb-4">Cocktail Bar • Bebek</p>
-<div class="flex justify-between items-center pt-4 border-t border-outline-variant/15">
-<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">$$$ • High</span>
-<button class="text-xs font-bold text-primary uppercase hover:underline decoration-2 underline-offset-4">Reserve</button>
-</div>
-</div>
 </div>
 </section>
-<!-- Grid Sections (New Openings & Plans) -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-<!-- New Openings -->
+<!-- Quick Tags -->
 <section>
-<div class="flex justify-between items-end mb-6">
-<h2 class="text-2xl font-headline font-bold text-on-surface">New Openings</h2>
-<a class="text-xs font-bold uppercase tracking-widest text-primary border-b-2 border-primary/20 hover:border-primary transition-all" href="#">Explore Latest</a>
+<div class="flex flex-wrap gap-3 items-center">
+<span class="text-xs font-bold uppercase tracking-widest text-stone-400 mr-2">Hızlı Filtrele:</span>
+<button class="px-5 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-md scale-105 transition-transform">Romantik Akşam Yemeği</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold hover:bg-primary hover:text-white transition-all">Uygun Bütçeli Kahve</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold hover:bg-primary hover:text-white transition-all">Yeni Açılanlar</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold hover:bg-primary hover:text-white transition-all">İlk Buluşma</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold hover:bg-primary hover:text-white transition-all">Manzaralı</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold hover:bg-primary hover:text-white transition-all">Özel Gün</button>
 </div>
+</section>
+<!-- Section 1: Senin İçin Seçtiklerimiz -->
+<section class="space-y-8">
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<span class="text-primary font-bold uppercase tracking-widest text-xs">Eder, senin tercihlerine göre</span>
+<h3 class="text-3xl font-bold">Senin İçin Seçtiklerimiz</h3>
+</div>
+<a class="text-primary font-bold text-sm border-b-2 border-primary/20 hover:border-primary transition-all pb-1" href="#">Tümünü Gör</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Venue Card 1 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Galata Restaurant" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Dimly lit romantic restaurant interior in Galata with vintage wooden tables, candles, and a view of the tower" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVTZFoJ_Udnw56CGnp0U0zpjWNnrSfRoaCbSgTc_7iCFvloo0KoU00eY8RceK42a4iLs52ZyxlpdTkHakv9DewiWlx995sexNocAMeSJISxfxCozmhbNbNcvmObghO2Pw5UJ434S0fY7eq__0kKhORW8FZH1MHUyLu7dnaOL5aUStUF8bax0PL9jKGiikcb7ylrHoIiOcdfoZ_xFyGA3dv3HbMJxPc31Xws5C56YBo8tbKCpKTp_GOfa9bigd6BfFMaWPW-AQz62w"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-amber-500 text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">9.8</span>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-primary/90 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">İlk buluşma için uygun</span>
+<span class="bg-stone-900/60 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">Manzaralı</span>
+</div>
+</div>
+<div class="p-6 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-xl font-bold">Galata’nın Gizli Bahçesi</h4>
+<p class="text-stone-500 text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                                        Galata, Beyoğlu
+                                    </p>
+</div>
+<span class="text-primary font-bold">₺₺₺</span>
+</div>
+<p class="text-stone-600 text-sm line-clamp-2">Şehrin kalbinde, sessiz ve romantik bir akşam yemeği için Galata'nın en özel köşelerinden biri.</p>
+</div>
+</div>
+<!-- Venue Card 2 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Moda Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Cozy artisan coffee shop in Moda Kadikoy with plants, neon signs, and young couples enjoying desserts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4-ktLOkFdEQhYnCOon60hFzHsSr_r4VvvjBQM8Y294pzdTasAQBmBZAMoPYhMNJfxri9nhcRRsAB79znAQLr_pDwT8bIIGy4PXfCftE07_BWZyQqzBjcWp_ck5poEBkC8ZSvw8ZRHs1gHYDeYHeib5r9Lk0VzW8eAVG5eSp6Df5ual1IBxLAT4xHnkRs1hsvVlw3y3bKbovJMhijswODwAUX2kxWWC1FJJVFmUlMmB4I8gfWahX4JTPrhmeOzcKFq6tf02yy4VHc"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-amber-500 text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">9.4</span>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-primary/90 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">Samimi</span>
+<span class="bg-stone-900/60 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">Tasarım</span>
+</div>
+</div>
+<div class="p-6 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-xl font-bold">Artisan Roast Moda</h4>
+<p class="text-stone-500 text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                                        Moda, Kadıköy
+                                    </p>
+</div>
+<span class="text-primary font-bold">₺₺</span>
+</div>
+<p class="text-stone-600 text-sm line-clamp-2">Pazar sabahları için taze kavrulmuş kahve kokusu eşliğinde derin sohbetlerin mekanı.</p>
+</div>
+</div>
+<!-- Venue Card 3 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Karaköy Bar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Modern rooftop bar in Karakoy at night with sparkling city lights and elegant cocktails on marble tables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSWp9B3AFHgsFosRMwh7cgpvGIVbsTajlcedXdM0FYPFK4PtWoiXeeAUYQa0R-arfkESW6umls0-p_bMITgAJaCcNh3BxIudP1CQBu8X0MNBTfqtvwV05HH-uxoJq3hka7RrntKjndcRSywDDmTPyGJ4S0qhmqJrC8tVnHtvJ9Nxv8knpCStRM3LGv-tCOVA8qe-l_kLr6RljVJkcU8PjWBg2gdZPV2eQTQ0kPaPECaJ3HnElU2CSTooio9Z_VXXl2_JcRXeGv2i0"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-amber-500 text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">9.6</span>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-primary/90 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">Eğlenceli</span>
+<span class="bg-stone-900/60 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">Şık</span>
+</div>
+</div>
+<div class="p-6 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-xl font-bold">Noir Terrace</h4>
+<p class="text-stone-500 text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                                        Karaköy
+                                    </p>
+</div>
+<span class="text-primary font-bold">₺₺₺</span>
+</div>
+<p class="text-stone-600 text-sm line-clamp-2">Modern kokteyller ve Haliç manzarasıyla geceye başlamak için en doğru nokta.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Popüler Semtler -->
+<section class="space-y-8">
+<div class="flex justify-between items-end">
+<h3 class="text-3xl font-bold">Semtin Ruhunu Keşfet</h3>
+<p class="text-stone-500 text-sm italic font-serif">Sizin için seçilen popüler semtler</p>
+</div>
+<div class="flex gap-6 overflow-x-auto hide-scrollbar pb-4 -mx-8 px-8">
+<!-- District Card 1 -->
+<div class="flex-none w-80 group cursor-pointer">
+<div class="relative h-96 rounded-xl overflow-hidden shadow-lg">
+<img alt="Kadikoy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Colorful street in Kadikoy with graffitis, antique shops, and people sitting at outdoor cafes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNENkB0IXR5xk4UwtJO60PwoaBBsquv2SIbGfxY2i2pTlTZ8y3amCRRKJ-JOtfqaAAviZBv5LHGiaxIP6xHL2rvbMdnSxsn9AYKLAdZtmlQQuM5eFkszm6XNmzlmsIk9gselmE9a5g6o1S-fRhp5CZI4xuQ8gmYI6oJXdfFFjUSLeJgMDnxwnq_MwnY8zo1WwjgL4-yBVVWqPLfnEKMYBNzKZ0P9QuXCkntAMi0pPg0d2TicdsmkzWu2ak-ONlpYH8EHNu2iI9XRc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+<h4 class="text-2xl font-bold">Kadıköy</h4>
+<p class="text-sm text-white/80">Rahat, samimi, yaratıcı ve her köşesinde sürpriz bir kafe saklı.</p>
+</div>
+</div>
+</div>
+<!-- District Card 2 -->
+<div class="flex-none w-80 group cursor-pointer">
+<div class="relative h-96 rounded-xl overflow-hidden shadow-lg">
+<img alt="Besiktas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant streets of Besiktas with traditional Turkish tea houses and young crowds in the evening" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL1ZoY8wPeAtLzCwwt6VJf31rt4-nF3rYAcFuqJB9ScYtzMChK4ng--A3FQV47-GerAuCyZstifL3972_G8JU6wsPvYABO3JAQOPiMMrP8ddbipDwGytiolJoDzZn7jhGSwyxcT4Xftyw_uvXSYl3ZFDpna_DMVJvgFufai3Pgsl5PIYHpNeJlAFLoJHFQqMEja5dBrfMHCi8F2dqOOf5ExqOmNhYI4uKoCTLnb6trJ8EV7bu76ZEY-cqeib1HV-eO6SiSKWILE-A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+<h4 class="text-2xl font-bold">Beşiktaş</h4>
+<p class="text-sm text-white/80">Hareketli, genç, ulaşımı kolay ve samimi mahalle kültürüyle dolu.</p>
+</div>
+</div>
+</div>
+<!-- District Card 3 -->
+<div class="flex-none w-80 group cursor-pointer">
+<div class="relative h-96 rounded-xl overflow-hidden shadow-lg">
+<img alt="Karakoy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Artistic Karakoy district with narrow streets, umbrellas hanging above, and historical buildings converted into modern lofts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoEWoTHuuy1rmDVSqZYDGopF-ssNBHkxkcJyFRssv2zBnMWvSZ4HxWR3VBbhULwYv9XjnPfOKKKEO66Vyd5GOuVHNERBZeJQ8_00z_8MdmrY7CeFtu-8ke3k8Dkhy75qvsnupiqsVk5Qy8JJaCn450a0JXvosax0Sm-LJp0yG5XX2BoKTpbzhk80d-c9PmYLQvNyDzA0c0gtFsNiaLxZWkjxTNW_KUMDqm0fszwGwn0epMBbsu756fCrShAEegP_tWcTXtnhn23bQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+<h4 class="text-2xl font-bold">Karaköy</h4>
+<p class="text-sm text-white/80">Modern, şık ve endüstriyel estetiğin tarihle buluştuğu nokta.</p>
+</div>
+</div>
+</div>
+<!-- District Card 4 -->
+<div class="flex-none w-80 group cursor-pointer">
+<div class="relative h-96 rounded-xl overflow-hidden shadow-lg">
+<img alt="Nisantasi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-end shopping street in Nisantasi with luxury boutiques, elegant facades, and well-dressed people" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3cneg6249rTX9nV9pJE2VSvLIsmnkaHDV9Il6Y_zpE5HvBMw2BdmKePu83Yfn2DZH49Mc0MTonLn6Mdy4ke459z0bzaHmY8oHsxUXZtwf66MEjoB0AFuKfMRsmXzsC1iyKonx4hdxwIXh-JEWV1fTTBKvVOQxw9UNjmisVQ56ygt8rOjwhuimyuZvnRb0t5ojHfMHlL-Jmzzset5YdpjEmY5pB1rgs8_badsVY4y1m9rT4vMFV6oGWYjjaCyIzh3cHL4JYxLXQ14"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+<h4 class="text-2xl font-bold">Nişantaşı</h4>
+<p class="text-sm text-white/80">Lüks, zarif ve dünya standartlarında bir yeme-içme deneyimi.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Hazır Date Planları -->
+<section class="bg-surface-container-low -mx-8 px-8 py-16 rounded-[2rem]">
+<div class="max-w-7xl mx-auto space-y-10">
+<div class="text-center space-y-4">
+<h3 class="text-4xl font-bold">Karar Vermek Zor Mu?</h3>
+<p class="text-stone-500 max-w-xl mx-auto">Uzman küratörlerimiz tarafından hazırlanan, her saniyesi planlanmış rotalarla vaktinizi sadece birbirinize ayırın.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+<!-- Plan Card 1 -->
+<div class="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-outline-variant/10">
+<div class="md:w-1/3">
+<img alt="Coffee Date" class="w-full h-full object-cover" data-alt="Close-up of two latte art cups and a plate of croissants on a rustic wooden table in a sunlit bakery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtU1d9H-cIxtLIegQtDUtP8UB07iAxHrwZ5C78px0GNPmYOC8ayrE9ZWakgRdORnE00Mak1NOIKR25okL-t7kw5W-zL3eXylFuLiTyg0crHa0LrGI8NqrWBP6N7csnGRxiYTVZvdez5WDR_LImswO46hMK4jsz9CWeNLR7uiKKNvxVKykGfQgXeprqWZquv-LxjKUywXtVUS1h4cWsugruqJtZ4wDOoz24-OLq4rs0yGNqe_h-euFaGYoWD3FWtXTRVXVBo2xMpiw"/>
+</div>
+<div class="md:w-2/3 p-8 flex flex-col justify-between">
 <div class="space-y-4">
-<div class="flex gap-4 p-4 rounded-2xl hover:bg-surface-container-low transition-all group cursor-pointer border border-transparent hover:border-outline-variant/20">
-<div class="w-20 h-20 rounded-xl overflow-hidden flex-none shadow-sm">
-<img alt="Pasta" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBznh4l5hp_TVlzj7urbPY4z8HNOPiNnFHk3Ju6PmnX_WUDGXLLmFyvJGwP752G7N7TF46DDcy-qIo_Rn-KDJReDem1g26Ql00PXWf8P48ZpG9MBE6IoE9n9XBBu-u6vqU_MtJ0sCEfY5J7aBs-0fF0senh_BzHIDP6sxZgp4dhJeKInyLZCkD8SVEEn_7TpwpqZ4mmoiIp4n2tExvx3btFUczuHRo8rWQXrJPkl2KnByc1gMHgW-zQTKvq-P_saBUH3kl9tVAUrQ"/>
-</div>
-<div class="flex-1">
 <div class="flex justify-between items-center">
-<h4 class="font-headline font-bold group-hover:text-primary transition-colors">Taverna Pera</h4>
-<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded font-bold">NEW</span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Ekonomik &amp; Tatlı</span>
+<span class="text-primary font-bold text-sm">₺₺</span>
 </div>
-<p class="text-xs text-on-surface-variant line-clamp-2 mt-1">Modern Aegean flavors meet old Pera atmosphere. Perfect for long, quiet conversations.</p>
-<div class="mt-2 flex items-center gap-3">
-<span class="text-[10px] text-on-surface-variant font-medium">Beyoğlu • Dinner</span>
+<h4 class="text-xl font-bold">Beşiktaş’ta Uygun Bütçeli Kahve + Tatlı Planı</h4>
+<div class="flex gap-4 text-xs font-medium text-stone-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 2.5 Saat</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="route">route</span> 3 Durak</span>
+</div>
+<ul class="text-sm text-stone-600 space-y-1">
+<li>• Akaretler'de yürüyüş</li>
+<li>• 3rd Wave Kahve Deneyimi</li>
+<li>• Butik Çikolatacı Molası</li>
+</ul>
+</div>
+<button class="mt-6 w-full py-3 border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition-all">Planı İncele</button>
 </div>
 </div>
+<!-- Plan Card 2 -->
+<div class="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-outline-variant/10">
+<div class="md:w-1/3">
+<img alt="Dinner Date" class="w-full h-full object-cover" data-alt="Elegant dining table set for two with wine glasses and gourmet pasta dishes in a sophisticated restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR074QRdI_wlz8koxZVyu9qwymbpqUapxDs_KcDIZvh1sWFaW1IXjpEHdq4EGvhsnjdI2hoVSysdC4F-UZ6i_0-uDpfZF1vszwGOV4vTIWOURWi6NoJ-aM0V0JdBQhVrJLTWWodgzKkNNMZ0Gsp0LNwvncNNSTuSMEPVXLgZJuH2JRoB50kkcCFN2wBCmNJpSvOc4nRUEaUf7oscMeR3famTuSDieTpMizv19TvOqGpkud6yJjS8Kc730NBE3kHTe-vDfqTXWoN5U"/>
 </div>
-<div class="flex gap-4 p-4 rounded-2xl hover:bg-surface-container-low transition-all group cursor-pointer border border-transparent hover:border-outline-variant/20">
-<div class="w-20 h-20 rounded-xl overflow-hidden flex-none shadow-sm">
-<img alt="Dessert" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF64023_wLZ8A-8BGQPLzdBAydXdarq5h9RwqU_-IY7Y2zbN_ITZifRadeB_W9jJXRFw9OELpn7OkvnER-T7VGZE-8HcRestZK1ItamZeZvBksk6NTtLgh4OLi0fKJnHqeetYAxd6IRmu142s5ioOitzuTi3rsOoRidWFW2ZV157_YSw4qkKx3ZAGIUP40sS525uOWrx9fo7TzzUvmA60MvmPiyqZLbciOPmGAEO3spGMDEs0zDyVFiAwEvc5Bh0aFSks_EGV-2PU"/>
-</div>
-<div class="flex-1">
+<div class="md:w-2/3 p-8 flex flex-col justify-between">
+<div class="space-y-4">
 <div class="flex justify-between items-center">
-<h4 class="font-headline font-bold group-hover:text-primary transition-colors">Petit Fleur</h4>
-<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded font-bold">NEW</span>
+<span class="bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Lüks &amp; Romantik</span>
+<span class="text-primary font-bold text-sm">₺₺₺₺</span>
 </div>
-<p class="text-xs text-on-surface-variant line-clamp-2 mt-1">Artisan pastry shop and botanical hidden garden. Extremely photogenic afternoon spot.</p>
-<div class="mt-2 flex items-center gap-3">
-<span class="text-[10px] text-on-surface-variant font-medium">Arnavutköy • Cafe</span>
+<h4 class="text-xl font-bold">Karaköy’de Romantik Akşam Yemeği Rotası</h4>
+<div class="flex gap-4 text-xs font-medium text-stone-500">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 4 Saat
+                                        <span class="material-symbols-outlined text-sm" data-icon="route">route</span> 2 Durak
+                                    </div>
+<ul class="text-sm text-stone-600 space-y-1">
+<li>• Teras Kokteyli ile Başlangıç</li>
+<li>• Şef İmzalı Akşam Yemeği</li>
+<li>• Galataport Gece Yürüyüşü</li>
+</ul>
 </div>
+<button class="mt-6 w-full py-3 border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition-all">Planı İncele</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Yeni Açılan Mekanlar (Bento Style) -->
+<section class="space-y-8">
+<div class="flex items-center gap-4">
+<h3 class="text-3xl font-bold">Yeni Açılanlar</h3>
+<div class="h-[2px] flex-1 bg-surface-container-highest"></div>
+<span class="material-symbols-outlined text-primary" data-icon="new_releases">new_releases</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px]">
+<div class="md:col-span-8 group relative rounded-2xl overflow-hidden cursor-pointer">
+<img alt="New opening 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Stunning modern bakery with high ceilings, minimalist furniture, and a massive glass window revealing a leafy garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpDaxixVqZzNndx-CJK3aTVWOQvrQ57gw2Rkck_cBsbu2VtLxL1BujlEHCcdtWuTcqk5Yf_WVpYJQOMYZvLiteszhfYpgq_mrxOT-4bKuiNUBuv5jVUzcKB1OZu57eZCN1W9uX9SEihCrEoWxrRqoNsIP2Qy25IwlVGqdNfL8W6vXx8wWR5HYoGtCVJq4EwwSsm6l4sICFSkGg7ukATT1FpTtiUV7sPKa4Wr1T_WhB4kgo1YyDmMlbRA1Fj4anbX17LT00CTL-E5k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900/70 to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<span class="text-[10px] font-black uppercase tracking-widest bg-white/20 backdrop-blur px-3 py-1 rounded-full border border-white/20">Bu Hafta Açıldı</span>
+<h4 class="text-3xl font-bold mt-3">L'Atelier Nişantaşı</h4>
+<p class="text-white/80 max-w-sm mt-2">Fransız pastaneciliğinin en modern yorumu artık İstanbul'da.</p>
+</div>
+</div>
+<div class="md:col-span-4 group relative rounded-2xl overflow-hidden cursor-pointer">
+<img alt="New opening 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Interior of a dark wood jazz bar with a pianist playing in the corner and amber glowing lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClbS3x1NKfIUlMOp9prvAQyWbaIKnqcaUFvXqOsph8ZCU6oR3h3AQiiiSKZcIijqmu7-dZEC5n_WkYfeBWumuG9Q1GmUbPFIZ9tYlOwoS1r4aNfxGDh_bowyiNSCUc21ARUPepEUdsQ4HbAMSbJjB2lMa5GgH7OW7QtlMLU1OArezOu1_-Ek2-ypHJTJV3caVgZqGZ2l8FondtWv9ZfhRnpNSzoPtTe0tQsfTAd27bRifQ1SdOyy5kY-l8oazfqTuJX1-usiCT05M"/>
+<div class="absolute inset-0 bg-stone-900/20 group-hover:bg-stone-900/40 transition-colors"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="text-xl font-bold">The Jazz Corner</h4>
+<p class="text-xs text-white/70">Kadıköy'ün yeni ritmi.</p>
+</div>
+</div>
+<div class="md:col-span-4 group relative rounded-2xl overflow-hidden cursor-pointer">
+<img alt="New opening 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Vibrant cocktail bar with neon art on walls and colorful experimental drinks being prepared by a mixologist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQKLwrec3lCs_ihNTwIKBElYSpkxh532UJU6re7YleAc3oyxkjihsryJNB8U_pIF8v5erUZWPnEyFAEv5Vv3SQw0jRTKWnUwlYovEJwBW6A6f8mWJZJVCKisqaR5hktuNNYHMAya469ef3DxwpptmzAXVUPv_UnurscJBl2TbK2L2gVgA5ophyqPq-QzZmgYZigzS7IbR667ZdY9li4hkgZ8nZxG9-FC1rGqgA5Oz2r1yLZMiaP-JJZaUKnEQkIIWwTo8QQ00HZkY"/>
+<div class="absolute inset-0 bg-stone-900/20 group-hover:bg-stone-900/40 transition-colors"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="text-xl font-bold">Vibe &amp; Co.</h4>
+<p class="text-xs text-white/70">Karaköy'de yeni nesil miksoloji.</p>
+</div>
+</div>
+<div class="md:col-span-8 group relative rounded-2xl overflow-hidden cursor-pointer">
+<img alt="New opening 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Zen-style sushi bar with light wood aesthetics, bonsai trees, and chefs preparing fresh nigiri" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ6FsvBAq5VoLwERCkNS0bZw6Q1miV5Lx6wceOLihCRFnaYg5m7eKXNls7-S4tPFxlr6BpyJJlpU489fYVG7CXMHbXRsiitPCtQVrkACMhVXlv6VLG5xubo4z-7cXPk9Z-D4lxGQLSGa9k6Q9XTrvqWO7WT9eMoOSh5edc7w5ooLonjnn9TaxRS9OcOxEJDhzgWzjgqcjfyK3mW8XP338TChsRlcmELvzCGA_2rGxVYxfS9fwAgA4T1aSGHU8slVEEb6iMAgij4sA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900/70 to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<h4 class="text-3xl font-bold">Sushi Lab Moda</h4>
+<p class="text-white/80 max-w-sm mt-2">Uzakdoğu lezzetlerini modern bir dokunuşla keşfedin.</p>
 </div>
 </div>
 </div>
 </section>
-<!-- Ready-made Plans -->
-<section>
-<div class="flex justify-between items-end mb-6">
-<h2 class="text-2xl font-headline font-bold text-on-surface">Ready-made Plans</h2>
-<a class="text-xs font-bold uppercase tracking-widest text-primary border-b-2 border-primary/20 hover:border-primary transition-all" href="#">More Itineraries</a>
 </div>
-<div class="grid grid-cols-1 gap-4">
-<div class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 hover:shadow-lg transition-all">
-<div class="flex flex-row h-32">
-<div class="w-1/3 relative h-full">
-<img alt="Galata Tower" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAexgtWkxacyBKvN_kEonK6iiYMYd4W5R1zj2puOnfx2kfq1Xtd0vx5iKKZoM3Sv8UScb4h20tS_oFFHcuyI7VPd6wRF_oNs1LCdXfcSY5WVYTilqLDY--FQxKu0VyQqULMmEq-tKhhEXhILBobQ6mOyiHWnAMNf-Bxm9InKyXvJjnBFlFN93zVRiKFGSEAi_-By7d88ZEt-4qE5fNEX9ibd2Bxff_0NpZo9pNL3OgKPWKeQcLSyXPBmhR6kPMzd-l3RiXAVQGjjXE"/> <!-- Placeholder using curator image for vibe -->
-<div class="absolute inset-0 bg-primary/10"></div>
+<!-- Footer -->
+<footer class="bg-surface-container-highest px-8 py-12 mt-20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="space-y-4">
+<h2 class="text-2xl font-serif italic text-primary">The Curated Encounter</h2>
+<p class="text-stone-500 text-sm max-w-xs">İstanbul'un en romantik ve keyifli anlarını sizin için kürate ediyoruz. Her buluşma bir hikayedir.</p>
 </div>
-<div class="w-2/3 p-4 flex flex-col justify-center">
-<div class="flex justify-between mb-1">
-<h4 class="font-headline font-bold text-base">The Classic Pera Walk</h4>
-<span class="text-[10px] font-bold text-on-surface-variant">4-5 Hours</span>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div class="space-y-3">
+<h5 class="text-xs font-black uppercase tracking-widest text-stone-900">Platform</h5>
+<ul class="text-sm text-stone-500 space-y-2">
+<li><a class="hover:text-primary transition-colors" href="#">Hakkımızda</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Nasıl Çalışır?</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Küratörler</a></li>
+</ul>
 </div>
-<p class="text-xs text-on-surface-variant line-clamp-2">Exhibition at Pera Museum, sunset coffee at a hidden rooftop, dinner at Mikla.</p>
-<div class="mt-3 flex items-center gap-2">
-<span class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded font-bold">Art &amp; History</span>
-<span class="text-[10px] text-primary font-bold">94% Fit</span>
+<div class="space-y-3">
+<h5 class="text-xs font-black uppercase tracking-widest text-stone-900">Topluluk</h5>
+<ul class="text-sm text-stone-500 space-y-2">
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Etkinlikler</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Partnerlik</a></li>
+</ul>
 </div>
-</div>
-</div>
-<button class="absolute right-4 bottom-4 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-sm">chevron_right</span>
-</button>
-</div>
-</div>
-</section>
-</div>
-<!-- Low Budget Coffee Dates -->
-<section class="mb-20">
-<div class="flex justify-between items-end mb-8">
-<div>
-<h2 class="text-3xl font-headline font-bold text-on-surface">Low Budget Coffee Dates</h2>
-<p class="text-on-surface-variant text-sm mt-1">High atmosphere, accessible pricing. Quality doesn't always need a premium.</p>
-</div>
-<a class="text-primary font-bold text-sm border-b-2 border-primary/20 hover:border-primary transition-all" href="#">View Full Guide</a>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-<div class="bg-surface-container-low rounded-2xl p-3 flex flex-col items-center text-center group cursor-pointer hover:shadow-md transition-all">
-<div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRGKIf1hAsPRiRaZlUuHIX6oKPotaeYvUc-GgOtesoV-hpxi5_TUVWGYz2FLo8nDiBgyIO8-c44He8LaIltwhhwuKQyuLZmPvI7zjf1R_jCsRTbl40ahSm0H4zO9w5IdrTIjetQsDQDEv-LchKXtnkaWy5Yckvzf4Am-Qf7NUnFnBitA-BgrEuOFd-9KZAFkI4L4NaGWt_33oWGbrsAX3nV-Snd3TNJSKKCJzffnQVfbwfxAObVMxbYLcIxq7BOfFxwZfHPZBEeGw"/>
-</div>
-<h4 class="text-sm font-headline font-bold">Petra Roasting</h4>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter mb-2">Gayrettepe</p>
-<span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full font-bold">$ • Entry Level</span>
-</div>
-<div class="bg-surface-container-low rounded-2xl p-3 flex flex-col items-center text-center group cursor-pointer hover:shadow-md transition-all">
-<div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Cafe Exterior" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2x0r4LYNuNryGt752m-j82E5_it8-d360YnKCW6nWDtjUB8tpR-TWYjw7vJ7KO5WyWA4R-d25wN_VOBCVg20ebrG4Sj3S9f_AyqpGlzLjC6Ls1MrFLY0t6DHU0uH_iXsdDsU5XSURaTiDU5Am1Gx71-68ffby4UdkVMi66fWwdEgef-6q965kXbYKlcI-FoTgN5kxlbVmhFypYUveeJQgjxSzIeDBtd4Ej6l5fsBczoOdTOm1Q4BHj8Q2bAi-7M95X7Nt8srGE1Y"/>
-</div>
-<h4 class="text-sm font-headline font-bold">Story Coffee</h4>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter mb-2">Moda</p>
-<span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full font-bold">$ • Entry Level</span>
-</div>
-<div class="bg-surface-container-low rounded-2xl p-3 flex flex-col items-center text-center group cursor-pointer hover:shadow-md transition-all">
-<div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Bakery" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo5KRdAoacMy6LAxHXtUBsbjvdME5has7vtNVhlb8qqlsrU1aAgRMF7dmUUW9JbWmhj5dqSjk79KEx3q5LK9-T1AgnmUC33gw5rsZGB74O-OHKhWGut_roJy-O0fE7gOLKAs8IOM-lidPJJ5Vc19QQKImGeSBS-bV2KgrAfAg8UHhP53VAP36ZpaqmrlsnrZu-z9uuD4JOxjxOp3MwenbCbUxZR2nwBzw1VEplS2jFYD3P9wPfkta2kGcJwagPGvicWqBrmb2m-sI"/>
-</div>
-<h4 class="text-sm font-headline font-bold">Kronotrop</h4>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter mb-2">Cihangir</p>
-<span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full font-bold">$ • Entry Level</span>
-</div>
-<div class="bg-surface-container-low rounded-2xl p-3 flex flex-col items-center text-center group cursor-pointer hover:shadow-md transition-all">
-<div class="w-full aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Cafe Interior" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo9E0OVm7ZALbUgnOGYt84Jrjkbbgp1V09OT78fRoawzLyz90OmSGSMZQ5ABONDsXgvy5_ZuSBviMtYJipMTbyCsxXTKZv0S3qH7EhYMDK5upuJc2SneIM39KNmCpDbLdnfLj1KkDKU4Reh3_hKvgaHzwvAFj5sNZNPrcWmVIb0yveg8mXgR_7Iozn7ct9aE4Gd3WlSmg_ZeiynqeVSJSUJlqQXFTdCUan7WCnQIm8m_2MpgmqHVInXZbuitqESNjEEe6l82enhbQ"/>
-</div>
-<h4 class="text-sm font-headline font-bold">MOC Bomonti</h4>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter mb-2">Bomonti</p>
-<span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full font-bold">$ • Entry Level</span>
+<div class="space-y-3">
+<h5 class="text-xs font-black uppercase tracking-widest text-stone-900">Yasal</h5>
+<ul class="text-sm text-stone-500 space-y-2">
+<li><a class="hover:text-primary transition-colors" href="#">Gizlilik</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kullanım Şartları</a></li>
+</ul>
 </div>
 </div>
-</section>
+</div>
+<div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-stone-300 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-400 font-medium">
+<p>© 2024 The Curated Encounter. Tüm hakları saklıdır.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="hover:text-primary transition-colors" href="#">Spotify</a>
+</div>
+</div>
+</footer>
 </main>
-</div>
-<!-- Floating Action Button -->
-<button class="fixed bottom-8 right-8 bg-primary text-on-primary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-all hover:scale-110 z-50">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<!-- FAB Anchor (Contextual for Home) -->
+<button class="fixed bottom-8 right-8 bg-primary text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 md:flex">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
 </button>
 </body></html>
