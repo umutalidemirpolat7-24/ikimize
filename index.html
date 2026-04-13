@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İkimize - Unutulmaz Anlar Planla</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#6c0c20",
+                        "on-surface": "#1c1b1b",
+                        "surface-variant": "#e5e2e1",
+                        "on-surface-variant": "#564242",
+                        "background": "#fcf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fcf9f8",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-secondary-fixed": "#2c1600",
+                        "on-tertiary-fixed-variant": "#5c4034",
+                        "on-tertiary-container": "#dbb4a4",
+                        "inverse-surface": "#313030",
+                        "on-primary-container": "#ffa3a9",
+                        "on-secondary-container": "#7a532a",
+                        "on-primary-fixed": "#40000d",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#e6beae",
+                        "secondary-fixed-dim": "#f0bd8b",
+                        "secondary-container": "#ffca98",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#842131",
+                        "primary-fixed": "#ffdadb",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed-variant": "#623f18",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "primary-fixed-dim": "#ffb2b6",
+                        "tertiary": "#492f24",
+                        "primary-container": "#8b2635",
+                        "surface-tint": "#a43946",
+                        "outline-variant": "#ddc0c0",
+                        "outline": "#897172",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary-container": "#624539",
+                        "surface-container-low": "#f6f3f2",
+                        "on-error": "#ffffff",
+                        "secondary": "#7d562d",
+                        "on-background": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "surface": "#fcf9f8",
+                        "secondary-fixed": "#ffdcbd",
+                        "inverse-primary": "#ffb2b6",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#2c160c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 12px 40px rgba(28, 27, 27, 0.06);
+        }
+        .velvet-gradient {
+            background: linear-gradient(135deg, #6c0c20 0%, #8b2635 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-primary">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-4">
+<div class="font-serif italic text-2xl font-semibold text-rose-900 dark:text-rose-500">İkimize</div>
+<div class="hidden md:flex items-center gap-8 font-serif text-lg tracking-tight">
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-800 transition-all duration-300" href="#">Plan Oluştur</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-800 transition-all duration-300" href="#">Hazır Rotalar</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-800 transition-all duration-300" href="#">Mekanlar</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-800 transition-all duration-300" href="#">Etkinlikler</a>
+</div>
+<button class="bg-rose-900 text-white px-6 py-2 rounded-full font-serif text-lg hover:scale-[1.02] active:scale-95 transition-all duration-300">Giriş Yap</button>
+</div>
+</nav>
+<main class="pt-20 pb-32">
+<!-- Hero Section -->
+<section class="relative px-8 py-20 overflow-hidden">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<span class="font-label text-sm uppercase tracking-widest text-secondary mb-4 block">Aşkla Tasarlandı</span>
+<h1 class="font-headline text-5xl md:text-7xl font-bold text-primary mb-8 leading-tight">
+                        Şehrin Romantik <br/> <span class="italic text-primary-container">Ruhunu</span> Keşfet.
+                    </h1>
+<p class="text-on-surface-variant text-lg max-w-md mb-10 leading-relaxed">
+                        Sadece size özel planlanmış rotalar, özenle seçilmiş mekanlar ve unutulmaz anılar için dijital asistanınız.
+                    </p>
+<div class="flex gap-4">
+<button class="velvet-gradient text-white px-8 py-4 rounded-3xl font-semibold editorial-shadow hover:scale-105 transition-transform duration-300">Hemen Planla</button>
+<button class="px-8 py-4 rounded-3xl font-semibold text-primary border border-primary/10 hover:bg-primary/5 transition-all duration-300">Rotaları İncele</button>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-[4/5] rounded-3xl overflow-hidden editorial-shadow transform rotate-2">
+<img alt="Romantic couple in Istanbul" class="w-full h-full object-cover" data-alt="romantic young couple walking hand in hand through a historical Istanbul street at dusk with warm street lights and soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKCwVN-EoTbwrNLGUnhIRPsRObgYo4iH9Z3kcw9BaO75iprql2bgRDEB9LFSBKMgrMUuk8ci1Q-hJ6dQPvlWOlHLOBt3s2oRcsi2DIORO_4rmFw6PsTPH-uodYQ9rYMWW0YqhP-SoDuBsav2519fhCo3r2Eqynmm05_FK_d6xsZlhbgiOD4QDwBt4yasCkAwJVZDjOVC22vQhPl5FIi7WfAG3Ri_oZtkwMZcOc-VLfsUrI-kfZS2uj9xNwWG9zZ8jozgWLTiTWebtc"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-surface-container-lowest p-6 rounded-3xl editorial-shadow max-w-[200px] -rotate-3">
+<p class="font-headline italic text-primary text-xl mb-1">"Büyülü bir akşam"</p>
+<p class="text-xs text-on-surface-variant">— Galata, Eylül 2023</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl font-bold text-on-surface mb-4">Nasıl Çalışır?</h2>
+<p class="text-on-surface-variant">Üç adımda mükemmel randevuyu tasarla.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-tertiary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl text-tertiary" data-icon="mood">mood</span>
+</div>
+<h3 class="font-headline text-xl mb-3">Modunu Seç</h3>
+<p class="text-sm text-on-surface-variant px-6">Bugün nasıl hissettiğini söyle; romantik, maceracı ya da huzurlu.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-secondary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl text-secondary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="font-headline text-xl mb-3">Yapay Zeka Planlasın</h3>
+<p class="text-sm text-on-surface-variant px-6">Bütçenize ve lokasyonunuza en uygun noktaları anında listeleyelim.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-primary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="celebration">celebration</span>
+</div>
+<h3 class="font-headline text-xl mb-3">Anın Tadını Çıkar</h3>
+<p class="text-sm text-on-surface-variant px-6">Rezervasyonlar hazır, rota elinde. Sana sadece keyfini sürmek kalır.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Mini-Planner -->
+<section class="py-24 px-8">
+<div class="max-w-4xl mx-auto bg-surface-container-lowest rounded-3xl p-8 md:p-12 editorial-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
+<h2 class="font-headline text-3xl font-bold mb-8">Randevu Sihirbazı</h2>
+<div class="grid md:grid-cols-3 gap-6 mb-8">
+<div>
+<label class="block font-label text-xs uppercase tracking-widest text-on-surface-variant mb-3">Bütçe Aralığı</label>
+<select class="w-full bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 py-3 px-4">
+<option>Ekonomik</option>
+<option>Standart</option>
+<option>Premium</option>
+</select>
+</div>
+<div>
+<label class="block font-label text-xs uppercase tracking-widest text-on-surface-variant mb-3">Modun Hangisi?</label>
+<select class="w-full bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 py-3 px-4">
+<option>Romantik Akşam</option>
+<option>Kültür &amp; Sanat</option>
+<option>Doğa Yürüyüşü</option>
+</select>
+</div>
+<div>
+<label class="block font-label text-xs uppercase tracking-widest text-on-surface-variant mb-3">Semt Seçimi</label>
+<select class="w-full bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 py-3 px-4">
+<option>Beşiktaş</option>
+<option>Kadıköy</option>
+<option>Beyoğlu</option>
+</select>
+</div>
+</div>
+<button class="w-full velvet-gradient text-white py-4 rounded-2xl font-bold text-lg hover:scale-[1.01] active:scale-95 transition-all">Rotamı Oluştur</button>
+</div>
+</section>
+<!-- Popular Routes Carousel -->
+<section class="py-24 bg-surface-bright overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline text-4xl font-bold text-on-surface mb-2">Popüler Rotalar</h2>
+<p class="text-on-surface-variant">İstanbul'un en sevilen çift rotaları.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-8 overflow-x-auto px-8 hide-scrollbar pb-8">
+<!-- Route Card 1 -->
+<div class="min-w-[320px] bg-surface-container-lowest rounded-3xl overflow-hidden editorial-shadow group">
+<div class="h-64 overflow-hidden relative">
+<img alt="Galata Ruhu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="aerial view of Galata Tower and historical buildings in Istanbul during golden hour sunrise" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQddZffIAovhVyGSy1QwXcDXIxBRB0nWSJc_lvnC0zmU8ALec93IriAXQMaXVmO81RuQqbt1NxPmmrOADIUuntXaYAHRZVxa7A7n_BIUc8htCjtq-ou3Cd4wjKxkDcfTI_2KUVova8cjAHGjc9RRJeKz5ACWeJ4Ec_BH-JP34zGoIXHeSPaOWsZO0WjaMW69mvQGGHrAR0sFcWa9KZQcCl2lCz6FudZN70h-gSlghNwvg46vPDbBi61nfqY90qfV_k0zQ7_hWd2S5n"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary">3 Durak</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline text-xl mb-2">Galata'nın Gizli Sokakları</h3>
+<p class="text-sm text-on-surface-variant mb-4">Butik kafelerden tarihi kuleye uzanan nostaljik bir yürüyüş.</p>
+<div class="flex items-center text-primary font-bold text-sm">
+                            Hemen İncele <span class="material-symbols-outlined text-sm ml-1" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Route Card 2 -->
+<div class="min-w-[320px] bg-surface-container-lowest rounded-3xl overflow-hidden editorial-shadow group">
+<div class="h-64 overflow-hidden relative">
+<img alt="Kadıköy Sahil" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Modern seaside promenade in Kadikoy at sunset with people walking and ferries in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLUL2cDVbItyuMwX7GogdPrky0tRcjt2HX1zwphq-PK76TIS-0qL0ijxot2A4KbjcJNSGforHgknF5vZkLOcrfYzkV7RvbQKf8a6ntoeFkmjwfLk1Wp2Yv1A1FOCksMRCNDJnDAdl-wYK-TtzbsVNyX-TmSi1J2Sb0tNzLSabJ-zfB72zCRlV2OQhKuFlT_lI7C4dDROwlZ633N4iJHP8pPY9Zcffs6suCt0a7v7cV-7DiS3M5a3hGZOuHJUa2XY7UyUTe8fgQOnnH"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary">4 Durak</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline text-xl mb-2">Kadıköy Modern Sanat</h3>
+<p class="text-sm text-on-surface-variant mb-4">Moda sokakları ve modern sanat galerileriyle dolu bir gün.</p>
+<div class="flex items-center text-primary font-bold text-sm">
+                            Hemen İncele <span class="material-symbols-outlined text-sm ml-1" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Route Card 3 -->
+<div class="min-w-[320px] bg-surface-container-lowest rounded-3xl overflow-hidden editorial-shadow group">
+<div class="h-64 overflow-hidden relative">
+<img alt="Boğaz Hattı" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Bosphorus bridge in Istanbul illuminated at night with city lights reflecting on the water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXpOA0_FHKam8w2bcfMIS8HKJcO2xaNGEHRB2YdOLpo-QpsBYDBEc_UNf2HNwjSSrypG_nEoI6UwjyBSYAxElLrqkU44svuL3yzLAhWy192Uw7aNT_P_60AeMkjJSJVSKW9aJTDYk1Ca7RJwsdNpm-kE8WL2nF6KCB15M8NYR14eHBnJgWBSRe_C-BmzOKx0WSKwInlmwPUG5aZMoNV0mnJcLm2aMJJvqUyNy15VcevtEoZoEleVRvg8tyykpqrjMtOHugSwDq11RE"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary">2 Durak</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline text-xl mb-2">Boğaz'da Mehtap Turu</h3>
+<p class="text-sm text-on-surface-variant mb-4">Akşam yemeği ve Boğaz hattında romantik bir gemi yolculuğu.</p>
+<div class="flex items-center text-primary font-bold text-sm">
+                            Hemen İncele <span class="material-symbols-outlined text-sm ml-1" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Venues -->
+<section class="py-24 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-center mb-12">
+<h2 class="font-headline text-4xl font-bold">Seçkin Mekanlar</h2>
+<span class="text-primary font-semibold underline underline-offset-4">Tümünü Gör</span>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Venue 1 -->
+<div class="bg-surface-container-low rounded-3xl p-4 transition-all hover:bg-surface-container-high cursor-pointer">
+<div class="aspect-square rounded-2xl overflow-hidden mb-6">
+<img alt="Cafe Interior" class="w-full h-full object-cover" data-alt="elegant upscale cafe interior with velvet chairs, marble tables, and soft warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVyPeeOJ-4vfJ1uEriEUMozZZXZUO8iK_kyTa9jOw1xFOHJVggGElsprnbFV-wTfvS6LZrikIHTBZ8GTj7OW1b6SC15rTTeL6agnGaKG_U66M4ksvJwX9pjnLQJD7VVJFDePrZADJpCcSpU8JMpXxTlF4oU5P1PBxeyaVL8SIxuPfVRvD2IAbfXzers59bn83_L5eu5F5xTaUUvH-qYoqWMsA761-c3nPgdOnqyu5wO1itYmpc2arWF7cRlEmwgO-EoIgSQopS5_kP"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline text-xl font-semibold mb-1">Minoa Bookstore</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> Akaretler
+                                </p>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-xl text-sm font-bold">
+                                9.8 / 10
+                            </div>
+</div>
+<div class="mt-4 flex gap-2">
+<span class="bg-secondary-fixed-dim/40 px-2 py-1 rounded text-[10px] font-bold tracking-wide uppercase">Kitap &amp; Kahve</span>
+<span class="bg-secondary-fixed-dim/40 px-2 py-1 rounded text-[10px] font-bold tracking-wide uppercase">Sessiz</span>
+</div>
+</div>
+<!-- Venue 2 -->
+<div class="bg-surface-container-low rounded-3xl p-4 transition-all hover:bg-surface-container-high cursor-pointer">
+<div class="aspect-square rounded-2xl overflow-hidden mb-6">
+<img alt="Restaurant Interior" class="w-full h-full object-cover" data-alt="modern fine dining restaurant with large windows overlooking city lights and candlelit tables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJd5s7v6Az64aYiKsttVEZTBCWQHrOuw3qcGFSGEjANnmNCjdKSm_QVlBhlKaVoTxMniOtsQrnxg9G1ptdne_AtwpK4-CG_GrOz7WE9yTjxaj_aUq3v5V_H9vWbuExBnz_ZczX5tWSlmPwFe--ajWLwMG_p9ql_IzshoeLdAvyJ5qfalYOH98CyzFJ3xiMOy3AFYQVKKw8U7g-EDCApv0RXX7Sn5BIU6aqSxBWsL3Dsuy8keVTdylS9r4UosIl-Gg22FBRe6FtDVTl"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline text-xl font-semibold mb-1">Sunset Grill</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> Ulus
+                                </p>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-xl text-sm font-bold">
+                                9.5 / 10
+                            </div>
+</div>
+<div class="mt-4 flex gap-2">
+<span class="bg-secondary-fixed-dim/40 px-2 py-1 rounded text-[10px] font-bold tracking-wide uppercase">Manzara</span>
+<span class="bg-secondary-fixed-dim/40 px-2 py-1 rounded text-[10px] font-bold tracking-wide uppercase">Akşam Yemeği</span>
+</div>
+</div>
+<!-- Venue 3 -->
+<div class="bg-surface-container-low rounded-3xl p-4 transition-all hover:bg-surface-container-high cursor-pointer">
+<div class="aspect-square rounded-2xl overflow-hidden mb-6">
+<img alt="Jazz Bar" class="w-full h-full object-cover" data-alt="cozy dimly lit jazz bar with a performer on a small stage and audience at small tables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVOtswddboLKuGUpZO1Pztvx6MufE0C1SOml2GAiQiIGl2XzNNJKqFxsjX4TJTJ4i8XO5AsK0nTNnMujh4HhoMnWRej9k1AKyOmZ0oFznk8_i4r5ZFngjsBiW1U9V3wwouhxAzuyYfJOI6KCJwIrJ9P8bwW3ymhAtUP3Zr8srbBTEn0wuUl4plsWJZX7pwQiNF5dGqcWQG2z7dohAVUEDaXqk2k0PBgXqy-v-Oag3z3gg4rrwRt7UqA1yzFxT_-aZSArsHGmozijkM"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline text-xl font-semibold mb-1">Nardis Jazz Club</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> Galata
+                                </p>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-xl text-sm font-bold">
+                                9.2 / 10
+                            </div>
+</div>
+<div class="mt-4 flex gap-2">
+<span class="bg-secondary-fixed-dim/40 px-2 py-1 rounded text-[10px] font-bold tracking-wide uppercase">Müzik</span>
+<span class="bg-secondary-fixed-dim/40 px-2 py-1 rounded text-[10px] font-bold tracking-wide uppercase">Kokteyl</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Activities Grid (Bento Style) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<h2 class="font-headline text-4xl font-bold text-center mb-16">Neler Yapabilirsiniz?</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 bg-primary rounded-3xl overflow-hidden relative group">
+<img alt="Workshop" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-alt="Couple workshops doing pottery together with messy hands and smiling faces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXrddXzc71Hr2JHcJslfGjyAf6halV8VUZT5rEYVS5zpjqmzMwWcq4eGnc2pgA67qYe4_G0S83BFpvzvqwZWMngXVmMz4gISG7MBKde_g-Qmj3ya6Tk1ZzBDDzBuqHvc5lLUCLtSuN-MdqdmbBxBaq4uT6gO8QDd4nitY8EFv9GDBQha9HKweJvWBvPl3zdBCmfSo5MOhPHD3mgUUU2mtVeuOp8APDQX39dlJpQltmMFQwdUFsRJtFszL3tXxWBUjrBgYr-CGfEAxa"/>
+<div class="absolute bottom-0 left-0 p-8 text-white">
+<h3 class="font-headline text-3xl mb-2">Atölye Çalışmaları</h3>
+<p class="text-sm opacity-80">Seramikten mutfağa, birlikte yeni beceriler edinin.</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-tertiary rounded-3xl overflow-hidden relative group">
+<img alt="Concert" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-alt="outdoor concert at night with colorful lights and an energetic crowd" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwxMaOZ-RcWiqGbLY5V5166kIkhPngRFP8jiTCB03r1MijHpMw0tDV5fFgm1K2kIGvfm-SsVXN-5mb3rHAkVXkrKMp5ExN9ud_-96VG-7aJp7XOwMeifc4daWzVaLiP7P1r3HsD1M-IvfFNyXy5JSFh_Brkcf8k04jcD4zgvR9xd_5uW3qiTSBgV5Bbvca3Ng85TYrsxBPr1ukbP4KGhAR_Fmcz36JUD4qWxAQWK1pJNTQD9ibKQ_Y3AIWVpDNGJq_xuFx7wQwWkjj"/>
+<div class="absolute bottom-0 left-0 p-6 text-white">
+<h3 class="font-headline text-2xl mb-1">Konserler</h3>
+<p class="text-xs opacity-80">Şehrin en iyi sahnelerinde ritme katılın.</p>
+</div>
+</div>
+<div class="bg-secondary rounded-3xl overflow-hidden relative group">
+<img alt="Art" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-alt="exhibition room in an art museum with large abstract paintings on the walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF_1y3h32N0e-UOHLbM-amRE6LaVtWyqMpeMw70rmTd1vY-uDFhqjwL2QFS-5NwBc4SFlPTqxAvMRHwmUNS_2cPVsFo07wv3vNT-HGHw1LivVxuhKnDXCXCgYEFCuu9TeTIiK9DXUY-ZQKMTa5iEYRfiRBnOc9vljn1RWHz0hZuV1W9qO-YwEi-m6xzghVntV1vu0-YrOKk4B9aIypIn43M67k7kPpNDmgWP94kTNVli98dk5q_MinulJGMjG1SzEyKRmc35zRRC0-"/>
+<div class="absolute bottom-0 left-0 p-6 text-white">
+<h4 class="font-headline text-lg">Sergiler</h4>
+</div>
+</div>
+<div class="bg-primary-container rounded-3xl overflow-hidden relative group">
+<img alt="Walk" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-alt="peaceful park with green trees and a quiet walking path in early morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3xZ6BmmqTPMAZOraHGzDiS9V-r_JfinMeMlMXfbp_yyDRVjpww5IAmReZPY0r8LAEcrIGKxQPp2TC6Kc6LL9Qh0v74RRtZPyVvKfKTaQXIxKkAsQZnVS-QMtg8Qh97uJgTHISvnXb9aGRI9qMugEpdZbUSjSze5emiTnNzGNbi2RiSABCrWXXN3d8l_igd0q5Vb9CNPIF6X8PHDHxzrcFZYOoPhlc_qYYlivwUZI0EILkANR2cvcXv1L6x-jML0HExyvvSx_1wdMk"/>
+<div class="absolute bottom-0 left-0 p-6 text-white">
+<h4 class="font-headline text-lg">Doğa Yürüyüşleri</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Premium Section -->
+<section class="py-24 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 order-2 md:order-1">
+<div class="relative">
+<div class="absolute inset-0 bg-secondary/10 rounded-full blur-3xl -z-10 scale-150"></div>
+<img alt="Premium Experience" class="rounded-3xl editorial-shadow" data-alt="luxury hotel room with rose petals on the bed and champagne on a side table overlooking the ocean" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRlzIVievN4vi2mmG-2UTG4--eZUBBHWftDhWX-r25qL0iin0S7nYuQ7zGhG1pvgt-qc7f1rdMj6OS8is0x0hY8CuETvdLPFXi5waq6zvwKCVoVCBRA0hF9Rtg7So6MCsyCoKPzwpN60dwk2-fjbgb0fMdtSUG3PGSZkFM6NpsS3MFC4I8ObEigN7C24TjeLsssiqWntd8rw7TpeZqqckKV67UrLJ6WainZOiny39PmZBAvKlGIoXFeVIWnZwGpo3dOs7ELjSdR4Y6"/>
+</div>
+</div>
+<div class="flex-1 order-1 md:order-2">
+<span class="font-label text-sm uppercase tracking-widest text-primary mb-4 block">İkimize Plus</span>
+<h2 class="font-headline text-5xl font-bold text-on-surface mb-8">Premium Deneyimler &amp; Ayrıcalıklı Ortaklıklar</h2>
+<p class="text-on-surface-variant text-lg mb-8 leading-relaxed">
+                        Plus üyelerimize özel seçkin restoranlarda %20 indirim, öncelikli rezervasyon ve gizli etkinliklere davetiye fırsatı.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span>Sıra Beklemeden Rezervasyon</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span>Özel Günlerde Sürpriz Hediyeler</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span>Kişiselleştirilmiş Hediye Danışmanlığı</span>
+</li>
+</ul>
+<button class="px-10 py-4 bg-on-surface text-surface rounded-full font-bold hover:bg-primary transition-colors duration-300">Plus'a Katıl</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-stone-950 w-full py-12 px-8">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+<div class="flex flex-col gap-4">
+<div class="font-serif text-xl text-rose-900 dark:text-rose-500">İkimize</div>
+<p class="text-stone-500 dark:text-stone-400 max-w-xs">Anıları biriktirmeniz için en şık yol.</p>
+</div>
+<div class="flex flex-wrap gap-x-12 gap-y-6">
+<div class="flex flex-col gap-4">
+<span class="font-bold text-stone-800 dark:text-stone-200">Platform</span>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-700 dark:hover:text-rose-300 underline-offset-4 hover:underline transition-colors" href="#">Hakkımızda</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-700 dark:hover:text-rose-300 underline-offset-4 hover:underline transition-colors" href="#">İletişim</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-bold text-stone-800 dark:text-stone-200">Keşfet</span>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-700 dark:hover:text-rose-300 underline-offset-4 hover:underline transition-colors" href="#">İş Ortaklığı</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-700 dark:hover:text-rose-300 underline-offset-4 hover:underline transition-colors" href="#">Gizlilik</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-stone-200/50 flex justify-between items-center text-stone-500 dark:text-stone-400 text-sm">
+<p>© 2024 İkimize. Tüm Hakları Saklıdır.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="language">language</span>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-stone-50/90 dark:bg-stone-900/90 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.04)] z-50 rounded-t-3xl border-t border-stone-200/10">
+<div class="flex flex-col items-center justify-center bg-rose-100/50 dark:bg-rose-900/30 text-rose-900 dark:text-rose-200 rounded-2xl px-5 py-2 scale-up-on-tap duration-200">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-sans text-[10px] font-medium tracking-wide">Keşfet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 active:bg-stone-100 dark:active:bg-stone-800">
+<span class="material-symbols-outlined" data-icon="calendar_add_on">calendar_add_on</span>
+<span class="font-sans text-[10px] font-medium tracking-wide">Planla</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 active:bg-stone-100 dark:active:bg-stone-800">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-sans text-[10px] font-medium tracking-wide">Rotalar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 active:bg-stone-100 dark:active:bg-stone-800">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-sans text-[10px] font-medium tracking-wide">Profil</span>
+</div>
+</nav>
+</body></html>
