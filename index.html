@@ -14,64 +14,30 @@
             theme: {
                 extend: {
                     colors: {
-                        "on-background": "#1b1c1a",
-                        "surface-container": "#efeeea",
-                        "tertiary-container": "#4e443b",
-                        "on-error-container": "#93000a",
-                        "background": "#fbf9f5",
-                        "outline-variant": "#dcbfc7",
-                        "surface-dim": "#dbdad6",
-                        "primary-container": "#8d0e28",
-                        "on-secondary-container": "#656464",
-                        "on-primary-fixed": "#40000b",
-                        "surface-tint": "#af2b3e",
                         "primary": "#660018",
-                        "inverse-on-surface": "#f2f0ed",
-                        "surface-variant": "#e4e2de",
-                        "primary-fixed-dim": "#ffb3b5",
-                        "on-surface-variant": "#564148",
-                        "inverse-surface": "#30312e",
-                        "tertiary-fixed": "#f0e0d3",
-                        "surface": "#fbf9f5",
-                        "on-tertiary-container": "#c0b1a6",
-                        "on-primary-fixed-variant": "#8e0f28",
-                        "on-surface": "#1b1c1a",
-                        "on-secondary-fixed": "#1b1c1c",
-                        "on-primary-container": "#ff979b",
-                        "surface-container-lowest": "#ffffff",
-                        "on-secondary-fixed-variant": "#474747",
-                        "on-secondary": "#ffffff",
-                        "surface-bright": "#fbf9f5",
-                        "on-error": "#ffffff",
-                        "outline": "#897178",
-                        "surface-container-low": "#f5f3ef",
-                        "secondary-container": "#e4e2e1",
-                        "secondary-fixed-dim": "#c8c6c6",
-                        "secondary-fixed": "#e4e2e1",
-                        "secondary": "#5f5e5e",
-                        "primary-fixed": "#ffdada",
-                        "inverse-primary": "#ffb3b5",
-                        "on-tertiary-fixed-variant": "#4f453c",
-                        "on-tertiary": "#ffffff",
-                        "surface-container-high": "#eae8e4",
-                        "tertiary": "#372e26",
+                        "primary-container": "#8d0e28",
                         "on-primary": "#ffffff",
-                        "error": "#ba1a1a",
-                        "surface-container-highest": "#e4e2de",
-                        "error-container": "#ffdad6",
-                        "on-tertiary-fixed": "#221a13",
-                        "tertiary-fixed-dim": "#d3c4b8"
+                        "background": "#fbf9f5",
+                        "surface": "#fbf9f5",
+                        "surface-container": "#efeeea",
+                        "surface-container-low": "#f5f3ef",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1c1a",
+                        "on-surface-variant": "#564148",
+                        "outline-variant": "#dcbfc7",
+                        "tertiary-fixed": "#f0e0d3",
                     },
                     borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
                         "full": "9999px"
                     },
                     fontFamily: {
-                        "headline": ["Noto Serif"],
-                        "body": ["Inter"],
-                        "label": ["Inter"]
+                        "headline": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
                     }
                 }
             }
@@ -81,56 +47,41 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
-        .curator-notch {
-            position: absolute;
-            top: -12px;
-            left: 24px;
-            background-color: #f0e0d3;
-            color: #221a13;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            z-index: 10;
-        }
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-primary overflow-x-hidden" x-data="app()">
-<!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 bg-[#fbf9f5]/80 backdrop-blur-2xl shadow-sm shadow-stone-200/50">
+<body class="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-primary overflow-x-hidden" x-data="app()">
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-2xl border-b border-surface-container">
 <nav class="flex justify-between items-center px-8 h-20 max-w-screen-2xl mx-auto">
-<div class="font-['Noto_Serif'] text-2xl font-bold text-[#660018] tracking-tight">Encounters İstanbul</div>
+<div class="font-headline text-2xl font-bold text-primary tracking-tight">Encounters İstanbul</div>
 <div class="hidden md:flex items-center gap-8">
-<a class="text-[#660018] font-semibold border-b-2 border-[#660018] font-['Noto_Serif'] py-1" href="#">Ana Sayfa</a>
-<a class="text-stone-500 font-medium hover:text-[#660018] transition-colors" href="#how">Nasıl Çalışır</a>
-<a class="text-stone-500 font-medium hover:text-[#660018] transition-colors" href="#">Hazır Planlar</a>
-<a class="text-stone-500 font-medium hover:text-[#660018] transition-colors" href="#">Kaydedilenler</a>
+<a class="text-primary font-semibold border-b-2 border-primary py-1" href="#">Ana Sayfa</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#how">Nasıl Çalışır</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#inspiration">Hazır Planlar</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Kaydedilenler</a>
 </div>
-<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold hover:scale-98 active:scale-95 transition-all text-sm">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-all text-sm">
             Plan Oluştur
         </button>
 </nav>
 </header>
 <main class="pt-20">
 <!-- Hero Section -->
-<section class="relative min-h-[870px] flex items-center justify-center overflow-hidden bg-surface">
+<section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover opacity-15 grayscale-[0.2]" data-alt="dramatic aerial view of the Bosphorus bridge and Istanbul skyline at dusk with deep reds and purples in the sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzeA1D5-iElOYYJ-SKZnDyYGteSZ_D7efUn7vit-2l8_kwbkxyT-bPpA-5popZhAq2m0cMCugP8JJnv040TL-stNcZbutuZPLo3y72h1KHwlia57O31ytc-4UdkyeFo_iEzZj_4zMP7wCmcvYsG4_9KzLyK6YleUCrkafdvb0zNCPbIqnHCqHJsHtvjJ7nBGKv3GVrKD8UF82l9d6kZo_5gI9lidREoesf2jBL7nfRxix5brDWk6x_8lh_d1RE9bcHaKB3EEy01Zs"/>
-<div class="absolute inset-0 bg-gradient-to-b from-surface/0 via-surface/60 to-surface"></div>
+<img alt="Istanbul Skyline" class="w-full h-full object-cover opacity-20 grayscale-[0.3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzeA1D5-iElOYYJ-SKZnDyYGteSZ_D7efUn7vit-2l8_kwbkxyT-bPpA-5popZhAq2m0cMCugP8JJnv040TL-stNcZbutuZPLo3y72h1KHwlia57O31ytc-4UdkyeFo_iEzZj_4zMP7wCmcvYsG4_9KzLyK6YleUCrkafdvb0zNCPbIqnHCqHJsHtvjJ7nBGKv3GVrKD8UF82l9d6kZo_5gI9lidREoesf2jBL7nfRxix5brDWk6x_8lh_d1RE9bcHaKB3EEy01Zs"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background"></div>
 </div>
 <div class="relative z-10 text-center max-w-4xl px-6">
-<span class="font-label text-primary font-semibold tracking-widest text-xs uppercase mb-4 block">Küratörlükle Tasarlanmış Deneyimler</span>
-<h1 class="font-headline text-5xl md:text-7xl font-bold text-on-background mb-8 leading-[1.1] tracking-tight">
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Küratörlükle Tasarlanmış Deneyimler</span>
+<h1 class="font-headline text-5xl md:text-7xl font-bold text-on-surface mb-8 leading-[1.1] tracking-tight">
                 Bu akşam sevgilinle <br/> <span class="italic text-primary">ne yapacağını</span> 1 dakikada bul.
             </h1>
-<p class="font-body text-lg text-on-surface-variant mb-12 max-w-2xl mx-auto leading-relaxed">
+<p class="text-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
                 Algoritmaların değil, İstanbul'u yaşayan küratörlerin seçkisiyle size en uygun date planını hazırlıyoruz.
             </p>
-<a class="inline-flex items-center gap-3 bg-primary text-on-primary px-10 py-5 rounded-full text-lg font-semibold hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-primary/10" href="#planner">
+<a class="inline-flex items-center gap-3 bg-primary text-on-primary px-10 py-5 rounded-full text-lg font-semibold hover:scale-[1.02] transition-all shadow-xl shadow-primary/20" href="#planner">
                 Hemen Başla
                 <span class="material-symbols-outlined">arrow_forward</span>
 </a>
@@ -175,25 +126,25 @@
 <!-- The Planner Engine -->
 <section class="py-24 px-8 max-w-screen-2xl mx-auto scroll-mt-20" id="planner">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-<!-- Left Column: Inputs -->
+<!-- Filter Column -->
 <div class="lg:col-span-5 space-y-12">
 <div>
-<h2 class="font-headline text-3xl font-bold mb-8">Senin Encounter'ın</h2>
-<!-- Moods -->
+<h2 class="font-headline text-3xl font-bold mb-8 text-primary">Senin Encounter'ın</h2>
+<!-- Mood Selection -->
 <div class="mb-10">
-<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-6 block">1. Bugun Hangi Moddasınız?</label>
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-6 block">1. Bugun Hangi Moddasınız?</label>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
 <template :key="mood.id" x-for="mood in moods">
-<button :class="selectedMood?.id === mood.id ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest border-outline-variant/15 text-on-surface hover:border-primary'" @click="selectedMood = mood" class="flex flex-col items-center justify-center p-4 rounded-xl border transition-all group">
+<button :class="selectedMood?.id === mood.id ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest border-outline-variant/15 text-on-surface hover:border-primary'" @click="selectedMood = mood" class="flex flex-col items-center justify-center p-4 rounded-xl border transition-all">
 <span class="material-symbols-outlined mb-2" x-text="mood.icon"></span>
-<span class="text-[11px] font-semibold uppercase" x-text="mood.label"></span>
+<span class="text-[10px] font-bold uppercase" x-text="mood.label"></span>
 </button>
 </template>
 </div>
 </div>
-<!-- Budget -->
+<!-- Budget Selection -->
 <div class="mb-10">
-<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-6 block">2. Bütçe Aralığı</label>
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-6 block">2. Bütçe Aralığı</label>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 <template :key="budget.id" x-for="budget in budgets">
 <button :class="selectedBudget?.id === budget.id ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest border-outline-variant/15 text-on-surface hover:border-primary'" @click="selectedBudget = budget" class="flex items-center justify-between p-4 rounded-xl border transition-all">
@@ -203,13 +154,12 @@
 </template>
 </div>
 </div>
-<!-- Location -->
+<!-- District Selection -->
 <div class="mb-10">
-<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-6 block">3. Semt Tercihi</label>
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-6 block">3. Semt Tercihi</label>
 <div class="flex flex-wrap gap-2">
 <template :key="district" x-for="district in districts">
-<button :class="selectedDistrict === district ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest border-outline-variant/20 hover:bg-tertiary-fixed'" @click="selectedDistrict = district" class="px-4 py-2 rounded-full border text-sm font-medium transition-colors" x-text="district">
-</button>
+<button :class="selectedDistrict === district ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest border-outline-variant/20 hover:bg-tertiary-fixed'" @click="selectedDistrict = district" class="px-4 py-2 rounded-full border text-sm font-medium transition-colors" x-text="district"></button>
 </template>
 </div>
 </div>
@@ -219,59 +169,67 @@
 </button>
 </div>
 </div>
-<!-- Right Column: Dynamic Results / Inspiration -->
+<!-- Results Column -->
 <div class="lg:col-span-7">
-<!-- Empty State / Placeholder while nothing is generated -->
-<div class="h-full flex flex-col justify-center items-center text-center p-12 bg-surface-container-low rounded-[2rem] border-2 border-dashed border-outline-variant/30" x-show="!showResults">
+<!-- Empty State -->
+<div class="h-full flex flex-col justify-center items-center text-center p-12 bg-surface-container-low rounded-3xl border-2 border-dashed border-outline-variant/30" x-show="!showResults">
 <span class="material-symbols-outlined text-6xl text-outline-variant/50 mb-6">explore_nearby</span>
 <h3 class="font-headline text-xl font-bold text-on-surface-variant mb-2">Kişisel Rotalarını Keşfet</h3>
-<p class="text-stone-400 text-sm max-w-xs">Sol taraftaki kriterleri seçerek size özel 3 farklı İstanbul rotasını anında oluşturun.</p>
+<p class="text-on-surface-variant/60 text-sm max-w-xs">Sol taraftaki kriterleri seçerek size özel 3 farklı İstanbul rotasını anında oluşturun.</p>
 </div>
-<!-- Dynamic Header (Shows after selection) -->
-<div class="mb-8" x-cloak="" x-show="showResults" x-transition="">
-<h3 class="font-headline text-2xl font-bold text-on-background">
-<span x-text="selectedDistrict"></span> / <span x-text="selectedMood?.label"></span> / <span x-text="selectedBudget?.label"></span> kriterlerine göre...
-                    </h3>
-<p class="text-on-surface-variant text-sm mt-2">Bugün için en iyi 3 rota seçildi.</p>
+<!-- Results View -->
+<div x-cloak="" x-show="showResults" x-transition="">
+<div class="mb-10">
+<h3 class="font-headline text-3xl font-bold text-on-surface" x-text="`${selectedDistrict} / ${selectedMood?.label} / ${selectedBudget?.label} kriterlerine göre en iyi 3 rota`"></h3>
+<p class="text-on-surface-variant mt-2" x-show="filteredPlans.length === 3">Bugün için en iyi 3 rota seçildi.</p>
 </div>
-<!-- Dynamic Card Grid -->
-<div class="grid grid-cols-1 gap-12" x-cloak="" x-show="showResults" x-transition="">
+<div class="space-y-12">
 <template :key="plan.id" x-for="(plan, index) in filteredPlans">
-<div class="relative bg-surface-container-lowest rounded-[2rem] overflow-hidden group shadow-sm hover:shadow-2xl transition-all duration-500">
-<div class="curator-notch" x-show="index === 0">En Çok Beğenilen</div>
-<div class="grid grid-cols-1 md:grid-cols-2">
-<div class="h-64 md:h-auto overflow-hidden">
-<img :alt="plan.title" :src="plan.image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+<div class="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-surface-container">
+<div class="relative h-64 overflow-hidden">
+<img :alt="plan.title" :src="plan.stops[0].imageHint" class="w-full h-full object-cover"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-6 left-8 text-white">
+<div class="flex items-center gap-3 mb-2">
+<span class="text-[10px] font-bold bg-primary text-on-primary px-2 py-0.5 rounded" x-text="'ROTA 0' + (index + 1)"></span>
+<span class="text-xs font-medium opacity-90" x-text="plan.duration + ' • ' + plan.energy"></span>
 </div>
-<div class="p-8 flex flex-col justify-between">
-<div>
-<div class="flex items-center gap-2 mb-4">
-<span class="text-xs font-label font-bold text-primary px-2 py-1 bg-primary-fixed rounded" x-text="'ROTA 0' + (index + 1)"></span>
-<span class="text-xs font-label text-on-surface-variant" x-text="plan.duration + ' • ' + plan.avgPrice"></span>
+<h4 class="font-headline text-2xl font-bold" x-text="plan.title"></h4>
 </div>
-<h4 class="font-headline text-2xl font-bold mb-4 tracking-tight" x-text="plan.title"></h4>
-<div class="space-y-4 mb-6">
-<template :key="step.place" x-for="step in plan.steps">
-<div class="flex items-start gap-3">
-<div class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></div>
-<p class="text-sm"><span class="font-bold" x-text="step.place"></span> - <span x-text="step.desc"></span></p>
+</div>
+<div class="p-8">
+<p class="text-sm text-on-surface-variant italic mb-8 leading-relaxed" x-text="plan.whyItFits"></p>
+<div class="relative space-y-8 ml-4">
+<div class="absolute left-[-17px] top-2 bottom-2 w-[1px] bg-outline-variant/30"></div>
+<template :key="stop.name" x-for="(stop, sIdx) in plan.stops">
+<div class="relative flex gap-6">
+<div class="absolute left-[-21px] top-1.5 w-2 h-2 rounded-full border-2 border-primary bg-background"></div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between mb-1">
+<h5 class="font-bold text-primary text-sm uppercase tracking-wide" x-text="stop.name"></h5>
+<span class="text-[10px] font-bold text-on-surface-variant/40" x-text="stop.type"></span>
+</div>
+<p class="text-sm text-on-surface-variant" x-text="stop.shortDesc"></p>
+</div>
 </div>
 </template>
 </div>
-</div>
-<div class="pt-6 border-t border-outline-variant/10">
-<p class="text-xs italic text-on-surface-variant leading-relaxed" x-text="'&quot;' + plan.reason + '&quot;'"></p>
-</div>
+<div class="mt-10 pt-6 border-t border-surface-container flex justify-between items-center">
+<span class="text-xs font-bold text-primary" x-text="'Tahmini: ' + plan.budget"></span>
+<button class="text-xs font-bold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1">
+                                            Detayları Gör <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
 </div>
 </div>
 </div>
 </template>
+</div>
 </div>
 </div>
 </div>
 </section>
-<!-- Ready Scenarios -->
-<section class="py-24 bg-surface px-8">
+<!-- Inspiration Cards Section -->
+<section class="py-24 bg-surface px-8" id="inspiration">
 <div class="max-w-screen-xl mx-auto">
 <div class="flex justify-between items-end mb-12">
 <div>
@@ -281,76 +239,35 @@
 <a class="text-primary font-bold text-sm border-b-2 border-primary hidden md:block" href="#">Tümünü Gör</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Scenario 1 -->
+<template :key="card.title" x-for="card in inspirationCards">
 <div class="group cursor-pointer">
 <div class="aspect-[4/5] rounded-3xl overflow-hidden mb-6 relative">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="two young people sitting at a cozy outdoor cafe sharing a pastry with warm sunlight filtering through leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<img :alt="card.title" :src="card.image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 <div class="absolute bottom-6 left-6 right-6">
-<h3 class="text-white font-headline text-xl font-bold">İlk Buluşma</h3>
-<p class="text-white/80 text-xs">Garantili ve etkileyici bir başlangıç.</p>
+<h3 class="text-white font-headline text-xl font-bold mb-1" x-text="card.title"></h3>
+<p class="text-white/70 text-xs" x-text="card.desc"></p>
 </div>
 </div>
 </div>
-<!-- Scenario 2 -->
-<div class="group cursor-pointer">
-<div class="aspect-[4/5] rounded-3xl overflow-hidden mb-6 relative">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="elegant table setting at a high-end restaurant with a view of the sunset over the Bosphorus in Istanbul" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-<div class="absolute bottom-6 left-6 right-6">
-<h3 class="text-white font-headline text-xl font-bold">Yıldönümü</h3>
-<p class="text-white/80 text-xs">Unutulmaz bir kutlama için premium seçki.</p>
-</div>
-</div>
-</div>
-<!-- Scenario 3 -->
-<div class="group cursor-pointer">
-<div class="aspect-[4/5] rounded-3xl overflow-hidden mb-6 relative">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="neon lights reflecting on rain-slicked Istanbul street with a yellow taxi and busy people in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-<div class="absolute bottom-6 left-6 right-6">
-<h3 class="text-white font-headline text-xl font-bold">Son Dakika Planı</h3>
-<p class="text-white/80 text-xs">Hızlı, eğlenceli ve her zaman hazır.</p>
-</div>
-</div>
-</div>
+</template>
 </div>
 </div>
 </section>
 </main>
-<!-- Footer -->
-<footer class="bg-[#f5f3ef] w-full py-12 px-8">
+<footer class="bg-surface-container-low w-full py-12 px-8 border-t border-surface-container">
 <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-<div class="font-['Noto_Serif'] font-bold text-[#660018] text-xl">Encounters İstanbul</div>
+<div class="font-headline font-bold text-primary text-xl">Encounters İstanbul</div>
 <div class="flex gap-8">
-<a class="text-stone-500 font-['Inter'] text-sm hover:text-[#660018] transition-colors" href="#">Gizlilik</a>
-<a class="text-stone-500 font-['Inter'] text-sm hover:text-[#660018] transition-colors" href="#">Kullanım Koşulları</a>
-<a class="text-stone-500 font-['Inter'] text-sm hover:text-[#660018] transition-colors" href="#">İletişim</a>
+<a class="text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">Gizlilik</a>
+<a class="text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">Koşulları</a>
+<a class="text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">İletişim</a>
 </div>
-<div class="text-stone-500 font-['Inter'] text-sm">
-            © 2024 Encounters İstanbul. Küratörlükle tasarlanmıştır.
+<div class="text-on-surface-variant/60 text-sm">
+            © 2024 Encounters İstanbul.
         </div>
 </div>
 </footer>
-<!-- Mobile Bottom NavBar -->
-<div class="fixed bottom-0 left-0 w-full flex justify-around items-center px-6 py-4 md:hidden bg-[#fbf9f5]/90 backdrop-blur-xl z-50 rounded-t-3xl shadow-[0_-10px_40px_rgba(86,65,72,0.08)]">
-<a class="flex flex-col items-center justify-center text-[#660018] bg-[#f0e0d3]/40 rounded-xl px-4 py-1" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
-<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Keşfet</span>
-</a>
-<a class="flex flex-col items-center justify-center text-stone-400" href="#">
-<span class="material-symbols-outlined">event_note</span>
-<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Planlar</span>
-</a>
-<a class="flex flex-col items-center justify-center text-stone-400" href="#">
-<span class="material-symbols-outlined">bookmark</span>
-<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Kaydedilenler</span>
-</a>
-<a class="flex flex-col items-center justify-center text-stone-400" href="#">
-<span class="material-symbols-outlined">person</span>
-<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Profil</span>
-</a>
-</div>
 <script>
     function app() {
         return {
@@ -376,98 +293,73 @@
 
             districts: ['Beşiktaş', 'Karaköy', 'Kadıköy', 'Cihangir', 'Nişantaşı', 'Emirgan'],
 
-            seedData: [
+            inspirationCards: [
+                { title: 'İlk Buluşma', desc: 'Garantili ve etkileyici bir başlangıç.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg' },
+                { title: 'Yıldönümü', desc: 'Unutulmaz bir kutlama için premium seçki.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g' },
+                { title: 'Son Dakika Planı', desc: 'Hızlı, eğlenceli ve her zaman hazır.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A' }
+            ],
+
+            plannerRoutes: [
                 {
                     id: 1,
-                    title: "Karaköy'de Sanat & Gastronomi",
+                    title: "Karaköy'de Sanat ve Akşam",
                     district: "Karaköy",
-                    mood: "romantic",
+                    moods: ["romantic", "explore"],
                     budget: "mid",
+                    energy: "Orta",
                     duration: "4-5 Saat",
-                    avgPrice: "1800 TL",
-                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg",
-                    steps: [
-                        { place: "İstanbul Modern", desc: "Serin ve ilham verici bir başlangıç." },
-                        { place: "Mürver Restaurant", desc: "Şehir manzarasına karşı açık ateşte akşam yemeği." },
-                        { place: "Karaköy Güllüoğlu", desc: "Modern dokunuşla bir klasik kapanışı." }
-                    ],
-                    reason: "Neden size uygun? Hem kültürel bir doygunluk hem de Karaköy'ün en şık manzaralarından birini birleştiriyor."
+                    description: "Kültür ve lezzeti birleştiren, Karaköy'ün en şık duraklarını içeren bir rota.",
+                    whyItFits: "Sanat galerisinden modern bir meyhaneye uzanan, her anı dolu bir akşam için tasarlandı.",
+                    stops: [
+                        { name: "İstanbul Modern", type: "Müze/Galeri", district: "Karaköy", shortDesc: "Günü en yeni sergilerle başlatın.", imageHint: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
+                        { name: "Mürver", type: "Restoran", district: "Karaköy", shortDesc: "Boğaz manzarasına karşı şık bir yemek.", imageHint: "https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g" }
+                    ]
                 },
                 {
                     id: 2,
-                    title: "Kuytu Köşeler ve Şarap",
-                    district: "Karaköy",
-                    mood: "romantic",
-                    budget: "mid",
-                    duration: "3 Saat",
-                    avgPrice: "1200 TL",
-                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8ALJYBvl8Ix1HP82rSYq1rYAGpK6MlkJ8JgRtY1PyxRbz3DsB-H5YGyYZkh05HxEib428-8RwLTbLk8QLcr8iopvpUTLSfoLNi2dpbNnMLqg_K7l2wwIbaFxD_YOj6fFaJ6dkByXqngKoO2WY7Mdg2zg-a8SLBo7GIQEFol3LyQiP9-ZlEKRcZNqkBlB5PhAAXffKC3EWDL42OblYdrcksOotOlPKt0H-M4Qyg3WHK0KHNEd_DNgwEc-akkXLF4ff95ocn4_fpLI",
-                    steps: [
-                        { place: "Salt Galata", desc: "Kütüphane sessizliğinde ortak bir keşif." },
-                        { place: "Solera Winery", desc: "Samimi bir atmosferde butik şarap tadımı." }
-                    ],
-                    reason: "Neden size uygun? Kalabalıktan uzak, derin sohbetler için tasarlanmış sakin bir rota."
+                    title: "Yıldız'da Sakin Akşam",
+                    district: "Beşiktaş",
+                    moods: ["calm"],
+                    budget: "budget",
+                    energy: "Düşük",
+                    duration: "2-3 Saat",
+                    description: "Gürültüden uzak, huzurlu bir yürüyüş ve samimi bir mola.",
+                    whyItFits: "Karmaşadan kaçmak isteyenler için doğa ve sessizliği ön planda tutan bir rota.",
+                    stops: [
+                        { name: "Yıldız Parkı", type: "Doğa", district: "Beşiktaş", shortDesc: "Tarihi köşklerin arasında gün batımı yürüyüşü.", imageHint: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzeA1D5-iElOYYJ-SKZnDyYGteSZ_D7efUn7vit-2l8_kwbkxyT-bPpA-5popZhAq2m0cMCugP8JJnv040TL-stNcZbutuZPLo3y72h1KHwlia57O31ytc-4UdkyeFo_iEzZj_4zMP7wCmcvYsG4_9KzLyK6YleUCrkafdvb0zNCPbIqnHCqHJsHtvjJ7nBGKv3GVrKD8UF82l9d6kZo_5gI9lidREoesf2jBL7nfRxix5brDWk6x_8lh_d1RE9bcHaKB3EEy01Zs" },
+                        { name: "Şans Restoran", type: "Kafe", district: "Beşiktaş", shortDesc: "Sakin bahçesinde akşam çayı ve sohbet.", imageHint: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" }
+                    ]
                 },
                 {
                     id: 3,
-                    title: "Moda'da Nostaljik Akşam",
+                    title: "Moda'da Bohem Keşif",
                     district: "Kadıköy",
-                    mood: "calm",
+                    moods: ["explore", "fun"],
                     budget: "budget",
-                    duration: "3-4 Saat",
-                    avgPrice: "750 TL",
-                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg",
-                    steps: [
-                        { place: "Moda İskelesi", desc: "Gün batımını tarihi dokuda izleyin." },
-                        { place: "Barış Manço Evi", desc: "Kısa bir nostalji turu." },
-                        { place: "Küff", desc: "Bahçede huzurlu bir akşam çayı." }
-                    ],
-                    reason: "Neden size uygun? Kadıköy'ün karmaşasından uzak, eski İstanbul hissini yaşatan sakin bir rota."
-                },
-                {
-                    id: 4,
-                    title: "Cihangir'in Bohem Ruhuna Yolculuk",
-                    district: "Cihangir",
-                    mood: "explore",
-                    budget: "mid",
+                    energy: "Yüksek",
                     duration: "4 Saat",
-                    avgPrice: "1400 TL",
-                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A",
-                    steps: [
-                        { place: "Masumiyet Müzesi", desc: "Edebi bir atmosferde kaybolun." },
-                        { place: "Journey", desc: "Organik ve yerel lezzetlerle bir akşam yemeği." },
-                        { place: "Susamsokağı", desc: "Eski bir plak dükkanında akşam keşfi." }
-                    ],
-                    reason: "Neden size uygun? Hem kültürel hem de bohem bir akşam geçirmek isteyen keşif meraklıları için ideal."
+                    description: "Moda'nın ara sokaklarında gizli plakçılar ve lokal kahveciler.",
+                    whyItFits: "Yeni yerler keşfetmeyi seven ve dinamik bir akşam geçirmek isteyenler için ideal.",
+                    stops: [
+                        { name: "Hammer Müzik", type: "Dükkan", district: "Kadıköy", shortDesc: "Plaklar arasında nostaljik bir yolculuk.", imageHint: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A" },
+                        { name: "Basta Street Food", type: "Restoran", district: "Kadıköy", shortDesc: "Lokal ve gurme sokak lezzetleri molası.", imageHint: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" }
+                    ]
                 },
-                {
-                    id: 5,
-                    title: "Nişantaşı Işıltısı",
-                    district: "Nişantaşı",
-                    mood: "fun",
-                    budget: "premium",
-                    duration: "5 Saat",
-                    avgPrice: "4500 TL",
-                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g",
-                    steps: [
-                        { place: "Spago", desc: "Şehrin kalbinde roof-top kokteyl keyfi." },
-                        { place: "Nusr-Et Steakhouse", desc: "Efsanevi bir akşam yemeği deneyimi." },
-                        { place: "Glens", desc: "Caz eşliğinde şık bir kapanış." }
-                    ],
-                    reason: "Neden size uygun? Kutlama gerektiren anlar için şehrin en lüks ve enerjik noktalarını bir araya getiriyor."
-                },
-                // More generic items to ensure 19 items exist and filtering works
-                ...Array.from({ length: 14 }, (_, i) => ({
-                    id: i + 6,
-                    title: `Rota ${i + 6}: Şehir Keşfi`,
+                // Additional data to ensure fallback works
+                ...Array.from({ length: 10 }, (_, i) => ({
+                    id: i + 4,
+                    title: `Alternatif Rota ${i + 4}`,
                     district: ['Beşiktaş', 'Karaköy', 'Kadıköy', 'Cihangir', 'Nişantaşı', 'Emirgan'][i % 6],
-                    mood: ['romantic', 'calm', 'fun', 'explore'][i % 4],
+                    moods: [['romantic'], ['calm'], ['fun'], ['explore']][i % 4],
                     budget: ['budget', 'mid', 'upper', 'premium'][i % 4],
-                    duration: "3-4 Saat",
-                    avgPrice: "1500 TL",
-                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A",
-                    steps: [{ place: "Keyifli Bir Mekan", desc: "Şehrin tadını çıkarın." }, { place: "Güzel Bir Kapanış", desc: "Günü mutlulukla bitirin." }],
-                    reason: "Neden size uygun? Seçtiğiniz kriterlere uyum sağlayan dengeli bir şehir deneyimi."
+                    energy: "Orta",
+                    duration: "3 Saat",
+                    description: "Keyifli ve dengeli bir şehir planı.",
+                    whyItFits: "Şehrin en popüler noktalarını kriterlerinize uygun şekilde birleştirdik.",
+                    stops: [
+                        { name: "Popüler Mekan", type: "Kafe", district: "İstanbul", shortDesc: "Günün ilk durağı.", imageHint: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A" },
+                        { name: "Sakin Kapanış", type: "Bar", district: "İstanbul", shortDesc: "Günü keyifle bitirin.", imageHint: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A" }
+                    ]
                 }))
             ],
 
@@ -478,26 +370,26 @@
             generatePlans() {
                 if (!this.isSelectionComplete) return;
 
-                // Scoring Logic: district: +5, budget: +4, mood: +5
-                const scoredData = this.seedData.map(item => {
+                // Scoring: District +5, Mood +4, Budget +3
+                const scoredPlans = this.plannerRoutes.map(plan => {
                     let score = 0;
-                    if (item.district === this.selectedDistrict) score += 5;
-                    if (item.budget === this.selectedBudget.id) score += 4;
-                    if (item.mood === this.selectedMood.id) score += 5;
-                    return { ...item, score };
-                });
+                    if (plan.district === this.selectedDistrict) score += 5;
+                    if (plan.moods.includes(this.selectedMood.id)) score += 4;
+                    if (plan.budget === this.selectedBudget.id) score += 3;
+                    return { ...plan, score };
+                }).filter(plan => plan.title && plan.stops && plan.stops.length > 0); // Cleanup empty/broken data
 
-                // Sort by score and take top 3
-                this.filteredPlans = scoredData
+                // Sort and take 3
+                this.filteredPlans = scoredPlans
                     .sort((a, b) => b.score - a.score)
                     .slice(0, 3);
 
                 this.showResults = true;
-
-                // Scroll to results smoothly
+                
+                // Smooth scroll to results
                 setTimeout(() => {
                     document.getElementById('planner').scrollIntoView({ behavior: 'smooth' });
-                }, 100);
+                }, 150);
             }
         }
     }
