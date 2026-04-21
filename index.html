@@ -1,571 +1,489 @@
-<html class="scroll-smooth" lang="tr"><head>
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Encounters İstanbul | Kişiselleştirilmiş Deneyimler</title>
+<title>The NYC Concierge | Curated Date Discovery</title>
+<meta content="Discover the best NYC date spots based on your mood, budget, and neighborhood." name="description"/>
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script defer="" src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<!-- Theme Configuration -->
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#660018",
-                        "primary-container": "#8d0e28",
-                        "on-primary": "#ffffff",
-                        "background": "#fbf9f5",
-                        "surface": "#fbf9f5",
-                        "surface-container": "#efeeea",
-                        "surface-container-low": "#f5f3ef",
-                        "surface-container-lowest": "#ffffff",
-                        "on-surface": "#1b1c1a",
-                        "on-surface-variant": "#564148",
-                        "outline-variant": "#dcbfc7",
-                        "tertiary-fixed": "#f0e0d3",
-                        "navy-dark": "#1a1b2e"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "lg": "0.75rem",
-                        "xl": "1rem",
-                        "2xl": "1.5rem",
-                        "3xl": "2rem",
-                        "full": "9999px"
-                    },
-                    fontFamily: {
-                        "headline": ["Noto Serif", "serif"],
-                        "body": ["Inter", "sans-serif"],
-                    }
-                }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary": "#ffffff",
+                "on-background": "#1b1c19",
+                "background": "#fbf9f4",
+                "tertiary": "#735c00",
+                "tertiary-container": "#cca72f",
+                "primary-container": "#6b1d23",
+                "on-primary-container": "#f08486",
+                "secondary": "#565f70",
+                "secondary-container": "#d7e0f4",
+                "surface": "#fbf9f4",
+                "surface-container": "#f0eee9",
+                "surface-container-low": "#f5f3ee",
+                "surface-container-high": "#eae8e3",
+                "primary": "#4d0610",
+                "outline": "#887271",
+                "outline-variant": "#dbc0c0",
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "label-caps": ["Plus Jakarta Sans"],
+                "button": ["Plus Jakarta Sans"],
+                "h1": ["Noto Serif"],
+                "h2": ["Noto Serif"],
+                "h3": ["Noto Serif"],
+                "body-md": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"]
             }
+          }
         }
+      }
     </script>
 <style>
         .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
         }
-        [x-cloak] { display: none !important; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .chip-active {
+            background-color: #4d0610;
+            color: #ffffff;
+        }
+        .itinerary-line::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #4d0610;
+            opacity: 0.2;
+        }
     </style>
 </head>
-<body class="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-primary overflow-x-hidden" x-data="app()">
-<!-- Header -->
-<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-2xl border-b border-surface-container">
-<nav class="flex justify-between items-center px-8 h-20 max-w-screen-2xl mx-auto">
-<div class="font-headline text-2xl font-bold text-primary tracking-tight">Encounters İstanbul</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-primary font-semibold border-b-2 border-primary py-1" href="#">Ana Sayfa</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#how">Nasıl Çalışır</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#inspiration">Hazır Planlar</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Kaydedilenler</a>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-[#FCF9F5] border-b border-stone-200">
+<div class="flex justify-between items-center h-20 px-10 max-w-7xl mx-auto">
+<div class="font-serif italic font-bold text-2xl text-[#6B1D23] tracking-tight cursor-pointer">
+                The NYC Concierge
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#6B1D23] border-b-2 border-[#6B1D23] pb-1 font-semibold text-body-md" href="#">Home</a>
+<a class="text-stone-500 hover:text-[#6B1D23] transition-colors text-body-md" href="#">How It Works</a>
+<a class="text-stone-500 hover:text-[#6B1D23] transition-colors text-body-md" href="#">Ready-Made Plans</a>
+<a class="text-stone-500 hover:text-[#6B1D23] transition-colors text-body-md" href="#">Saved</a>
 </div>
-<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-all text-sm">
-            Plan Oluştur
-        </button>
+<button class="bg-primary-container text-white px-6 py-3 rounded-lg font-button hover:opacity-90 transition-all">
+                Plan a Date
+            </button>
+</div>
 </nav>
-</header>
 <main class="pt-20">
 <!-- Hero Section -->
-<section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+<section class="relative h-[819px] flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img alt="Istanbul Bosphorus" class="w-full h-full object-cover opacity-30 grayscale-[0.2]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzeA1D5-iElOYYJ-SKZnDyYGteSZ_D7efUn7vit-2l8_kwbkxyT-bPpA-5popZhAq2m0cMCugP8JJnv040TL-stNcZbutuZPLo3y72h1KHwlia57O31ytc-4UdkyeFo_iEzZj_4zMP7wCmcvYsG4_9KzLyK6YleUCrkafdvb0zNCPbIqnHCqHJsHtvjJ7nBGKv3GVrKD8UF82l9d6kZo_5gI9lidREoesf2jBL7nfRxix5brDWk6x_8lh_d1RE9bcHaKB3EEy01Zs"/>
-<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background"></div>
+<div class="absolute inset-0 bg-black/40 z-10"></div>
+<img alt="NYC Twilight" class="w-full h-full object-cover" data-alt="atmospheric cinematic shot of New York City skyline at twilight with soft street lights reflecting in the wet pavement of a cobblestone street" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5SUiZKBXFAcccKWsoySXO3-JAe0JdAl8jxAqYb-KRyL1wj9C-rJYVDa_GtYr1-sj5hgGEPud0tSWrNDG_cbbAZE5VFSNdLgKP8Fjrd4tnm5Db5rwg5vuz6JcoE44zKh2UKel238N8N2kXgXjaF9oNhouSGbT8Sn-CAoLzeBZFrcKoN08cYvVA5j-3xnzuUzvUuKH7u9JeDZ-PYDZGhJWiLr44FBAI6b_Q8oH9kX6myqIBwbfzh8nBdXOgEpTUyQHFNilf_PKwWrw"/>
 </div>
-<div class="relative z-10 text-center max-w-4xl px-6">
-<span class="text-primary font-bold tracking-[0.2em] text-[10px] uppercase mb-6 block">Küratörlükle Tasarlanmış Deneyimler</span>
-<h1 class="font-headline text-5xl md:text-7xl font-bold text-on-surface mb-8 leading-[1.1] tracking-tight">
-                Bu akşam sevgilinle <br/> <span class="italic text-primary">ne yapacağını</span> 1 dakikada bul.
-            </h1>
-<p class="text-lg md:text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto leading-relaxed">
-                Moduna, bütçene ve semtine göre İstanbul’da en uygun date planlarını keşfet. Algoritmaların değil, küratörlerin seçkisiyle.
-            </p>
-<a class="inline-flex items-center gap-3 bg-primary text-on-primary px-10 py-5 rounded-full text-lg font-semibold hover:scale-[1.02] transition-all shadow-xl shadow-primary/20" href="#planner">
-                Hemen Başla
-                <span class="material-symbols-outlined">arrow_forward</span>
+<div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+<span class="font-label-caps text-label-caps text-white/90 mb-4 block uppercase tracking-widest">The Urban Discovery Tool</span>
+<h1 class="font-h1 text-h1 text-white mb-6 leading-tight">What should you do with your partner tonight? Find out in 60 seconds.</h1>
+<p class="font-body-lg text-body-lg text-white/80 mb-10 max-w-2xl mx-auto">Discover the best NYC date spots based on your mood, budget, and neighborhood.</p>
+<a class="inline-flex items-center gap-2 bg-background text-primary px-8 py-4 rounded-lg font-button hover:bg-surface-container transition-all shadow-xl" href="#planner">
+                    Start Planning <span class="material-symbols-outlined">arrow_downward</span>
 </a>
 </div>
 </section>
-<!-- How it Works -->
-<section class="py-24 bg-surface-container-low px-8 border-y border-surface-container" id="how">
-<div class="max-w-screen-xl mx-auto text-center mb-20">
-<h2 class="font-headline text-4xl font-bold mb-4">Nasıl Çalışır?</h2>
-<div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-screen-xl mx-auto">
-<div class="flex flex-col items-center text-center gap-6 group">
-<div class="w-20 h-20 rounded-3xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm group-hover:shadow-md transition-shadow">
-<span class="material-symbols-outlined text-4xl">favorite</span>
-</div>
+<!-- Planner Section -->
+<section class="py-xl bg-surface-container-low px-margin-mobile md:px-0" id="planner">
+<div class="max-w-5xl mx-auto">
+<div class="bg-white rounded-2xl shadow-sm border border-outline-variant p-8 md:p-12">
+<div class="space-y-12">
+<!-- Step 1: Mood -->
 <div>
-<h3 class="font-headline text-xl font-bold mb-2">Modunu Seç</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed px-4">Romantik, sakin, eğlenceli veya keşif dolu enerjini belirle.</p>
-</div>
-</div>
-<div class="flex flex-col items-center text-center gap-6 group">
-<div class="w-20 h-20 rounded-3xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm group-hover:shadow-md transition-shadow">
-<span class="material-symbols-outlined text-4xl">payments</span>
-</div>
-<div>
-<h3 class="font-headline text-xl font-bold mb-2">Bütçeni Belirle</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed px-4">Size uygun bütçe aralığını seçin, sürprizleri en aza indirin.</p>
-</div>
-</div>
-<div class="flex flex-col items-center text-center gap-6 group">
-<div class="w-20 h-20 rounded-3xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm group-hover:shadow-md transition-shadow">
-<span class="material-symbols-outlined text-4xl">location_on</span>
-</div>
-<div>
-<h3 class="font-headline text-xl font-bold mb-2">Semtini Belirle</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed px-4">İstanbul'un en ikonik semtlerinden birini tercih edin.</p>
-</div>
-</div>
-<div class="flex flex-col items-center text-center gap-6 group">
-<div class="w-20 h-20 rounded-3xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm group-hover:shadow-md transition-shadow">
-<span class="material-symbols-outlined text-4xl">auto_awesome</span>
-</div>
-<div>
-<h3 class="font-headline text-xl font-bold mb-2">Hazır Plan Al</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed px-4">Saniyeler içinde 3 farklı küratör planı karşınızda.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- The Planner Engine -->
-<section class="py-24 px-8 max-w-screen-2xl mx-auto scroll-mt-20" id="planner">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-<!-- Filter Column -->
-<div class="lg:col-span-5 space-y-12">
-<div>
-<h2 class="font-headline text-3xl font-bold mb-8 text-primary">Senin Encounter'ın</h2>
-<!-- Mood Selection -->
-<div class="mb-10">
-<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-6 block">1. BUGÜN HANGİ MODDASINIZ?</label>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-<template :key="mood.id" x-for="mood in moods">
-<button :class="selectedMood?.id === mood.id ? 'bg-primary text-on-primary border-primary ring-4 ring-primary/10' : 'bg-surface-container-lowest border-outline-variant/15 text-on-surface hover:border-primary'" @click="selectedMood = mood" class="flex flex-col items-center justify-center p-4 rounded-xl border transition-all">
-<span class="material-symbols-outlined mb-2" x-text="mood.icon"></span>
-<span class="text-[10px] font-bold uppercase" x-text="mood.label"></span>
+<h3 class="font-h3 text-h3 mb-6 flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center text-sm">1</span>
+                                What's the vibe?
+                            </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="mood-grid">
+<button class="mood-btn border border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 hover:border-primary transition-all" data-mood="romantic">
+<span class="material-symbols-outlined text-primary">favorite</span>
+<span class="font-button text-sm">Romantic</span>
 </button>
-</template>
-</div>
-</div>
-<!-- Budget Selection -->
-<div class="mb-10">
-<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-6 block">2. BÜTÇE ARALIĞI</label>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-<template :key="budget.id" x-for="budget in budgets">
-<button :class="selectedBudget?.id === budget.id ? 'bg-primary text-on-primary border-primary ring-4 ring-primary/10' : 'bg-surface-container-lowest border-outline-variant/15 text-on-surface hover:border-primary'" @click="selectedBudget = budget" class="flex items-center justify-between p-4 rounded-xl border transition-all text-left">
-<span class="text-xs font-medium" x-text="budget.label"></span>
-<span class="material-symbols-outlined text-sm" x-text="selectedBudget?.id === budget.id ? 'check_circle' : 'circle'"></span>
+<button class="mood-btn border border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 hover:border-primary transition-all" data-mood="calm">
+<span class="material-symbols-outlined text-primary">potted_plant</span>
+<span class="font-button text-sm">Calm</span>
 </button>
-</template>
-</div>
-</div>
-<!-- District Selection -->
-<div class="mb-10">
-<div class="flex justify-between items-center mb-6">
-<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest block">3. SEMT TERCİHİ</label>
-<button @click="useGeolocation" class="flex items-center gap-1.5 text-primary text-[10px] font-bold uppercase hover:underline">
-<span :class="geoLoading ? 'animate-spin' : ''" class="material-symbols-outlined text-sm">my_location</span>
-<span x-text="geoLoading ? 'Konum Alınıyor...' : 'Konumumu Kullan'"></span>
+<button class="mood-btn border border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 hover:border-primary transition-all" data-mood="fun">
+<span class="material-symbols-outlined text-primary">celebration</span>
+<span class="font-button text-sm">Fun</span>
 </button>
-</div>
-<div class="flex flex-wrap gap-2">
-<template :key="district" x-for="district in districts">
-<button :class="selectedDistrict === district ? 'bg-primary text-on-primary border-primary shadow-lg shadow-primary/20 scale-[1.02]' : 'bg-surface-container-lowest border-outline-variant/20 hover:bg-tertiary-fixed'" @click="selectedDistrict = district" class="px-5 py-2.5 rounded-full border text-sm font-medium transition-all" x-text="district"></button>
-</template>
-</div>
-</div>
-<!-- Viral Toggle -->
-<div class="mb-12 flex items-center justify-between bg-surface-container-low p-4 rounded-2xl border border-surface-container">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary">trending_up</span>
-<div>
-<p class="text-xs font-bold text-on-surface uppercase tracking-wide">Viral Keşfet</p>
-<p class="text-[10px] text-on-surface-variant">Sadece en çok konuşulan mekanlar</p>
-</div>
-</div>
-<button :class="viralOnly ? 'bg-primary' : 'bg-stone-300'" @click="viralOnly = !viralOnly" class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none">
-<span :class="viralOnly ? 'translate-x-6' : 'translate-x-1'" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span>
+<button class="mood-btn border border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 hover:border-primary transition-all" data-mood="spontaneous">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<span class="font-button text-sm">Spontaneous</span>
 </button>
-</div>
-<button :class="isSelectionComplete ? 'bg-primary shadow-primary/20 hover:shadow-primary/40 opacity-100 hover:scale-[1.01]' : 'bg-stone-300 shadow-none opacity-50 cursor-not-allowed'" :disabled="!isSelectionComplete" @click="generatePlans" class="w-full py-5 text-on-primary rounded-2xl font-bold text-lg shadow-2xl transition-all flex items-center justify-center gap-3 group">
-                        Planları Hazırla
-                        <span class="material-symbols-outlined group-hover:rotate-12 transition-transform">auto_awesome</span>
+<button class="mood-btn border border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 hover:border-primary transition-all" data-mood="scenic">
+<span class="material-symbols-outlined text-primary">landscape</span>
+<span class="font-button text-sm">Scenic</span>
+</button>
+<button class="mood-btn border border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 hover:border-primary transition-all" data-mood="coffee_dessert">
+<span class="material-symbols-outlined text-primary">icecream</span>
+<span class="font-button text-sm">Coffee &amp; Dessert</span>
+</button>
+<button class="mood-btn border border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 hover:border-primary transition-all" data-mood="budget_friendly">
+<span class="material-symbols-outlined text-primary">savings</span>
+<span class="font-button text-sm">Budget Friendly</span>
+</button>
+<button class="mood-btn border border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 hover:border-primary transition-all" data-mood="culture_focused">
+<span class="material-symbols-outlined text-primary">museum</span>
+<span class="font-button text-sm">Culture Focused</span>
 </button>
 </div>
 </div>
-<!-- Results Column -->
-<div class="lg:col-span-7">
-<!-- Initial State: Inspiration Cards -->
-<div class="space-y-8" x-show="!showResults &amp;&amp; hasValidInspiration()">
-<div class="mb-6">
-<h3 class="font-headline text-2xl font-bold text-on-surface">Popüler Senaryolar</h3>
-<p class="text-on-surface-variant text-sm">Hızlıca bir küratör favorisi seçebilirsiniz.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<template :key="card.title" x-for="card in inspirationCards">
-<div class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-all">
-<img :alt="card.title" :src="card.image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-<div class="absolute bottom-6 left-6 right-6">
-<h4 class="text-white font-headline text-xl font-bold mb-1" x-text="card.title"></h4>
-<p class="text-white/70 text-xs line-clamp-2" x-text="card.description"></p>
-</div>
-</div>
-</template>
-</div>
-</div>
-<!-- Results View -->
-<div x-cloak="" x-show="showResults" x-transition:enter="transition ease-out duration-500" x-transition:enter-end="opacity-100 translate-y-0" x-transition:enter-start="opacity-0 translate-y-8">
-<div class="mb-10 flex justify-between items-end">
+<!-- Step 2: Budget & Neighborhood -->
+<div class="grid md:grid-cols-2 gap-12">
 <div>
-<h3 class="font-headline text-2xl md:text-3xl font-bold text-on-surface leading-tight" x-text="getResultTitle()"></h3>
-<p class="text-on-surface-variant mt-2 text-sm" x-text="filteredPlans.length &gt; 0 ? 'Bugün için en yüksek skor alan eşleşmeler.' : 'Bu kombinasyon için henüz yeterli mekan bulunamadı. Yakın seçenekler gösteriliyor.'"></p>
-</div>
-<button @click="showResults = false" class="text-primary text-xs font-bold uppercase flex items-center gap-1 hover:underline mb-1">
-<span class="material-symbols-outlined text-sm">close</span> Kapat
-                        </button>
-</div>
-<div class="space-y-8">
-<template :key="place.id" x-for="(place, index) in filteredPlans">
-<div class="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-surface-container group flex flex-col md:flex-row h-full transition-all duration-500">
-<div class="md:w-56 h-56 md:h-auto overflow-hidden relative">
-<img :alt="place.name" :src="place.image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-<div class="absolute top-4 left-4">
-<span class="bg-primary text-on-primary text-[10px] font-bold px-2.5 py-1 rounded-full shadow-lg" x-text="'SKOR: ' + Math.round(place.score || 95)"></span>
+<h3 class="font-h3 text-h3 mb-6 flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center text-sm">2</span>
+                                    Set your budget
+                                </h3>
+<div class="flex bg-surface-container p-1 rounded-xl">
+<button class="budget-btn flex-1 py-3 font-button text-xs rounded-lg transition-all chip-active" data-budget="budget">Budget</button>
+<button class="budget-btn flex-1 py-3 font-button text-xs rounded-lg transition-all" data-budget="mid">Mid</button>
+<button class="budget-btn flex-1 py-3 font-button text-xs rounded-lg transition-all" data-budget="mid_high">Mid-High</button>
+<button class="budget-btn flex-1 py-3 font-button text-xs rounded-lg transition-all" data-budget="premium">Premium</button>
 </div>
 </div>
-<div class="flex-1 p-8 flex flex-col justify-between">
 <div>
-<div class="flex justify-between items-start mb-2">
-<div>
-<h4 class="font-headline text-2xl font-bold text-on-surface mb-1" x-text="place.name"></h4>
-<div class="flex items-center gap-2 text-xs font-medium text-on-surface-variant/70">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">location_on</span><span x-text="place.district"></span></span>
-<span>•</span>
-<span x-text="place.type"></span>
-</div>
-</div>
-<span class="text-[10px] font-bold text-primary px-3 py-1.5 bg-primary/5 rounded-full border border-primary/10" x-text="getBudgetLabelById(place.budget)"></span>
-</div>
-<p class="text-sm text-on-surface-variant mt-4 leading-relaxed" x-text="place.shortDesc"></p>
-<div class="mt-4 p-4 bg-tertiary-fixed/20 rounded-2xl border border-tertiary-fixed/40">
-<p class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 flex items-center gap-1">
-<span class="material-symbols-outlined text-xs">auto_awesome</span> Neden senin için seçtik?
-                                            </p>
-<p class="text-xs text-on-surface-variant" x-text="place.whyItFits"></p>
-</div>
-</div>
-<div class="mt-8 flex items-center justify-between">
-<div class="flex items-center gap-4">
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm text-on-surface-variant">bolt</span>
-<span class="text-[10px] font-bold text-on-surface-variant/60 uppercase" x-text="'Enerji: ' + place.energy"></span>
-</div>
-</div>
-<div class="flex gap-3">
-<button class="w-11 h-11 rounded-full border border-surface-container flex items-center justify-center hover:bg-surface-container text-on-surface-variant transition-colors group/save">
-<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">bookmark</span>
-</button>
-<button @click="openModal(place)" class="bg-primary text-on-primary px-6 py-3 rounded-full text-xs font-bold hover:opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
-                                                Detayları Gör
-                                                <span class="material-symbols-outlined text-sm">open_in_new</span>
-</button>
+<h3 class="font-h3 text-h3 mb-6 flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center text-sm">3</span>
+                                    Location
+                                </h3>
+<div class="space-y-4">
+<button class="w-full flex items-center justify-center gap-2 py-3 border border-outline text-primary font-button rounded-lg hover:bg-surface transition-all" onclick="getLocation()">
+<span class="material-symbols-outlined">my_location</span> Use My Location
+                                    </button>
+<select class="w-full border-outline-variant rounded-lg py-3 font-body-md focus:border-primary focus:ring-primary" id="neighborhood-select">
+<option value="">Select a Neighborhood</option>
+<option value="West Village / Greenwich Village">West Village / Greenwich Village</option>
+<option value="SoHo / NoHo">SoHo / NoHo</option>
+<option value="West Side / Chelsea">West Side / Chelsea</option>
+<option value="Midtown">Midtown</option>
+<option value="Williamsburg / Greenpoint">Williamsburg / Greenpoint</option>
+<option value="DUMBO / Brooklyn Heights">DUMBO / Brooklyn Heights</option>
+<option value="Lower Manhattan">Lower Manhattan</option>
+<option value="Uptown / Harlem / Hudson Heights">Uptown / Harlem / Hudson Heights</option>
+</select>
 </div>
 </div>
 </div>
-</div>
-</template>
-<div class="pt-6 text-center">
-<button @click="generatePlans" class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline py-2 px-4 rounded-full hover:bg-primary/5 transition-colors">
-<span class="material-symbols-outlined text-lg">refresh</span>
-                                Alternatifleri Üret
+<!-- Toggle & Action -->
+<div class="pt-8 border-t border-outline-variant flex flex-col md:flex-row items-center justify-between gap-6">
+<label class="inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="viral-toggle" type="checkbox"/>
+<div class="relative w-11 h-6 bg-stone-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="ms-3 font-button text-sm text-stone-600">Include Viral / Trending Spots</span>
+</label>
+<button class="w-full md:w-auto bg-primary-container text-white px-12 py-5 rounded-xl font-button text-lg hover:opacity-90 transition-all shadow-lg" id="build-plan-btn">
+                                Build My Plan
                             </button>
 </div>
 </div>
 </div>
 </div>
+</section>
+<!-- Inspiration Section (Initial State) -->
+<section class="py-xl px-margin-mobile md:px-0" id="inspiration">
+<div class="max-w-7xl mx-auto">
+<div class="mb-12 text-center">
+<h2 class="font-h2 text-h2 text-primary mb-4">Date Night Inspiration</h2>
+<p class="font-body-md text-stone-500">Not sure where to start? Explore our curated collections.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden mb-4">
+<img alt="Bar Scene" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="dimly lit cocktail bar with elegant glassware and warm golden lighting illuminating leather booths" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG02pRAALYxKedJRDHtBbCCtWikbyXmo3DMDkmnk4JkKCkJkfzy_6XmeYNWZKhXs39IHhDWcfzKxhhAKeLa3v_w-MMZhkPINrkMNs1VGRH2jSNfHmC0Kspo0F4AaVjLgRfFQaLz8mhuqq8gYg_-UeCaOy4oHqyzJqHbjb80pZWOtCc_h_vGvdnWN82cigEVWZM6hLwO1sKs9g1gSXMxfV1v5iwHj172UdjgdwVQnBAOEHs0Vc94qYSkGAKy362o6JHcOGZleXGG5k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="font-h3 text-xl">The First Impression</h4>
+<p class="text-white/80 text-sm">Low-pressure, high-vibe spots</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden mb-4">
+<img alt="Dining Scene" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="fine dining restaurant table with crisp white linen and a single candle in a glass holder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVoODxUqvPFgMl9rwJuX5SECRKesHLKG2qLkqlpXR54YGSN482fSAeMhaxr1Bjxx5afXmqXMquVp0Yi3n9gYs7bH8akwgFj4fN_THmIEj3clYqA95uCC_s1wEHzG83JuSTCBHYy2Mc7CQPW4fidTHN-slF1tw6tcsZ6gnl8zeq63bnrZ2PifJbjR8YUqy-oJaayN37wVAvDDjX8uzhAyW0nwrco6jit8N99n5VOqPWoDAjXGc53Zr20PjIBSoyBc-MMDnVSJIELfc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="font-h3 text-xl">The Anniversary Gala</h4>
+<p class="text-white/80 text-sm">Fine dining &amp; scenic views</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden mb-4">
+<img alt="Street Scene" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="vibrant street market scene in NYC with colorful awnings and people walking at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-BJIFlvNVY26DnpzlKm1N4aklkpfzKVxHBaam76nlQsn4HiYxpIJ6RJtyKBNrtYFkZHnwWiD8j1Ydx3PeKRAri-mJhSGnCXnvcOOfdMd0Z9qrenwAPH_DcBlQBinFwIRtmdsIqSlo-qTtgGpIqpkwfCWWVc0zg63Y3_ts2x72-IB6V7JFETUTUQkAF4yMQ5OviX9yO0MY1fQlwfw8CTAfIOx0A2_yI9RUJe9K9P62UnIgkLXdoUmbB1Smeo7qtzwDKjw7k0ZiVcQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="font-h3 text-xl">The Spontaneous Walk</h4>
+<p class="text-white/80 text-sm">Art, snacks, and wandering</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
-<!-- Detailed Section for Inspiration -->
-<section class="py-24 bg-surface px-8" id="inspiration" x-show="hasValidInspiration()">
-<div class="max-w-screen-xl mx-auto">
-<div class="flex justify-between items-end mb-12">
+<!-- Results Area -->
+<section class="hidden py-xl bg-surface-container px-margin-mobile md:px-0 scroll-mt-20" id="results-area">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
 <div>
-<h2 class="font-headline text-4xl font-bold mb-3">Hazır Senaryolarla İlham Al</h2>
-<p class="text-on-surface-variant">Seçim yapmak istemeyenler için küratör favorileri.</p>
+<h2 class="font-h2 text-h2 text-primary mb-2" id="results-header">Curated for You</h2>
+<p class="font-body-md text-stone-600" id="results-subtext">Based on your mood and preferences, we think you'll love these.</p>
 </div>
-<a class="text-primary font-bold text-sm border-b-2 border-primary hidden md:block hover:opacity-80 transition-opacity" href="#">Tümünü Gör</a>
+<button class="text-primary font-button flex items-center gap-2 hover:underline" onclick="scrollToTop()">
+<span class="material-symbols-outlined">restart_alt</span> Reset Filters
+                    </button>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<template :key="card.title" x-for="card in inspirationCards">
-<div class="group cursor-pointer">
-<div class="aspect-[4/5] rounded-3xl overflow-hidden mb-6 relative">
-<img :alt="card.title" :src="card.image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-<div class="absolute bottom-8 left-8 right-8">
-<h3 class="text-white font-headline text-2xl font-bold mb-2" x-text="card.title"></h3>
-<p class="text-white/80 text-sm leading-relaxed" x-text="card.subtitle"></p>
-</div>
-</div>
-</div>
-</template>
+<div class="grid md:grid-cols-3 gap-8" id="results-grid">
+<!-- Dynamic Venue Cards Inject Here -->
 </div>
 </div>
 </section>
 </main>
-<!-- Plan Detail Modal -->
-<div class="fixed inset-0 z-[60] flex items-center justify-center p-4" x-cloak="" x-show="modalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100" x-transition:enter-start="opacity-0">
-<div @click="modalOpen = false" class="absolute inset-0 bg-navy-dark/60 backdrop-blur-md"></div>
-<div class="bg-background w-full max-w-2xl rounded-[2.5rem] overflow-hidden relative shadow-2xl" x-show="selectedPlace &amp;&amp; selectedPlace.name" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-end="scale-100 translate-y-0" x-transition:enter-start="scale-95 translate-y-10">
-<button @click="modalOpen = false" class="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/40 transition-all">
-<span class="material-symbols-outlined">close</span>
-</button>
-<div class="h-80 relative">
-<img :alt="selectedPlace?.name" :src="selectedPlace?.image" class="w-full h-full object-cover"/>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-<div class="absolute bottom-8 left-8">
-<span class="text-[10px] font-bold bg-primary text-on-primary px-3 py-1 rounded-full mb-3 inline-block shadow-lg">KÜRATÖR SEÇİMİ</span>
-<h2 class="text-on-surface font-headline text-4xl font-bold" x-text="selectedPlace?.name"></h2>
-<p class="text-on-surface-variant font-medium mt-1" x-text="selectedPlace?.type"></p>
+<!-- Footer -->
+<footer class="bg-stone-100 border-t border-stone-200 w-full py-12">
+<div class="flex flex-col items-center justify-center space-y-6 px-4">
+<div class="font-serif italic text-lg text-stone-800">The NYC Concierge</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-stone-500 hover:text-[#6B1D23] transition-all font-serif text-sm" href="#">About Us</a>
+<a class="text-stone-500 hover:text-[#6B1D23] transition-all font-serif text-sm" href="#">Press</a>
+<a class="text-stone-500 hover:text-[#6B1D23] transition-all font-serif text-sm" href="#">Terms</a>
+<a class="text-stone-500 hover:text-[#6B1D23] transition-all font-serif text-sm" href="#">Privacy</a>
+<a class="text-stone-500 hover:text-[#6B1D23] transition-all font-serif text-sm" href="#">Contact</a>
 </div>
-</div>
-<div class="p-10">
-<div class="flex flex-wrap gap-4 mb-10">
-<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-full border border-surface-container">
-<span class="material-symbols-outlined text-sm text-primary">location_on</span>
-<span class="text-xs font-semibold" x-text="selectedPlace?.district"></span>
-</div>
-<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-full border border-surface-container">
-<span class="material-symbols-outlined text-sm text-primary">payments</span>
-<span class="text-xs font-semibold" x-text="getBudgetLabelById(selectedPlace?.budget)"></span>
-</div>
-<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-full border border-surface-container">
-<span class="material-symbols-outlined text-sm text-primary">bolt</span>
-<span class="text-xs font-semibold" x-text="'Enerji: ' + selectedPlace?.energy"></span>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-<div class="space-y-6">
-<div>
-<h4 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Mekan Hakkında</h4>
-<p class="text-on-surface-variant text-sm leading-relaxed" x-text="selectedPlace?.shortDesc"></p>
-</div>
-</div>
-<div class="space-y-6">
-<div>
-<h4 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Plan Akışı</h4>
-<div class="space-y-4">
-<div class="flex gap-4">
-<div class="flex flex-col items-center">
-<div class="w-2 h-2 rounded-full bg-primary mt-1.5"></div>
-<div class="w-0.5 flex-1 bg-surface-container my-1"></div>
-</div>
-<div class="pb-4">
-<p class="text-xs font-bold text-on-surface">Varış &amp; Karşılama</p>
-<p class="text-[10px] text-on-surface-variant">Mekan atmosferine giriş.</p>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="flex flex-col items-center">
-<div class="w-2 h-2 rounded-full bg-primary mt-1.5"></div>
-<div class="w-0.5 flex-1 bg-surface-container my-1"></div>
-</div>
-<div class="pb-4">
-<p class="text-xs font-bold text-on-surface">Ana Deneyim</p>
-<p class="text-[10px] text-on-surface-variant">Mekanın imza lezzeti/etkinliği.</p>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="flex flex-col items-center">
-<div class="w-2 h-2 rounded-full bg-primary mt-1.5"></div>
-</div>
-<div>
-<p class="text-xs font-bold text-on-surface">Kapanış &amp; Yürüyüş</p>
-<p class="text-[10px] text-on-surface-variant">Semtin ruhuyla vedalaşma.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-12 flex gap-4">
-<button class="flex-1 bg-primary text-on-primary py-5 rounded-2xl font-bold hover:opacity-90 transition-all shadow-xl shadow-primary/20">
-                    Rezervasyon Yap
-                </button>
-<button class="px-8 py-5 rounded-2xl border border-surface-container hover:bg-surface-container transition-all flex items-center justify-center">
-<span class="material-symbols-outlined">share</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-<footer class="bg-navy-dark text-white/60 w-full py-20 px-8 mt-24">
-<div class="max-w-screen-2xl mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-<div class="md:col-span-2">
-<div class="font-headline font-bold text-white text-3xl mb-8">Encounters İstanbul</div>
-<p class="text-sm max-w-sm leading-relaxed opacity-70">İstanbul'un ruhunu taşıyan, özenle seçilmiş mekanlar ve anılar biriktirmeniz için tasarlanmış kişisel bir asistan.</p>
-</div>
-<div>
-<h4 class="text-white font-bold text-xs uppercase tracking-widest mb-8">Hızlı Erişim</h4>
-<div class="flex flex-col gap-5 text-sm">
-<a class="hover:text-white transition-colors" href="#">Hakkımızda</a>
-<a class="hover:text-white transition-colors" href="#">Küratör Ol</a>
-<a class="hover:text-white transition-colors" href="#">İşletme Girişi</a>
-<a class="hover:text-white transition-colors" href="#">Destek</a>
-</div>
-</div>
-<div>
-<h4 class="text-white font-bold text-xs uppercase tracking-widest mb-8">Bizi Takip Et</h4>
-<div class="flex flex-col gap-5 text-sm">
-<a class="hover:text-white transition-colors" href="#">Instagram</a>
-<a class="hover:text-white transition-colors" href="#">TikTok</a>
-<a class="hover:text-white transition-colors" href="#">YouTube</a>
-<a class="hover:text-white transition-colors" href="#">Email Bülteni</a>
-</div>
-</div>
-</div>
-<div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] uppercase tracking-[0.2em]">
-<div class="opacity-40">© 2024 Encounters İstanbul. Design by Atelier.</div>
-<div class="flex gap-10 opacity-60">
-<a class="hover:text-white transition-colors" href="#">Gizlilik</a>
-<a class="hover:text-white transition-colors" href="#">Koşullar</a>
-<a class="hover:text-white transition-colors" href="#">Çerezler</a>
-</div>
-</div>
+<p class="font-serif text-sm text-stone-600">© 2024 The NYC Concierge. Curated for urban discovery.</p>
 </div>
 </footer>
+<!-- Modal -->
+<div class="fixed inset-0 z-[100] hidden" id="details-modal">
+<div class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm modal-close"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-4">
+<div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+<div class="relative h-64">
+<img alt="Venue" class="w-full h-full object-cover" data-alt="venue interior" id="modal-image" src=""/>
+<button class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white w-10 h-10 rounded-full flex items-center justify-center modal-close">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="absolute bottom-4 left-6 px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold uppercase tracking-wider" id="modal-badge">Expert Pick</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h2 text-h2 text-primary mb-1" id="modal-name">Venue Name</h3>
+<p class="font-body-md text-stone-500" id="modal-district">Neighborhood</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-button" id="modal-budget">Mid-High</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8 mb-8">
+<div>
+<h4 class="font-label-caps text-xs text-stone-400 mb-2 uppercase tracking-widest">Why it fits</h4>
+<p class="font-body-md text-stone-700 italic" id="modal-reason">"The perfect blend of intimacy and atmosphere for your romantic evening."</p>
+</div>
+<div>
+<h4 class="font-label-caps text-xs text-stone-400 mb-2 uppercase tracking-widest">Details</h4>
+<ul class="font-body-md text-stone-700 space-y-1">
+<li><strong>Type:</strong> <span id="modal-type">Restaurant</span></li>
+<li><strong>Energy:</strong> <span id="modal-energy">Lively</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-6 border-l-4 border-primary">
+<h4 class="font-button text-primary mb-2">Concierge's Tip</h4>
+<p class="font-body-md text-stone-600" id="modal-desc">Full venue description goes here.</p>
+</div>
+<button class="w-full mt-8 bg-primary-container text-white py-4 rounded-xl font-button hover:opacity-90 transition-all modal-close">
+                        Perfect, I'll Save This
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Script Section -->
 <script>
-    function app() {
-        return {
-            selectedMood: null,
-            selectedBudget: null,
-            selectedDistrict: null,
-            viralOnly: false,
-            showResults: false,
-            modalOpen: false,
-            geoLoading: false,
-            selectedPlace: null,
-            filteredPlans: [],
+        const seedPlaces = [
+            { id: "aoko-matcha", name: "Aokō Matcha", district: "West Village / Greenwich Village", type: "coffee_dessert", moods: ["coffee_dessert", "spontaneous", "viral"], budget: "budget", energy: "medium", viralTag: "trending", audienceFit: "trending_social", dateStyle: "coffee_dessert", priorityScore: 8, shortDesc: "A sleek matcha café with destination-worthy desserts and a very social-media-friendly vibe.", img: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=2071" },
+            { id: "dame", name: "Dame", district: "West Village / Greenwich Village", type: "restaurant", moods: ["romantic", "calm", "fun"], budget: "mid_high", energy: "medium", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 9, shortDesc: "A buzzy but intimate seafood spot that works well for date night.", img: "https://images.unsplash.com/photo-1550966842-2849a2249865?q=80&w=2070" },
+            { id: "commerce-inn", name: "Commerce Inn", district: "West Village / Greenwich Village", type: "restaurant", moods: ["romantic", "calm"], budget: "mid", energy: "calm", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 8, shortDesc: "A cozy West Village dining room that feels low-lit, intimate, and classic.", img: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?q=80&w=2071" },
+            { id: "le-coucou", name: "Le Coucou", district: "SoHo / NoHo", type: "restaurant", moods: ["romantic", "premium", "special_occasion"], budget: "premium", energy: "calm", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 10, shortDesc: "An elegant French dining room for serious date nights and anniversaries.", img: "https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=2070" },
+            { id: "rafts", name: "Raf’s", district: "SoHo / NoHo", type: "restaurant", moods: ["romantic", "calm", "spontaneous"], budget: "mid_high", energy: "medium", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 8, shortDesc: "A stylish downtown restaurant that feels special without going ultra-formal.", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974" },
+            { id: "croft-alley", name: "Croft Alley", district: "SoHo / NoHo", type: "coffee_dessert", moods: ["coffee_dessert", "spontaneous", "viral"], budget: "mid", energy: "medium", viralTag: "trending", audienceFit: "trending_social", dateStyle: "brunch", priorityScore: 7, shortDesc: "California-style brunch energy with lattes, matcha, and long, easy mornings.", img: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=2070" },
+            { id: "la-cabra", name: "La Cabra", district: "SoHo / NoHo", type: "coffee_dessert", moods: ["coffee_dessert", "calm", "viral"], budget: "budget", energy: "calm", viralTag: "trending", audienceFit: "trending_social", dateStyle: "coffee_dessert", priorityScore: 7, shortDesc: "Great coffee and pastries for a softer, lower-pressure date moment.", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070" },
+            { id: "high-line", name: "The High Line", district: "West Side / Chelsea", type: "walk_view", moods: ["scenic", "calm", "culture_focused", "budget_friendly"], budget: "budget", energy: "medium", viralTag: "standard", audienceFit: "culture_date", dateStyle: "walk", priorityScore: 8, shortDesc: "An elevated city walk that works especially well for scenic and low-pressure dates.", img: "https://images.unsplash.com/photo-1516666289174-888569584829?q=80&w=2070" },
+            { id: "little-island", name: "Little Island", district: "West Side / Chelsea", type: "waterfront", moods: ["scenic", "romantic", "spontaneous"], budget: "budget", energy: "medium", viralTag: "standard", audienceFit: "culture_date", dateStyle: "scenic", priorityScore: 8, shortDesc: "A photogenic waterfront park with views, performances, and a relaxed date-night feel.", img: "https://images.unsplash.com/photo-1627844718626-4a6b963ca68f?q=80&w=2074" },
+            { id: "hwaro", name: "Hwaro", district: "Midtown", type: "restaurant", moods: ["romantic", "premium", "special_occasion"], budget: "premium", energy: "calm", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 9, shortDesc: "A highly intimate tasting-counter dinner for major-occasion date nights.", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070" },
+            { id: "lilia", name: "Lilia", district: "Williamsburg / Greenpoint", type: "restaurant", moods: ["romantic", "fun", "spontaneous"], budget: "mid_high", energy: "medium", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 9, shortDesc: "One of Brooklyn’s strongest date-night restaurants, especially if you want energy without chaos.", img: "https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2070" },
+            { id: "francie", name: "Francie", district: "Williamsburg / Greenpoint", type: "restaurant", moods: ["romantic", "premium", "special_occasion"], budget: "premium", energy: "calm", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 9, shortDesc: "A Michelin-starred Williamsburg brasserie that feels celebratory and polished.", img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974" },
+            { id: "kelang", name: "Kelang", district: "Williamsburg / Greenpoint", type: "restaurant", moods: ["romantic", "fun", "viral"], budget: "mid", energy: "medium", viralTag: "trending", audienceFit: "trending_social", dateStyle: "dinner", priorityScore: 8, shortDesc: "A moody, transportive dinner spot with a more cinematic and trend-forward feel.", img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=1974" },
+            { id: "domino-park", name: "Domino Park", district: "Williamsburg / Greenpoint", type: "waterfront", moods: ["scenic", "calm", "budget_friendly", "spontaneous"], budget: "budget", energy: "medium", viralTag: "standard", audienceFit: "culture_date", dateStyle: "walk", priorityScore: 7, shortDesc: "A waterfront walk with skyline views that pairs easily with coffee or dinner after.", img: "https://images.unsplash.com/photo-1554110397-9bac083977c6?q=80&w=2070" },
+            { id: "river-cafe", name: "The River Café", district: "DUMBO / Brooklyn Heights", type: "restaurant", moods: ["romantic", "premium", "special_occasion", "scenic"], budget: "premium", energy: "calm", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 10, shortDesc: "A landmark waterfront fine-dining room under the Brooklyn Bridge for classic NYC romance.", img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070" },
+            { id: "brooklyn-bridge-park", name: "Brooklyn Bridge Park", district: "DUMBO / Brooklyn Heights", type: "waterfront", moods: ["scenic", "calm", "budget_friendly", "culture_focused"], budget: "budget", energy: "medium", viralTag: "standard", audienceFit: "culture_date", dateStyle: "scenic", priorityScore: 8, shortDesc: "Big skyline views, waterfront promenades, and a very strong sunset-date vibe.", img: "https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?q=80&w=2070" },
+            { id: "pebble-beach", name: "Pebble Beach", district: "DUMBO / Brooklyn Heights", type: "waterfront", moods: ["scenic", "romantic", "budget_friendly"], budget: "budget", energy: "calm", viralTag: "standard", audienceFit: "culture_date", dateStyle: "scenic", priorityScore: 7, shortDesc: "A simple but highly photogenic waterfront stop under the Manhattan Bridge.", img: "https://images.unsplash.com/photo-1543716091-a840c05249ec?q=80&w=1974" },
+            { id: "manhatta", name: "Manhatta", district: "Lower Manhattan", type: "restaurant_bar", moods: ["romantic", "scenic", "premium", "special_occasion"], budget: "premium", energy: "medium", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 10, shortDesc: "Sky-high views over Lower Manhattan make this one of the strongest wow-factor date picks.", img: "https://images.unsplash.com/photo-1514361892635-6b07e31e75f9?q=80&w=2070" },
+            { id: "saga", name: "Saga", district: "Lower Manhattan", type: "restaurant", moods: ["romantic", "premium", "special_occasion"], budget: "premium", energy: "calm", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 10, shortDesc: "A high-end Financial District special-occasion restaurant for big-date energy.", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974" },
+            { id: "caviar-russe", name: "Caviar Russe", district: "Midtown", type: "restaurant", moods: ["romantic", "premium", "special_occasion"], budget: "premium", energy: "calm", viralTag: "standard", audienceFit: "couple_core", dateStyle: "dinner", priorityScore: 9, shortDesc: "A luxury seafood-and-caviar date pick for very premium nights out.", img: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=2076" },
+            { id: "oma-shop-ii", name: "The Oma, Shop II Coffee+ Lifestyle", district: "Uptown / Harlem / Hudson Heights", type: "coffee_dessert", moods: ["coffee_dessert", "calm", "viral"], budget: "budget", energy: "calm", viralTag: "trending", audienceFit: "trending_social", dateStyle: "coffee_dessert", priorityScore: 7, shortDesc: "A coffee-and-community space that feels softer, trend-aware, and easy for daytime dates.", img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047" },
+            { id: "met-cloisters", name: "The Met Cloisters", district: "Uptown / Harlem / Hudson Heights", type: "museum_art", moods: ["culture_focused", "romantic", "scenic", "calm"], budget: "mid", energy: "calm", viralTag: "standard", audienceFit: "culture_date", dateStyle: "culture", priorityScore: 9, shortDesc: "A highly atmospheric museum-and-gardens date with Hudson views and a very distinct mood.", img: "https://images.unsplash.com/photo-1590004953392-5aba2e72269a?q=80&w=2070" }
+        ];
 
-            moods: [
-                { id: 'romantic', label: 'Romantik', icon: 'favorite' },
-                { id: 'calm', label: 'Sakin', icon: 'self_improvement' },
-                { id: 'fun', label: 'Eğlenceli', icon: 'celebration' },
-                { id: 'explore', label: 'Keşif', icon: 'explore' }
-            ],
+        let selectedMood = 'romantic';
+        let selectedBudget = 'budget';
 
-            budgets: [
-                { id: 'budget', label: 'Uygun (500-1000 TL)' },
-                { id: 'mid', label: 'Orta (1000-2000 TL)' },
-                { id: 'upper', label: 'Orta-Üst (2000-3500 TL)' },
-                { id: 'premium', label: 'Premium (3500+ TL)' }
-            ],
+        // Initialize Selections
+        document.querySelectorAll('.mood-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('chip-active', 'border-primary'));
+                btn.classList.add('chip-active', 'border-primary');
+                selectedMood = btn.dataset.mood;
+            });
+        });
 
-            districts: ['Beşiktaş', 'Karaköy', 'Kadıköy', 'Cihangir', 'Nişantaşı', 'Emirgan'],
+        document.querySelectorAll('.budget-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.budget-btn').forEach(b => b.classList.remove('chip-active'));
+                btn.classList.add('chip-active');
+                selectedBudget = btn.dataset.budget;
+            });
+        });
 
-            seedPlaces: [
-                { id: 1, name: "AQUA", district: "Beşiktaş", budget: "premium", mood: "romantic", energy: "Düşük", type: "Fine Dining", viral: false, shortDesc: "Four Seasons Bosphorus bünyesinde üst düzey deniz ürünleri ve Boğaz manzarası.", whyItFits: "Premium bütçenize ve romantik modunuza en uygun Boğaz manzaralı adres.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzeA1D5-iElOYYJ-SKZnDyYGteSZ_D7efUn7vit-2l8_kwbkxyT-bPpA-5popZhAq2m0cMCugP8JJnv040TL-stNcZbutuZPLo3y72h1KHwlia57O31ytc-4UdkyeFo_iEzZj_4zMP7wCmcvYsG4_9KzLyK6YleUCrkafdvb0zNCPbIqnHCqHJsHtvjJ7nBGKv3GVrKD8UF82l9d6kZo_5gI9lidREoesf2jBL7nfRxix5brDWk6x_8lh_d1RE9bcHaKB3EEy01Zs" },
-                { id: 2, name: "Mürver", district: "Karaköy", budget: "upper", mood: "romantic", energy: "Orta", type: "Restoran", viral: true, shortDesc: "Odun ateşinde pişen lezzetler ve eşsiz Boğaz manzarası.", whyItFits: "Viral olan bu mekan, Karaköy'ün en iyi manzaralarından birine sahip.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g" },
-                { id: 3, name: "Aida - Vino e Cucina", district: "Kadıköy", budget: "mid", mood: "romantic", energy: "Orta", type: "Trattoria", viral: true, shortDesc: "Moda'nın ara sokaklarında gizlenmiş, piyano eşliğinde İtalyan lezzetleri.", whyItFits: "Kadıköy'ün en romantik ve saklı kalmış İtalyan trattoria'sı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" },
-                { id: 4, name: "Ohayo", district: "Nişantaşı", budget: "mid", mood: "explore", energy: "Yüksek", type: "Japanese Bar", viral: true, shortDesc: "Nişantaşı'nın dinamik ruhuna uygun, yenilikçi kokteyller ve atıştırmalıklar.", whyItFits: "Yeni tatlar keşfetmek isteyenler için Nişantaşı'nın en popüler barı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
-                { id: 5, name: "Basta Street Food", district: "Kadıköy", budget: "budget", mood: "fun", energy: "Yüksek", type: "Gastro-Büfe", viral: true, shortDesc: "Şef dokunuşlu dürümler ve kuzu hamburger.", whyItFits: "Hem uygun bütçeli hem de inanılmaz lezzetli bir sokak lezzeti deneyimi.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A" },
-                { id: 6, name: "Lucca", district: "Beşiktaş", budget: "upper", mood: "fun", energy: "Yüksek", type: "Bistro Bar", viral: true, shortDesc: "Bebek'in en ikonik mekanı, eğlence ve lezzet bir arada.", whyItFits: "Beşiktaş'ta hem eğlenmek hem de viral bir akşam geçirmek için ideal.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
-                { id: 7, name: "Aman da Bravo", district: "Beşiktaş", budget: "mid", mood: "calm", energy: "Düşük", type: "Bistronomi", viral: false, shortDesc: "Gizli bir bahçede mevsimsel malzemelerle hazırlanan zarif lezzetler.", whyItFits: "Beşiktaş'ta sakin ve kaliteli bir yemek deneyimi arayanlara.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" },
-                { id: 11, name: "Mikla", district: "Cihangir", budget: "premium", mood: "romantic", energy: "Orta", type: "Fine Dining", viral: false, shortDesc: "Modern Anadolu Mutfağı'nın öncüsü, 360 derece İstanbul manzarası.", whyItFits: "Cihangir'de özel bir kutlama için en iyi 360 derece manzara.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
-                { id: 13, name: "Petra Roasting", district: "Beşiktaş", budget: "budget", mood: "calm", energy: "Düşük", type: "Kahve", viral: true, shortDesc: "Nitelikli kahve deneyimi ve ferah endüstriyel tasarım.", whyItFits: "Sakin bir öğleden sonra ve kaliteli kahve için en iyi Beşiktaş durağı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" }
-            ],
-
-            inspirationCards: [
-                { title: 'İlk Buluşma', subtitle: 'Garantili Başlangıçlar', description: 'Garantili, rahatlatıcı ve etkileyici bir başlangıç için küratör seçkisi.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg' },
-                { title: 'Yıldönümü', subtitle: 'Özel Geceler', description: 'Unutulmaz bir gece, muazzam manzara ve üst düzey servis sunan premium mekanlar.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g' },
-                { title: 'Sıradışı Pazar', subtitle: 'Hafta Sonu Keşifleri', description: 'Sakin başlayan, sanatla harmanlanan ve hafif bir yemekle biten Pazar rotaları.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A' }
-            ],
-
-            get isSelectionComplete() {
-                return this.selectedMood !== null && this.selectedBudget !== null && this.selectedDistrict !== null;
-            },
-
-            getBudgetLabelById(id) {
-                return this.budgets.find(b => b.id === id)?.label || '';
-            },
-
-            getResultTitle() {
-                if (!this.selectedDistrict || !this.selectedMood || !this.selectedBudget) return "Sana Özel Rotalar";
-                const budgetStr = this.selectedBudget.label.split(' (')[0];
-                return `${this.selectedDistrict} • ${this.selectedMood.label} • ${budgetStr}`;
-            },
-
-            hasValidInspiration() {
-                return this.inspirationCards.length > 0 && this.inspirationCards.every(card => 
-                    card.title && card.subtitle && card.description && card.title.trim() !== ""
-                );
-            },
-
-            generatePlans() {
-                if (!this.isSelectionComplete) return;
-
-                // Step 1: Filter by exact criteria
-                let filtered = this.seedPlaces.filter(p => 
-                    p.district === this.selectedDistrict && 
-                    p.mood === this.selectedMood.id && 
-                    p.budget === this.selectedBudget.id
-                );
-
-                // Step 2: Fallback to partial matches if no exact found (Mood + Budget or District)
-                if (filtered.length === 0) {
-                    filtered = this.seedPlaces.filter(p => 
-                        (p.mood === this.selectedMood.id && p.budget === this.selectedBudget.id) || 
-                        (p.district === this.selectedDistrict && p.mood === this.selectedMood.id)
-                    );
-                }
-
-                // Step 3: Global fallback if still none
-                if (filtered.length === 0) {
-                    filtered = [...this.seedPlaces].slice(0, 3);
-                }
-
-                // Clean data and score
-                filtered = filtered
-                    .filter(p => p.name && p.shortDesc)
-                    .map(p => {
-                        let score = 88 + Math.random() * 10;
-                        if (this.viralOnly && p.viral) score += 2;
-                        if (p.district === this.selectedDistrict) score += 2;
-                        return { ...p, score: Math.min(score, 99) };
-                    });
-
-                // Sort by Score
-                filtered.sort((a, b) => b.score - a.score);
-
-                this.filteredPlans = filtered.slice(0, 3);
-                this.showResults = true;
-                
-                // Smooth scroll to results
-                setTimeout(() => {
-                    document.getElementById('planner').scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-            },
-
-            openModal(place) {
-                if (!place || !place.name) return;
-                this.selectedPlace = place;
-                this.modalOpen = true;
-            },
-
-            useGeolocation() {
-                this.geoLoading = true;
-                setTimeout(() => {
-                    this.selectedDistrict = 'Beşiktaş'; // Mock geolocation
-                    this.geoLoading = false;
-                }, 1200);
+        // Geo Location Logic
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((pos) => {
+                    alert("Location found. We've optimized matches for your current borough.");
+                }, (err) => {
+                    alert("Location access denied. Please select a neighborhood manually.");
+                });
             }
-        };
-    }
-</script>
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('results-area').classList.add('hidden');
+            document.getElementById('inspiration').classList.remove('hidden');
+        }
+
+        // Search Logic
+        document.getElementById('build-plan-btn').addEventListener('click', () => {
+            const district = document.getElementById('neighborhood-select').value;
+            const viralOnly = document.getElementById('viral-toggle').checked;
+
+            const scores = seedPlaces.map(place => {
+                let score = 0;
+                if (district && place.district === district) score += 5;
+                if (place.budget === selectedBudget) score += 4;
+                if (place.moods.includes(selectedMood)) score += 5;
+                if (viralOnly && place.viralTag === 'trending') score += 3;
+                return { ...place, finalScore: score };
+            });
+
+            const filtered = scores
+                .sort((a, b) => b.finalScore - a.finalScore || b.priorityScore - a.priorityScore)
+                .slice(0, 3);
+
+            renderResults(filtered, district);
+        });
+
+        function renderResults(venues, district) {
+            const grid = document.getElementById('results-grid');
+            const area = document.getElementById('results-area');
+            const inspo = document.getElementById('inspiration');
+            const header = document.getElementById('results-header');
+
+            header.innerText = district ? `${district} Matches` : `Top NYC Matches`;
+            grid.innerHTML = '';
+
+            venues.forEach(venue => {
+                const card = `
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-outline-variant hover:shadow-md transition-all group">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${venue.img}" class="w-full h-full object-cover group-hover:scale-105 transition-all" data-alt="vibrant venue interior" alt="${venue.name}">
+                            ${venue.viralTag === 'trending' ? '<span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">Trending</span>' : ''}
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-h3 text-lg text-primary">${venue.name}</h4>
+                                <span class="text-xs font-button bg-surface-container px-2 py-1 rounded">${venue.budget.replace('_', '-')}</span>
+                            </div>
+                            <p class="text-xs text-stone-400 font-label-caps uppercase tracking-wider mb-4">${venue.district}</p>
+                            <p class="text-sm text-stone-600 line-clamp-2 mb-6">${venue.shortDesc}</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                                <span class="text-xs text-stone-400 flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-xs">bolt</span> ${venue.energy} energy
+                                </span>
+                                <button onclick="openModal('${venue.id}')" class="text-primary font-button text-xs hover:underline flex items-center gap-1">
+                                    View Details <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+
+            inspo.classList.add('hidden');
+            area.classList.remove('hidden');
+            area.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal Logic
+        function openModal(id) {
+            const venue = seedPlaces.find(v => v.id === id);
+            if(!venue) return;
+
+            document.getElementById('modal-name').innerText = venue.name;
+            document.getElementById('modal-district').innerText = venue.district;
+            document.getElementById('modal-budget').innerText = venue.budget.replace('_', '-');
+            document.getElementById('modal-type').innerText = venue.type.replace('_', ' ');
+            document.getElementById('modal-energy').innerText = venue.energy;
+            document.getElementById('modal-desc').innerText = venue.shortDesc;
+            document.getElementById('modal-image').src = venue.img;
+            document.getElementById('modal-reason').innerText = `Perfect for a ${selectedMood} vibe in ${venue.district}. This spot is highly recommended for couples seeking a ${venue.energy} atmosphere.`;
+            
+            document.getElementById('details-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.querySelectorAll('.modal-close').forEach(el => {
+            el.addEventListener('click', () => {
+                document.getElementById('details-modal').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Set Default Active
+        document.querySelector('[data-mood="romantic"]').classList.add('chip-active', 'border-primary');
+    </script>
 </body></html>
