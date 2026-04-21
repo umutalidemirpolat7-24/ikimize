@@ -1,7 +1,5 @@
-<html class="scroll-smooth" lang="tr"><head></head><body class="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-primary overflow-x-hidden" x-data="app()">```html
-
-
-    <meta charset="utf-8"/>
+<html class="scroll-smooth" lang="tr"><head>
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Encounters İstanbul | Kişiselleştirilmiş Deneyimler</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -52,6 +50,8 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-primary overflow-x-hidden" x-data="app()">
 <!-- Header -->
 <header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-2xl border-b border-surface-container">
 <nav class="flex justify-between items-center px-8 h-20 max-w-screen-2xl mx-auto">
@@ -63,8 +63,8 @@
 <a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Kaydedilenler</a>
 </div>
 <button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-all text-sm">
-                Plan Oluştur
-            </button>
+            Plan Oluştur
+        </button>
 </nav>
 </header>
 <main class="pt-20">
@@ -77,14 +77,14 @@
 <div class="relative z-10 text-center max-w-4xl px-6">
 <span class="text-primary font-bold tracking-[0.2em] text-[10px] uppercase mb-6 block">Küratörlükle Tasarlanmış Deneyimler</span>
 <h1 class="font-headline text-5xl md:text-7xl font-bold text-on-surface mb-8 leading-[1.1] tracking-tight">
-                    Bu akşam sevgilinle <br/> <span class="italic text-primary">ne yapacağını</span> 1 dakikada bul.
-                </h1>
+                Bu akşam sevgilinle <br/> <span class="italic text-primary">ne yapacağını</span> 1 dakikada bul.
+            </h1>
 <p class="text-lg md:text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto leading-relaxed">
-                    Moduna, bütçene ve semtine göre İstanbul’da en uygun date planlarını keşfet. Algoritmaların değil, küratörlerin seçkisiyle.
-                </p>
+                Moduna, bütçene ve semtine göre İstanbul’da en uygun date planlarını keşfet. Algoritmaların değil, küratörlerin seçkisiyle.
+            </p>
 <a class="inline-flex items-center gap-3 bg-primary text-on-primary px-10 py-5 rounded-full text-lg font-semibold hover:scale-[1.02] transition-all shadow-xl shadow-primary/20" href="#planner">
-                    Hemen Başla
-                    <span class="material-symbols-outlined">arrow_forward</span>
+                Hemen Başla
+                <span class="material-symbols-outlined">arrow_forward</span>
 </a>
 </div>
 </section>
@@ -193,22 +193,21 @@
 </button>
 </div>
 <button :class="isSelectionComplete ? 'bg-primary shadow-primary/20 hover:shadow-primary/40 opacity-100 hover:scale-[1.01]' : 'bg-stone-300 shadow-none opacity-50 cursor-not-allowed'" :disabled="!isSelectionComplete" @click="generatePlans" class="w-full py-5 text-on-primary rounded-2xl font-bold text-lg shadow-2xl transition-all flex items-center justify-center gap-3 group">
-                            Planları Hazırla
-                            <span class="material-symbols-outlined group-hover:rotate-12 transition-transform">auto_awesome</span>
+                        Planları Hazırla
+                        <span class="material-symbols-outlined group-hover:rotate-12 transition-transform">auto_awesome</span>
 </button>
 </div>
 </div>
 <!-- Results Column -->
 <div class="lg:col-span-7">
 <!-- Initial State: Inspiration Cards -->
-<div class="space-y-8" x-show="!showResults">
+<div class="space-y-8" x-show="!showResults &amp;&amp; hasValidInspiration()">
 <div class="mb-6">
 <h3 class="font-headline text-2xl font-bold text-on-surface">Popüler Senaryolar</h3>
 <p class="text-on-surface-variant text-sm">Hızlıca bir küratör favorisi seçebilirsiniz.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <template :key="card.title" x-for="card in inspirationCards">
-<template x-if="card.title &amp;&amp; card.subtitle &amp;&amp; card.description">
 <div class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-all">
 <img :alt="card.title" :src="card.image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
@@ -217,7 +216,6 @@
 <p class="text-white/70 text-xs line-clamp-2" x-text="card.description"></p>
 </div>
 </div>
-</template>
 </template>
 </div>
 </div>
@@ -230,11 +228,10 @@
 </div>
 <button @click="showResults = false" class="text-primary text-xs font-bold uppercase flex items-center gap-1 hover:underline mb-1">
 <span class="material-symbols-outlined text-sm">close</span> Kapat
-                            </button>
+                        </button>
 </div>
 <div class="space-y-8">
 <template :key="place.id" x-for="(place, index) in filteredPlans">
-<template x-if="place.name &amp;&amp; place.district &amp;&amp; place.shortDesc">
 <div class="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-surface-container group flex flex-col md:flex-row h-full transition-all duration-500">
 <div class="md:w-56 h-56 md:h-auto overflow-hidden relative">
 <img :alt="place.name" :src="place.image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
@@ -259,7 +256,7 @@
 <div class="mt-4 p-4 bg-tertiary-fixed/20 rounded-2xl border border-tertiary-fixed/40">
 <p class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 flex items-center gap-1">
 <span class="material-symbols-outlined text-xs">auto_awesome</span> Neden senin için seçtik?
-                                                    </p>
+                                            </p>
 <p class="text-xs text-on-surface-variant" x-text="place.whyItFits"></p>
 </div>
 </div>
@@ -275,20 +272,19 @@
 <span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">bookmark</span>
 </button>
 <button @click="openModal(place)" class="bg-primary text-on-primary px-6 py-3 rounded-full text-xs font-bold hover:opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
-                                                        Detayları Gör
-                                                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+                                                Detayları Gör
+                                                <span class="material-symbols-outlined text-sm">open_in_new</span>
 </button>
 </div>
 </div>
 </div>
 </div>
 </template>
-</template>
 <div class="pt-6 text-center">
 <button @click="generatePlans" class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline py-2 px-4 rounded-full hover:bg-primary/5 transition-colors">
 <span class="material-symbols-outlined text-lg">refresh</span>
-                                    Alternatifleri Üret
-                                </button>
+                                Alternatifleri Üret
+                            </button>
 </div>
 </div>
 </div>
@@ -307,7 +303,6 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <template :key="card.title" x-for="card in inspirationCards">
-<template x-if="card.title &amp;&amp; card.subtitle &amp;&amp; card.description">
 <div class="group cursor-pointer">
 <div class="aspect-[4/5] rounded-3xl overflow-hidden mb-6 relative">
 <img :alt="card.title" :src="card.image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
@@ -319,7 +314,6 @@
 </div>
 </div>
 </template>
-</template>
 </div>
 </div>
 </section>
@@ -327,7 +321,7 @@
 <!-- Plan Detail Modal -->
 <div class="fixed inset-0 z-[60] flex items-center justify-center p-4" x-cloak="" x-show="modalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100" x-transition:enter-start="opacity-0">
 <div @click="modalOpen = false" class="absolute inset-0 bg-navy-dark/60 backdrop-blur-md"></div>
-<div class="bg-background w-full max-w-2xl rounded-[2.5rem] overflow-hidden relative shadow-2xl" x-show="selectedPlace" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-end="scale-100 translate-y-0" x-transition:enter-start="scale-95 translate-y-10">
+<div class="bg-background w-full max-w-2xl rounded-[2.5rem] overflow-hidden relative shadow-2xl" x-show="selectedPlace &amp;&amp; selectedPlace.name" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-end="scale-100 translate-y-0" x-transition:enter-start="scale-95 translate-y-10">
 <button @click="modalOpen = false" class="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/40 transition-all">
 <span class="material-symbols-outlined">close</span>
 </button>
@@ -401,8 +395,8 @@
 </div>
 <div class="mt-12 flex gap-4">
 <button class="flex-1 bg-primary text-on-primary py-5 rounded-2xl font-bold hover:opacity-90 transition-all shadow-xl shadow-primary/20">
-                        Rezervasyon Yap
-                    </button>
+                    Rezervasyon Yap
+                </button>
 <button class="px-8 py-5 rounded-2xl border border-surface-container hover:bg-surface-container transition-all flex items-center justify-center">
 <span class="material-symbols-outlined">share</span>
 </button>
@@ -447,118 +441,131 @@
 </div>
 </footer>
 <script>
-        function app() {
-            return {
-                selectedMood: null,
-                selectedBudget: null,
-                selectedDistrict: null,
-                viralOnly: false,
-                showResults: false,
-                modalOpen: false,
-                geoLoading: false,
-                selectedPlace: null,
-                filteredPlans: [],
+    function app() {
+        return {
+            selectedMood: null,
+            selectedBudget: null,
+            selectedDistrict: null,
+            viralOnly: false,
+            showResults: false,
+            modalOpen: false,
+            geoLoading: false,
+            selectedPlace: null,
+            filteredPlans: [],
 
-                moods: [
-                    { id: 'romantic', label: 'Romantik', icon: 'favorite' },
-                    { id: 'calm', label: 'Sakin', icon: 'self_improvement' },
-                    { id: 'fun', label: 'Eğlenceli', icon: 'celebration' },
-                    { id: 'explore', label: 'Keşif', icon: 'explore' }
-                ],
+            moods: [
+                { id: 'romantic', label: 'Romantik', icon: 'favorite' },
+                { id: 'calm', label: 'Sakin', icon: 'self_improvement' },
+                { id: 'fun', label: 'Eğlenceli', icon: 'celebration' },
+                { id: 'explore', label: 'Keşif', icon: 'explore' }
+            ],
 
-                budgets: [
-                    { id: 'budget', label: 'Uygun (500-1000 TL)' },
-                    { id: 'mid', label: 'Orta (1000-2000 TL)' },
-                    { id: 'upper', label: 'Orta-Üst (2000-3500 TL)' },
-                    { id: 'premium', label: 'Premium (3500+ TL)' }
-                ],
+            budgets: [
+                { id: 'budget', label: 'Uygun (500-1000 TL)' },
+                { id: 'mid', label: 'Orta (1000-2000 TL)' },
+                { id: 'upper', label: 'Orta-Üst (2000-3500 TL)' },
+                { id: 'premium', label: 'Premium (3500+ TL)' }
+            ],
 
-                districts: ['Beşiktaş', 'Karaköy', 'Kadıköy', 'Cihangir', 'Nişantaşı', 'Emirgan'],
+            districts: ['Beşiktaş', 'Karaköy', 'Kadıköy', 'Cihangir', 'Nişantaşı', 'Emirgan'],
 
-                seedPlaces: [
-                    { id: 1, name: "AQUA", district: "Beşiktaş", budget: "premium", mood: "romantic", energy: "Düşük", type: "Fine Dining", viral: false, shortDesc: "Four Seasons Bosphorus bünyesinde üst düzey deniz ürünleri ve Boğaz manzarası.", whyItFits: "Premium bütçenize ve romantik modunuza en uygun Boğaz manzaralı adres.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzeA1D5-iElOYYJ-SKZnDyYGteSZ_D7efUn7vit-2l8_kwbkxyT-bPpA-5popZhAq2m0cMCugP8JJnv040TL-stNcZbutuZPLo3y72h1KHwlia57O31ytc-4UdkyeFo_iEzZj_4zMP7wCmcvYsG4_9KzLyK6YleUCrkafdvb0zNCPbIqnHCqHJsHtvjJ7nBGKv3GVrKD8UF82l9d6kZo_5gI9lidREoesf2jBL7nfRxix5brDWk6x_8lh_d1RE9bcHaKB3EEy01Zs" },
-                    { id: 2, name: "Mürver", district: "Karaköy", budget: "upper", mood: "romantic", energy: "Orta", type: "Restoran", viral: true, shortDesc: "Odun ateşinde pişen lezzetler ve eşsiz Boğaz manzarası.", whyItFits: "Viral olan bu mekan, Karaköy'ün en iyi manzaralarından birine sahip.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g" },
-                    { id: 3, name: "Aida - Vino e Cucina", district: "Kadıköy", budget: "mid", mood: "romantic", energy: "Orta", type: "Trattoria", viral: true, shortDesc: "Moda'nın ara sokaklarında gizlenmiş, piyano eşliğinde İtalyan lezzetleri.", whyItFits: "Kadıköy'ün en romantik ve saklı kalmış İtalyan trattoria'sı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" },
-                    { id: 4, name: "Ohayo", district: "Nişantaşı", budget: "mid", mood: "explore", energy: "Yüksek", type: "Japanese Bar", viral: true, shortDesc: "Nişantaşı'nın dinamik ruhuna uygun, yenilikçi kokteyller ve atıştırmalıklar.", whyItFits: "Yeni tatlar keşfetmek isteyenler için Nişantaşı'nın en popüler barı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
-                    { id: 5, name: "Basta Street Food", district: "Kadıköy", budget: "budget", mood: "fun", energy: "Yüksek", type: "Gastro-Büfe", viral: true, shortDesc: "Şef dokunuşlu dürümler ve kuzu hamburger.", whyItFits: "Hem uygun bütçeli hem de inanılmaz lezzetli bir sokak lezzeti deneyimi.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A" },
-                    { id: 11, name: "Mikla", district: "Cihangir", budget: "premium", mood: "romantic", energy: "Orta", type: "Fine Dining", viral: false, shortDesc: "Modern Anadolu Mutfağı'nın öncüsü, 360 derece İstanbul manzarası.", whyItFits: "Cihangir'de özel bir kutlama için en iyi 360 derece manzara.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
-                    { id: 13, name: "Petra Roasting", district: "Beşiktaş", budget: "budget", mood: "calm", energy: "Düşük", type: "Kahve", viral: true, shortDesc: "Nitelikli kahve deneyimi ve ferah endüstriyel tasarım.", whyItFits: "Sakin bir öğleden sonra ve kaliteli kahve için en iyi Beşiktaş durağı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" }
-                ],
+            seedPlaces: [
+                { id: 1, name: "AQUA", district: "Beşiktaş", budget: "premium", mood: "romantic", energy: "Düşük", type: "Fine Dining", viral: false, shortDesc: "Four Seasons Bosphorus bünyesinde üst düzey deniz ürünleri ve Boğaz manzarası.", whyItFits: "Premium bütçenize ve romantik modunuza en uygun Boğaz manzaralı adres.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzeA1D5-iElOYYJ-SKZnDyYGteSZ_D7efUn7vit-2l8_kwbkxyT-bPpA-5popZhAq2m0cMCugP8JJnv040TL-stNcZbutuZPLo3y72h1KHwlia57O31ytc-4UdkyeFo_iEzZj_4zMP7wCmcvYsG4_9KzLyK6YleUCrkafdvb0zNCPbIqnHCqHJsHtvjJ7nBGKv3GVrKD8UF82l9d6kZo_5gI9lidREoesf2jBL7nfRxix5brDWk6x_8lh_d1RE9bcHaKB3EEy01Zs" },
+                { id: 2, name: "Mürver", district: "Karaköy", budget: "upper", mood: "romantic", energy: "Orta", type: "Restoran", viral: true, shortDesc: "Odun ateşinde pişen lezzetler ve eşsiz Boğaz manzarası.", whyItFits: "Viral olan bu mekan, Karaköy'ün en iyi manzaralarından birine sahip.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g" },
+                { id: 3, name: "Aida - Vino e Cucina", district: "Kadıköy", budget: "mid", mood: "romantic", energy: "Orta", type: "Trattoria", viral: true, shortDesc: "Moda'nın ara sokaklarında gizlenmiş, piyano eşliğinde İtalyan lezzetleri.", whyItFits: "Kadıköy'ün en romantik ve saklı kalmış İtalyan trattoria'sı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" },
+                { id: 4, name: "Ohayo", district: "Nişantaşı", budget: "mid", mood: "explore", energy: "Yüksek", type: "Japanese Bar", viral: true, shortDesc: "Nişantaşı'nın dinamik ruhuna uygun, yenilikçi kokteyller ve atıştırmalıklar.", whyItFits: "Yeni tatlar keşfetmek isteyenler için Nişantaşı'nın en popüler barı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
+                { id: 5, name: "Basta Street Food", district: "Kadıköy", budget: "budget", mood: "fun", energy: "Yüksek", type: "Gastro-Büfe", viral: true, shortDesc: "Şef dokunuşlu dürümler ve kuzu hamburger.", whyItFits: "Hem uygun bütçeli hem de inanılmaz lezzetli bir sokak lezzeti deneyimi.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A" },
+                { id: 6, name: "Lucca", district: "Beşiktaş", budget: "upper", mood: "fun", energy: "Yüksek", type: "Bistro Bar", viral: true, shortDesc: "Bebek'in en ikonik mekanı, eğlence ve lezzet bir arada.", whyItFits: "Beşiktaş'ta hem eğlenmek hem de viral bir akşam geçirmek için ideal.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
+                { id: 7, name: "Aman da Bravo", district: "Beşiktaş", budget: "mid", mood: "calm", energy: "Düşük", type: "Bistronomi", viral: false, shortDesc: "Gizli bir bahçede mevsimsel malzemelerle hazırlanan zarif lezzetler.", whyItFits: "Beşiktaş'ta sakin ve kaliteli bir yemek deneyimi arayanlara.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" },
+                { id: 11, name: "Mikla", district: "Cihangir", budget: "premium", mood: "romantic", energy: "Orta", type: "Fine Dining", viral: false, shortDesc: "Modern Anadolu Mutfağı'nın öncüsü, 360 derece İstanbul manzarası.", whyItFits: "Cihangir'de özel bir kutlama için en iyi 360 derece manzara.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTRP-TOzZLA02cBBeBYK2mZarpeUQ730dPzTSKKYY-dU_0CDl407Z-9yh2IZ0lul7d9Ue9r5Z4-jdN41bMBMTlFPtpO85BBs2bCqW6bhgIwzOYarHjwfRIJOqARWEh3lAXB1tZfLkwJVxyknMWGlJFa2NGqP_MBaHsVqbbPckxd63grO2iSg9DE1mZLxPmNr_27w1e0wQ7QPvyxUtymfyReTKJc8CMbl1XSQ6IWIlMb59-6sWN0EWhuw43WzljPoa5rPWrSfDFotg" },
+                { id: 13, name: "Petra Roasting", district: "Beşiktaş", budget: "budget", mood: "calm", energy: "Düşük", type: "Kahve", viral: true, shortDesc: "Nitelikli kahve deneyimi ve ferah endüstriyel tasarım.", whyItFits: "Sakin bir öğleden sonra ve kaliteli kahve için en iyi Beşiktaş durağı.", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg" }
+            ],
 
-                inspirationCards: [
-                    { title: 'İlk Buluşma', subtitle: 'Garantili Başlangıçlar', description: 'Garantili, rahatlatıcı ve etkileyici bir başlangıç için küratör seçkisi.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg' },
-                    { title: 'Yıldönümü', subtitle: 'Özel Geceler', description: 'Unutulmaz bir gece, muazzam manzara ve üst düzey servis sunan premium mekanlar.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g' },
-                    { title: 'Sıradışı Pazar', subtitle: 'Hafta Sonu Keşifleri', description: 'Sakin başlayan, sanatla harmanlanan ve hafif bir yemekle biten Pazar rotaları.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A' }
-                ],
+            inspirationCards: [
+                { title: 'İlk Buluşma', subtitle: 'Garantili Başlangıçlar', description: 'Garantili, rahatlatıcı ve etkileyici bir başlangıç için küratör seçkisi.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAqYhKOosERt-HCndW4bGSdoLKV1eWNGoYY-aIq8HcKnuGGm0L1FLB2YIPN1hdDOuYpgSBLDS_ISjTRssxbR8rms3NwGvvz0H8dnWQVb_vmmYJhkS3EG0tB0RD-yae3iLg9GynuTUZ5vqh48zK0AT-qoQD7QM6LW3ndM_B47TqH66ZGI6nKHPdWsJtvwVJXsX_JNepg4N1TxH8Otsphx5-cyODOdAoQiPzaTWPkHGRUpDyQA2SYM06ZEab5ELGgiCJ0kKjyoeTYOg' },
+                { title: 'Yıldönümü', subtitle: 'Özel Geceler', description: 'Unutulmaz bir gece, muazzam manzara ve üst düzey servis sunan premium mekanlar.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAITiSK_YfZ0dVIqUondHFmgT3zbPKuIYK1D2EmVrebEn37nNyIIGRuhj_tIxDveWDiIUoC0Sm97AViObfame-eZTup7F9uXyRf3RzAY3RoiG0vFzofVsHPA3hUXG_W138NbwYT5zgl_ONqR4nyJMcEhuXeVqdow6HsYYjnLL-Jf28j-Mtf5bz4TxlpmmxVJ2_XXE4ba6A8wmdowBReLnVktng7kHQZJXigqqlDdqRjzl0UJPKUvDOda8CVmvqKqPbNof5KIMh9T0g' },
+                { title: 'Sıradışı Pazar', subtitle: 'Hafta Sonu Keşifleri', description: 'Sakin başlayan, sanatla harmanlanan ve hafif bir yemekle biten Pazar rotaları.', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD8fOau_bjmvFq3-NYHYJZlmzabY4dgl5Bcfrkiuo8Lcg-tMrt5xd_AcCtooEGIlNrkIKJKksVeRxqJRC4zXvHigKZKfvOU3s09RjHFCM6JjbeRoVTx85sOq2hinuNFwHhfOSzpv9qTJnKvgCGZirXbHnJd0Xd5scl1GKUU9MVI1v3xgbf5EkNLx2NyJYYQDcPoc7uY0erixAC0ynxmFjODDLeJSeNovvH-Rf46YtEOvuI5Yj-1usEOj9J0jTbuI3fdo34RmOigV-A' }
+            ],
 
-                get isSelectionComplete() {
-                    return this.selectedMood && this.selectedBudget && this.selectedDistrict;
-                },
+            get isSelectionComplete() {
+                return this.selectedMood !== null && this.selectedBudget !== null && this.selectedDistrict !== null;
+            },
 
-                getBudgetLabelById(id) {
-                    return this.budgets.find(b => b.id === id)?.label || 'Bütçe Belirtilmedi';
-                },
+            getBudgetLabelById(id) {
+                return this.budgets.find(b => b.id === id)?.label || '';
+            },
 
-                getResultTitle() {
-                    if (!this.selectedDistrict || !this.selectedMood || !this.selectedBudget) return "Planlar";
-                    return `${this.selectedDistrict} / ${this.selectedMood.label} / ${this.selectedBudget.label} kriterlerine göre en iyi rotalar`;
-                },
+            getResultTitle() {
+                if (!this.selectedDistrict || !this.selectedMood || !this.selectedBudget) return "Sana Özel Rotalar";
+                const budgetStr = this.selectedBudget.label.split(' (')[0];
+                return `${this.selectedDistrict} • ${this.selectedMood.label} • ${budgetStr}`;
+            },
 
-                hasValidInspiration() {
-                    return this.inspirationCards.some(card => card.title && card.subtitle && card.description);
-                },
+            hasValidInspiration() {
+                return this.inspirationCards.length > 0 && this.inspirationCards.every(card => 
+                    card.title && card.subtitle && card.description && card.title.trim() !== ""
+                );
+            },
 
-                generatePlans() {
-                    if (!this.isSelectionComplete) return;
+            generatePlans() {
+                if (!this.isSelectionComplete) return;
 
-                    let filtered = this.seedPlaces.filter(p => 
-                        p.district === this.selectedDistrict && 
-                        p.mood === this.selectedMood.id && 
-                        p.budget === this.selectedBudget.id
+                // Step 1: Filter by exact criteria
+                let filtered = this.seedPlaces.filter(p => 
+                    p.district === this.selectedDistrict && 
+                    p.mood === this.selectedMood.id && 
+                    p.budget === this.selectedBudget.id
+                );
+
+                // Step 2: Fallback to partial matches if no exact found (Mood + Budget or District)
+                if (filtered.length === 0) {
+                    filtered = this.seedPlaces.filter(p => 
+                        (p.mood === this.selectedMood.id && p.budget === this.selectedBudget.id) || 
+                        (p.district === this.selectedDistrict && p.mood === this.selectedMood.id)
                     );
+                }
 
-                    // Fallback logic
-                    if (filtered.length === 0) {
-                        filtered = this.seedPlaces.filter(p => 
-                            p.district === this.selectedDistrict || 
-                            (p.mood === this.selectedMood.id && p.budget === this.selectedBudget.id)
-                        );
-                    }
+                // Step 3: Global fallback if still none
+                if (filtered.length === 0) {
+                    filtered = [...this.seedPlaces].slice(0, 3);
+                }
 
-                    // Apply Viral Bonus (Scoring)
-                    filtered = filtered.map(p => {
-                        let score = 85 + Math.random() * 10;
-                        if (this.viralOnly && p.viral) score += 5;
+                // Clean data and score
+                filtered = filtered
+                    .filter(p => p.name && p.shortDesc)
+                    .map(p => {
+                        let score = 88 + Math.random() * 10;
+                        if (this.viralOnly && p.viral) score += 2;
+                        if (p.district === this.selectedDistrict) score += 2;
                         return { ...p, score: Math.min(score, 99) };
                     });
 
-                    // Sort by Score
-                    filtered.sort((a, b) => b.score - a.score);
+                // Sort by Score
+                filtered.sort((a, b) => b.score - a.score);
 
-                    this.filteredPlans = filtered.slice(0, 3);
-                    this.showResults = true;
-                    
-                    // Smooth scroll to results
-                    setTimeout(() => {
-                        document.getElementById('planner').scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                },
+                this.filteredPlans = filtered.slice(0, 3);
+                this.showResults = true;
+                
+                // Smooth scroll to results
+                setTimeout(() => {
+                    document.getElementById('planner').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            },
 
-                openModal(place) {
-                    if (!place || !place.name) return;
-                    this.selectedPlace = place;
-                    this.modalOpen = true;
-                },
+            openModal(place) {
+                if (!place || !place.name) return;
+                this.selectedPlace = place;
+                this.modalOpen = true;
+            },
 
-                useGeolocation() {
-                    this.geoLoading = true;
-                    setTimeout(() => {
-                        this.selectedDistrict = 'Beşiktaş'; // Mock geolocation
-                        this.geoLoading = false;
-                    }, 1200);
-                }
-            };
-        }
-    </script>
-
-```</body></html>
+            useGeolocation() {
+                this.geoLoading = true;
+                setTimeout(() => {
+                    this.selectedDistrict = 'Beşiktaş'; // Mock geolocation
+                    this.geoLoading = false;
+                }, 1200);
+            }
+        };
+    }
+</script>
+</body></html>
