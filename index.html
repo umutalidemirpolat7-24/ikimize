@@ -39,6 +39,12 @@
         .font-noto-serif { font-family: 'Noto Serif', serif; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* Active State Classes */
+        .card-active { border-color: #660018 !important; background-color: rgba(102, 0, 24, 0.05) !important; }
+        .btn-active { background-color: #660018 !important; color: white !important; border-color: #660018 !important; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .district-active { border: 3px solid #660018 !important; }
+        .district-active .overlay { background-color: rgba(102, 0, 24, 0.4) !important; }
     </style>
 </head>
 <body class="bg-surface text-on-surface">
@@ -105,7 +111,7 @@
 </div>
 </div>
 </section>
-<!-- Inspiration Cards -->
+<!-- Inspiration Cards (Renamed as sample plans) -->
 <section class="py-24 bg-secondary">
 <div class="max-w-[1440px] mx-auto px-8">
 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
@@ -165,36 +171,36 @@
 <span class="w-8 h-8 rounded-full bg-primary text-white text-sm flex items-center justify-center">1</span>
                         Şu anki modun nasıl?
                     </h3>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="mood-options">
+<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95" onclick="selectOption('mood', 'Romantik')">
 <span class="material-symbols-outlined text-primary text-3xl mb-3 block">favorite</span>
 <span class="font-medium">Romantik</span>
 </button>
-<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95">
+<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95" onclick="selectOption('mood', 'Sakin')">
 <span class="material-symbols-outlined text-primary text-3xl mb-3 block">potted_plant</span>
 <span class="font-medium">Sakin</span>
 </button>
-<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95">
+<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95" onclick="selectOption('mood', 'Eğlenceli')">
 <span class="material-symbols-outlined text-primary text-3xl mb-3 block">celebration</span>
 <span class="font-medium">Eğlenceli</span>
 </button>
-<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95">
+<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95" onclick="selectOption('mood', 'Spontane')">
 <span class="material-symbols-outlined text-primary text-3xl mb-3 block">bolt</span>
 <span class="font-medium">Spontane</span>
 </button>
-<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95">
+<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95" onclick="selectOption('mood', 'Manzaralı')">
 <span class="material-symbols-outlined text-primary text-3xl mb-3 block">visibility</span>
 <span class="font-medium">Manzaralı</span>
 </button>
-<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95">
+<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95" onclick="selectOption('mood', 'Premium')">
 <span class="material-symbols-outlined text-primary text-3xl mb-3 block">diamond</span>
 <span class="font-medium">Premium</span>
 </button>
-<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95">
+<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95" onclick="selectOption('mood', 'Tatlı &amp; Kahve')">
 <span class="material-symbols-outlined text-primary text-3xl mb-3 block">coffee</span>
 <span class="font-medium">Tatlı &amp; Kahve</span>
 </button>
-<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95">
+<button class="p-6 bg-white rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group active:scale-95" onclick="selectOption('mood', 'Kültürel')">
 <span class="material-symbols-outlined text-primary text-3xl mb-3 block">local_activity</span>
 <span class="font-medium">Kültürel</span>
 </button>
@@ -206,11 +212,11 @@
 <span class="w-8 h-8 rounded-full bg-primary text-white text-sm flex items-center justify-center">2</span>
                         Bütçen ne kadar?
                     </h3>
-<div class="flex flex-wrap justify-center gap-4">
-<button class="px-8 py-3 bg-white border border-outline-variant rounded-full font-medium hover:border-primary hover:text-primary transition-all">Uygun</button>
-<button class="px-8 py-3 bg-white border border-outline-variant rounded-full font-medium hover:border-primary hover:text-primary transition-all">Orta</button>
-<button class="px-8 py-3 bg-primary text-white border border-primary rounded-full font-medium shadow-lg">Orta-Üst</button>
-<button class="px-8 py-3 bg-white border border-outline-variant rounded-full font-medium hover:border-primary hover:text-primary transition-all">Premium</button>
+<div class="flex flex-wrap justify-center gap-4" id="budget-options">
+<button class="px-8 py-3 bg-white border border-outline-variant rounded-full font-medium hover:border-primary hover:text-primary transition-all" onclick="selectOption('budget', 'Uygun')">Uygun</button>
+<button class="px-8 py-3 bg-white border border-outline-variant rounded-full font-medium hover:border-primary hover:text-primary transition-all" onclick="selectOption('budget', 'Orta')">Orta</button>
+<button class="px-8 py-3 bg-white border border-outline-variant rounded-full font-medium hover:border-primary hover:text-primary transition-all" onclick="selectOption('budget', 'Orta-Üst')">Orta-Üst</button>
+<button class="px-8 py-3 bg-white border border-outline-variant rounded-full font-medium hover:border-primary hover:text-primary transition-all" onclick="selectOption('budget', 'Premium')">Premium</button>
 </div>
 </div>
 <!-- District Selection -->
@@ -219,41 +225,41 @@
 <span class="w-8 h-8 rounded-full bg-primary text-white text-sm flex items-center justify-center">3</span>
                         Hangi semtte olacaksınız?
                     </h3>
-<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-<button class="relative h-40 rounded-xl overflow-hidden group">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6" id="district-options">
+<button class="relative h-40 rounded-xl overflow-hidden group border-2 border-transparent transition-all" onclick="selectOption('district', 'Beşiktaş')">
 <img alt="Beşiktaş" class="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAye5WvbnQXfCz5F9lrvErHJvz_pAK2pbyOicA9nM-HTZkPZ_rwnQBDiuBU7vvxTBUaX54RxY_mfeLHIUKvna0OpXUpcAe42sbABMvw46vipbUvY_ls1qYQ7Wl1ZEzrEW-uFtFwKrtuF_x0wTK_x6YdRQbxdtkyPVtl7mnOyhLsIA8JTs1PbttzMezHACo-Jp2L84HHObRqU6Q2Nybx4JvTRbMJ3KwGhAJKHDD4uBHIfnQMfOvLwjMY2N1ek9WTRM7obX1aru4Ecs"/>
-<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors overlay"></div>
 <span class="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">Beşiktaş</span>
 </button>
-<button class="relative h-40 rounded-xl overflow-hidden group border-2 border-primary">
+<button class="relative h-40 rounded-xl overflow-hidden group border-2 border-transparent transition-all" onclick="selectOption('district', 'Karaköy')">
 <img alt="Karaköy" class="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASHrfQdzKwK6QH1JguePeIZANWFL9XL1Kn6psvkIYgR0a33avJJfdlmvD6dffAbhm01xKsag4m-5ow-vqlXLGX0n3n8y6qxqSY_WHP-1sR69O6QJf9zWgPjVwH_ietGPS43G-l4tXNGLghgnxzsNCtDZJW64aDPCNBVB4ethq-sifnoiiUucUHAIMF9lmqkd50cT7l5mgTypy4SxgdIgXh5Gta03_rl5P3VeIoptIe1uMf3yx6rUwWnNrTsl_K5_N6JQjmje7Ji2s"/>
-<div class="absolute inset-0 bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors overlay"></div>
 <span class="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">Karaköy</span>
 </button>
-<button class="relative h-40 rounded-xl overflow-hidden group">
+<button class="relative h-40 rounded-xl overflow-hidden group border-2 border-transparent transition-all" onclick="selectOption('district', 'Kadıköy')">
 <img alt="Kadıköy" class="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDewrMr3nMXB8i3BFeQq3-KJSQeYo56u3iJPPh9Cjehca-BooXR98Ruf5ueOPWsby2gZ86kTP7imaZm3gp2vDqFbU-amDsJsgXxPbIAEaTrzHoRYoUcLGGLPuWeDZg6roHx0WDzcCbbw9H_lzh-ILROQPxbRaEWopnDEygNtje0EqkmuVVKfRzUndChw7jqEhYgb5KSDw8D9cVb-ygENrGCP9_9bXPno-TVsprcNgP_YVM075f3aouuWfDRkFkarq2VvDgkOPTiKDM"/>
-<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors overlay"></div>
 <span class="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">Kadıköy</span>
 </button>
-<button class="relative h-40 rounded-xl overflow-hidden group">
+<button class="relative h-40 rounded-xl overflow-hidden group border-2 border-transparent transition-all" onclick="selectOption('district', 'Nişantaşı')">
 <img alt="Nişantaşı" class="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCClwto7eSpmj7hB0l_1mbpDsMZKmPjKCNHEaUQv8B7H20oH4dnyDJLm7B-MpviGAOkT_40L19A17NzyNir8UmRTYpI-n4yNFp1OdRSsN7CHHv-K0YJJGOopnO3FfxMksiVHXtGQizLEOShbjh2Al_YMYGyE2UdaR9bK1aSf26r1I1hJbcWi_s-PEUxrXWLTzogeIUpCxRyltcEvO7f4nohZrCli7OU0TPY_tHO-hdwOHlxr__zdsrlDGzz0NSLzH84zucgHeB4lJo"/>
-<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors overlay"></div>
 <span class="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">Nişantaşı</span>
 </button>
-<button class="relative h-40 rounded-xl overflow-hidden group">
+<button class="relative h-40 rounded-xl overflow-hidden group border-2 border-transparent transition-all" onclick="selectOption('district', 'Cihangir')">
 <img alt="Cihangir" class="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBu5PGFksbp5ZPJ6iFnCgQrBlSN19uPaGlJngb4IloEDkE1ec2LQKWFHiIcDqS54tTxpGYch35BqUyewpBjxxADt6QY9eYIzJpBxmk2rhfdJvYQWe1DlgNzaULx1qJrfjfw-2HuntkfDkbXGU9JR2oAHlpBEgT81vbtgkUMD4c4q7zdYrp21VxgLslhgoGrJUKnYV4vr50mW5d5YsKTBjcarb6wwSM1NL-ZzjKgKBd_PgLiGT5m3I95Ivwo67rvoFsYmU9z5UY8Hk"/>
-<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors overlay"></div>
 <span class="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">Cihangir</span>
 </button>
-<button class="relative h-40 rounded-xl overflow-hidden group">
+<button class="relative h-40 rounded-xl overflow-hidden group border-2 border-transparent transition-all" onclick="selectOption('district', 'Moda')">
 <img alt="Moda" class="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcG6-kAhNJa7OBLdoUFyTr03qFbo0uoDeVTwkhU4fLGY8aBBBZfj6GSddWSeyTlcdOibKJBilp9hBSAgyhpGSKj4yJPsHiIrCaDvoTU8Octj60Nb6TnLzllgYNFQmbBlvtabWZkXedYm_RP-T7G0Sk7J5PaIdBLVbOkVrgP-KSbHLoRciM75bbqFTEVAaGmDym5VmaVAUqGETWNf33GiHH5v84RK6wYiXghpCuuK3xKvpMSqpsSPrrEi-nx5TrsDOOjPVLCvhKSco"/>
-<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors overlay"></div>
 <span class="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">Moda</span>
 </button>
 </div>
 </div>
 <div class="text-center pt-8">
-<button class="px-16 py-5 bg-primary text-white rounded-full font-bold text-xl hover:scale-95 transition-transform shadow-2xl flex items-center gap-4 mx-auto">
+<button class="px-16 py-5 bg-primary text-white rounded-full font-bold text-xl hover:scale-95 transition-transform shadow-2xl flex items-center gap-4 mx-auto" id="generate-btn">
                         Planları Hazırla
                         <span class="material-symbols-outlined">magic_button</span>
 </button>
@@ -261,110 +267,14 @@
 </div>
 </div>
 </section>
-<!-- Results Section (Visible after selection) -->
-<section class="py-24 px-8 max-w-[1440px] mx-auto bg-surface-container-low">
+<!-- Results Section (Initially hidden) -->
+<section class="hidden py-24 px-8 max-w-[1440px] mx-auto bg-surface-container-low scroll-mt-20" id="results-section">
 <div class="mb-16 text-center">
 <h2 class="font-noto-serif text-4xl font-bold text-secondary mb-4">İşte Senin İçin Seçtiklerimiz</h2>
-<p class="text-on-surface-variant font-body">Karaköy / Romantik / Sakin kriterlerine göre en iyi 3 rota.</p>
+<p class="text-on-surface-variant font-body" id="results-subtitle">Karaköy / Romantik / Sakin kriterlerine göre en iyi 3 rota.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-<!-- Result Card 1 -->
-<div class="bg-white rounded-3xl overflow-hidden flex flex-col shadow-xl border border-outline-variant/30 group">
-<div class="relative h-72">
-<img alt="Il Cortile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLp1fAd9ls-QlOg9RZ9cZF349kZ_2m5WEzdVDoV8RekPqk7izjhyTP4nIgM0ZLZT5zCG1o8_fL1YwwsfMe7M27VWZXJ6Sg8DO42EIZhX1Ryd-4T_SLF2GhZoe7PpsnuRZwE7quUfmZbI02nW9aV3u3Ot6fGwKQRg2a4Btp-DhdZeabHP-zXViFo4UdBNv62N0KENETCIXZVvEClzBZCRoPvtgmvjYj6zgUSiOTBtEzQBl1bx9KB1YJB7Wc0R98oHbJ2VBduUD7GnE"/>
-<div class="absolute top-4 left-4 bg-primary text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">Günün Seçimi</div>
-<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-lg hover:bg-primary hover:text-white transition-colors">
-<span class="material-symbols-outlined text-xl">bookmark</span>
-</button>
-</div>
-<div class="p-8 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h3 class="font-noto-serif text-2xl font-bold text-secondary">İtalyan Esintisi</h3>
-</div>
-<p class="text-primary font-semibold mb-4">Venue: Il Cortile</p>
-<div class="mb-6 space-y-3">
-<div class="flex items-start gap-2 text-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-lg">verified</span>
-<span><strong>Neden size uygun?</strong> Karaköy'ün gürültüsünden uzak, tarihi bir avluda mum ışığında gerçek bir İtalyan deneyimi.</span>
-</div>
-</div>
-<div class="mt-auto grid grid-cols-2 gap-4 border-t border-outline-variant pt-6">
-<div>
-<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Tahmini Bütçe</span>
-<span class="text-secondary font-bold text-sm">Orta-Üst</span>
-</div>
-<div>
-<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Enerji Seviyesi</span>
-<span class="text-secondary font-bold text-sm">Sakin</span>
-</div>
-</div>
-<button class="w-full mt-8 py-4 bg-secondary text-white rounded-xl font-bold hover:bg-primary transition-colors">Plan Detaylarını Gör</button>
-</div>
-</div>
-<!-- Result Card 2 -->
-<div class="bg-white rounded-3xl overflow-hidden flex flex-col shadow-xl border border-outline-variant/30 group">
-<div class="relative h-72">
-<img alt="Mürver" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvj42W4sNL2dz6NILelTXJmIHO4343wqG5R1UxUkveIr_dsGnX47Ocae3K9ZMMfr3hc1Z3BTHL5biA5Tith006T7tGouEhuMQLRUsKQo8JPN37gTh5knk9TW6jwdywrQHtqMPFmqdP1VHdZg6v_TTbumNv-sd98xVDWAOgPllPKP_onEQ0ke5OF7F_QvfIplTI0Hl1XkE26jNXdkf6kGAlP4WRVS3wPJbvBJy_FTdT3dhlqE3Y2M-n4L0km-rf3la1tK186KSUHwI"/>
-<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-lg">
-<span class="material-symbols-outlined text-xl">bookmark</span>
-</button>
-</div>
-<div class="p-8 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h3 class="font-noto-serif text-2xl font-bold text-secondary">Ateş Üstünde Aşk</h3>
-</div>
-<p class="text-primary font-semibold mb-4">Venue: Mürver</p>
-<div class="mb-6 space-y-3">
-<div class="flex items-start gap-2 text-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-lg">verified</span>
-<span><strong>Neden size uygun?</strong> Panoramik İstanbul manzarası eşliğinde açık ateşte pişen gurme lezzetler.</span>
-</div>
-</div>
-<div class="mt-auto grid grid-cols-2 gap-4 border-t border-outline-variant pt-6">
-<div>
-<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Tahmini Bütçe</span>
-<span class="text-secondary font-bold text-sm">Premium</span>
-</div>
-<div>
-<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Enerji Seviyesi</span>
-<span class="text-secondary font-bold text-sm">Orta</span>
-</div>
-</div>
-<button class="w-full mt-8 py-4 bg-secondary text-white rounded-xl font-bold hover:bg-primary transition-colors">Plan Detaylarını Gör</button>
-</div>
-</div>
-<!-- Result Card 3 -->
-<div class="bg-white rounded-3xl overflow-hidden flex flex-col shadow-xl border border-outline-variant/30 group">
-<div class="relative h-72">
-<img alt="Karaköy Lokantası" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjT1riWk0LMd5hhrywf9eE1qK84RAqLBgEXdw3-uHc4hdMkSXJIEoZUzE3-xjHMX9185eqEPWtFhU94WqxL3cmHjOeB6fp3gFfK7S9KwlIaiqpLpiN7mfPcLw3h1DzAQ4iY4Uc8d-LYw0LQY6VrN-NEibMWCA37pfIfSXSrvxa72O6V0NOHDDHOc3YlPGJUp1Vr4H3O9-pqu_Q0_DLmJLNwjiRugiePQrcMI_TwX43B3oRtZgOgUculjPAOf21KbfOyrXx6-f2SaI"/>
-<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-lg">
-<span class="material-symbols-outlined text-xl">bookmark</span>
-</button>
-</div>
-<div class="p-8 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h3 class="font-noto-serif text-2xl font-bold text-secondary">Klasik Zarafet</h3>
-</div>
-<p class="text-primary font-semibold mb-4">Venue: Karaköy Lokantası</p>
-<div class="mb-6 space-y-3">
-<div class="flex items-start gap-2 text-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-lg">verified</span>
-<span><strong>Neden size uygun?</strong> Turkuaz çiniler arasında geleneksel ve modernin buluştuğu sakin bir durak.</span>
-</div>
-</div>
-<div class="mt-auto grid grid-cols-2 gap-4 border-t border-outline-variant pt-6">
-<div>
-<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Tahmini Bütçe</span>
-<span class="text-secondary font-bold text-sm">Orta</span>
-</div>
-<div>
-<span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Enerji Seviyesi</span>
-<span class="text-secondary font-bold text-sm">Sakin</span>
-</div>
-</div>
-<button class="w-full mt-8 py-4 bg-secondary text-white rounded-xl font-bold hover:bg-primary transition-colors">Plan Detaylarını Gör</button>
-</div>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="results-grid">
+<!-- Dynamic Result Cards will be rendered here -->
 </div>
 </section>
 <!-- Footer -->
@@ -407,4 +317,130 @@
 </div>
 </div>
 </footer>
+<script>
+        // 1. Seed Data
+        const venues = [
+            { name: "AQUA", venue: "Four Seasons Bosphorus", district: "Beşiktaş", mood: "Premium", budget: "Premium", energy: "Orta", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB3VpYv_LwT7w7C5oB_hX5wWj5wL0Z0j8_v9c_wR9x_Yy4fX8j_v9c_wR9x_Yy4f", desc: "Boğaz kıyısında eşsiz deniz ürünleri ve lüks atmosfer." },
+            { name: "Mürver", venue: "Novotel Istanbul Bosphorus", district: "Karaköy", mood: "Manzaralı", budget: "Premium", energy: "Orta", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDvj42W4sNL2dz6NILelTXJmIHO4343wqG5R1UxUkveIr_dsGnX47Ocae3K9ZMMfr3hc1Z3BTHL5biA5Tith006T7tGouEhuMQLRUsKQo8JPN37gTh5knk9TW6jwdywrQHtqMPFmqdP1VHdZg6v_TTbumNv-sd98xVDWAOgPllPKP_onEQ0ke5OF7F_QvfIplTI0Hl1XkE26jNXdkf6kGAlP4WRVS3wPJbvBJy_FTdT3dhlqE3Y2M-n4L0km-rf3la1tK186KSUHwI", desc: "Panoramik İstanbul manzarası eşliğinde açık ateşte pişen gurme lezzetler." },
+            { name: "Sıralı Kebap", venue: "Etiler", district: "Beşiktaş", mood: "Spontane", budget: "Orta-Üst", energy: "Yüksek", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCsV7Xh_Vqsh5pd-vFh3L739c01aXBLauRpSJ0Ic16Ml4iYbhZWaeg6Tofw_xOxy4cyviCt5ixbIV_bUX-8pygyrp8O9Vmsx2XEYPfTUIw4LJzKeQnxmu-mry3kurSlW_Y77koZ0fvGCqO2lo4vRwctF1KHIfxph4EIup-kCCkfo4cB-6oMYap_fLR6JsYI6YMlxDCGF3KZvIPmUOakjT4CJVl_rPCWvlnhr3uKDDA9IduaupriI1JLdPlPaaYcCnACRe8KzRTHSA", desc: "Geleneksel lezzetlerin modern sunumlarla buluştuğu canlı bir atmosfer." },
+            { name: "Karaköy Lokantası", venue: "Karaköy", district: "Karaköy", mood: "Romantik", budget: "Orta", energy: "Sakin", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCjT1riWk0LMd5hhrywf9eE1qK84RAqLBgEXdw3-uHc4hdMkSXJIEoZUzE3-xjHMX9185eqEPWtFhU94WqxL3cmHjOeB6fp3gFfK7S9KwlIaiqpLpiN7mfPcLw3h1DzAQ4iY4Uc8d-LYw0LQY6VrN-NEibMWCA37pfIfSXSrvxa72O6V0NOHDDHOc3YlPGJUp1Vr4H3O9-pqu_Q0_DLmJLNwjiRugiePQrcMI_TwX43B3oRtZgOgUculjPAOf21KbfOyrXx6-f2SaI", desc: "Turkuaz çiniler arasında geleneksel ve modernin buluştuğu sakin bir durak." },
+            { name: "Ali Ocakbaşı", venue: "Karaköy", district: "Karaköy", mood: "Eğlenceli", budget: "Orta", energy: "Orta", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAye5WvbnQXfCz5F9lrvErHJvz_pAK2pbyOicA9nM-HTZkPZ_rwnQBDiuBU7vvxTBUaX54RxY_mfeLHIUKvna0OpXUpcAe42sbABMvw46vipbUvY_ls1qYQ7Wl1ZEzrEW-uFtFwKrtuF_x0wTK_x6YdRQbxdtkyPVtl7mnOyhLsIA8JTs1PbttzMezHACo-Jp2L84HHObRqU6Q2Nybx4JvTRbMJ3KwGhAJKHDD4uBHIfnQMfOvLwjMY2N1ek9WTRM7obX1aru4Ecs", desc: "Eşsiz manzara eşliğinde modern ocakbaşı keyfi." },
+            { name: "Il Cortile", venue: "Ecole St. Pierre Hotel", district: "Karaköy", mood: "Romantik", budget: "Orta-Üst", energy: "Sakin", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDLp1fAd9ls-QlOg9RZ9cZF349kZ_2m5WEzdVDoV8RekPqk7izjhyTP4nIgM0ZLZT5zCG1o8_fL1YwwsfMe7M27VWZXJ6Sg8DO42EIZhX1Ryd-4T_SLF2GhZoe7PpsnuRZwE7quUfmZbI02nW9aV3u3Ot6fGwKQRg2a4Btp-DhdZeabHP-zXViFo4UdBNv62N0KENETCIXZVvEClzBZCRoPvtgmvjYj6zgUSiOTBtEzQBl1bx9KB1YJB7Wc0R98oHbJ2VBduUD7GnE", desc: "Karaköy'ün gürültüsünden uzak, tarihi bir avluda mum ışığında İtalyan deneyimi." },
+            { name: "Aida", venue: "Vino e Cucina", district: "Moda", mood: "Romantik", budget: "Orta-Üst", energy: "Sakin", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDcG6-kAhNJa7OBLdoUFyTr03qFbo0uoDeVTwkhU4fLGY8aBBBZfj6GSddWSeyTlcdOibKJBilp9hBSAgyhpGSKj4yJPsHiIrCaDvoTU8Octj60Nb6TnLzllgYNFQmbBlvtabWZkXedYm_RP-T7G0Sk7J5PaIdBLVbOkVrgP-KSbHLoRciM75bbqFTEVAaGmDym5VmaVAUqGETWNf33GiHH5v84RK6wYiXghpCuuK3xKvpMSqpsSPrrEi-nx5TrsDOOjPVLCvhKSco", desc: "Piyano müziği ve antika dekorasyonuyla ev konforunda şık bir akşam." },
+            { name: "Yol Moda", venue: "Moda Sahil", district: "Moda", mood: "Spontane", budget: "Uygun", energy: "Düşük", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDewrMr3nMXB8i3BFeQq3-KJSQeYo56u3iJPPh9Cjehca-BooXR98Ruf5ueOPWsby2gZ86kTP7imaZm3gp2vDqFbU-amDsJsgXxPbIAEaTrzHoRYoUcLGGLPuWeDZg6roHx0WDzcCbbw9H_lzh-ILROQPxbRaEWopnDEygNtje0EqkmuVVKfRzUndChw7jqEhYgb5KSDw8D9cVb-ygENrGCP9_9bXPno-TVsprcNgP_YVM075f3aouuWfDRkFkarq2VvDgkOPTiKDM", desc: "Moda sahilinde gün batımına karşı kahve ve samimi sohbet." },
+            { name: "Foxy", venue: "Nişantaşı", district: "Nişantaşı", mood: "Eğlenceli", budget: "Orta-Üst", energy: "Yüksek", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCClwto7eSpmj7hB0l_1mbpDsMZKmPjKCNHEaUQv8B7H20oH4dnyDJLm7B-MpviGAOkT_40L19A17NzyNir8UmRTYpI-n4yNFp1OdRSsN7CHHv-K0YJJGOopnO3FfxMksiVHXtGQizLEOShbjh2Al_YMYGyE2UdaR9bK1aSf26r1I1hJbcWi_s-PEUxrXWLTzogeIUpCxRyltcEvO7f4nohZrCli7OU0TPY_tHO-hdwOHlxr__zdsrlDGzz0NSLzH84zucgHeB4lJo", desc: "Yerel şarap seçkisi ve gurme atıştırmalıklarla modern meyhane ruhu." },
+            { name: "Zerze", venue: "Cihangir", district: "Cihangir", mood: "Sakin", budget: "Orta", energy: "Düşük", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCBu5PGFksbp5ZPJ6iFnCgQrBlSN19uPaGlJngb4IloEDkE1ec2LQKWFHiIcDqS54tTxpGYch35BqUyewpBjxxADt6QY9eYIzJpBxmk2rhfdJvYQWe1DlgNzaULx1qJrfjfw-2HuntkfDkbXGU9JR2oAHlpBEgT81vbtgkUMD4c4q7zdYrp21VxgLslhgoGrJUKnYV4vr50mW5d5YsKTBjcarb6wwSM1NL-ZzjKgKBd_PgLiGT5m3I95Ivwo67rvoFsYmU9z5UY8Hk", desc: "Cihangir'in arka sokaklarında gizli, bitkilerle dolu huzurlu bir vaha." },
+            { name: "Maison Mariel", venue: "Nişantaşı", district: "Nişantaşı", mood: "Tatlı & Kahve", budget: "Orta-Üst", energy: "Düşük", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBpdJqBPhQILDHZDQNbow4l0UdNpDHRIg2liZQoDtF4J9uFayciJtnHravEs6vJ1rGmaRTVkbSfpEUQNZqK9svgvbjx5FZEHbNDcXO4Q9n4lak58eEDkX3G-uPaHsIfjtsMw3zRye7smwaSmrrBeTlHtzp6DFAo9AsOLOZwjMjriRoJ--lvESrUBQOUyvYkna7SAtiT2qYjG5E3o9u3zoY2M-Ew6WtFJsJBIuO13PAiVvfvDzRs2pZD6SHbZCy-kXYUOeQnnHD7Z6I", desc: "Fransız pastacılık sanatının en zarif örnekleri ve premium kahveler." }
+        ];
+
+        // 2. States
+        let selectedMood = null;
+        let selectedBudget = null;
+        let selectedDistrict = null;
+
+        // 3. Update active states
+        function selectOption(type, value) {
+            if (type === 'mood') {
+                selectedMood = value;
+                const buttons = document.querySelectorAll('#mood-options button');
+                buttons.forEach(btn => {
+                    const span = btn.querySelector('.font-medium');
+                    if (span.innerText === value) btn.classList.add('card-active');
+                    else btn.classList.remove('card-active');
+                });
+            } else if (type === 'budget') {
+                selectedBudget = value;
+                const buttons = document.querySelectorAll('#budget-options button');
+                buttons.forEach(btn => {
+                    if (btn.innerText === value) btn.classList.add('btn-active');
+                    else btn.classList.remove('btn-active');
+                });
+            } else if (type === 'district') {
+                selectedDistrict = value;
+                const buttons = document.querySelectorAll('#district-options button');
+                buttons.forEach(btn => {
+                    const span = btn.querySelector('span:last-child');
+                    if (span.innerText === value) btn.classList.add('district-active');
+                    else btn.classList.remove('district-active');
+                });
+            }
+        }
+
+        // 5. Generate Plans Logic
+        document.getElementById('generate-btn').addEventListener('click', function() {
+            if (!selectedMood || !selectedBudget || !selectedDistrict) {
+                alert('Lütfen tüm seçimleri yapınız.');
+                return;
+            }
+
+            // Score-based filtering
+            const scoredVenues = venues.map(v => {
+                let score = 0;
+                if (v.district === selectedDistrict) score += 5;
+                if (v.budget === selectedBudget) score += 4;
+                if (v.mood === selectedMood) score += 5;
+                return { ...v, score };
+            });
+
+            // Sort by score
+            scoredVenues.sort((a, b) => b.score - a.score);
+
+            // Fallback logic check
+            let results = scoredVenues.slice(0, 3);
+            
+            // Render results
+            renderResults(results);
+
+            // Update title
+            document.getElementById('results-subtitle').innerText = `${selectedDistrict} / ${selectedMood} / ${selectedBudget} kriterlerine göre en iyi 3 rota.`;
+
+            // Show section and scroll
+            const section = document.getElementById('results-section');
+            section.classList.remove('hidden');
+            section.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function renderResults(results) {
+            const grid = document.getElementById('results-grid');
+            grid.innerHTML = '';
+
+            results.forEach((item, index) => {
+                const card = `
+                    <div class="bg-white rounded-3xl overflow-hidden flex flex-col shadow-xl border border-outline-variant/30 group">
+                        <div class="relative h-72">
+                            <img alt="${item.name}" class="w-full h-full object-cover" src="${item.image}"/>
+                            ${index === 0 ? '<div class="absolute top-4 left-4 bg-primary text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">Günün Seçimi</div>' : ''}
+                            <button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-lg hover:bg-primary hover:text-white transition-colors">
+                                <span class="material-symbols-outlined text-xl">bookmark</span>
+                            </button>
+                        </div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-noto-serif text-2xl font-bold text-secondary">${item.name}</h3>
+                            </div>
+                            <p class="text-primary font-semibold mb-4">Venue: ${item.venue}</p>
+                            <div class="mb-6 space-y-3">
+                                <div class="flex items-start gap-2 text-sm text-on-surface-variant">
+                                    <span class="material-symbols-outlined text-primary text-lg">verified</span>
+                                    <span><strong>Neden size uygun?</strong> ${selectedMood} + ${selectedBudget} bütçe + ${selectedDistrict} seçtiğin için bu plan sana uygun.</span>
+                                </div>
+                            </div>
+                            <div class="mt-auto grid grid-cols-2 gap-4 border-t border-outline-variant pt-6">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Tahmini Bütçe</span>
+                                    <span class="text-secondary font-bold text-sm">${item.budget}</span>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Enerji Seviyesi</span>
+                                    <span class="text-secondary font-bold text-sm">${item.energy}</span>
+                                </div>
+                            </div>
+                            <button class="w-full mt-8 py-4 bg-secondary text-white rounded-xl font-bold hover:bg-primary transition-colors">Plan Detaylarını Gör</button>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+    </script>
 </body></html>
